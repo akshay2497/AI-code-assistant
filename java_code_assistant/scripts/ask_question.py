@@ -14,7 +14,7 @@ def initialize_models():
     global embedding_model, chroma_client, collection, deepseek_generator
 
     print("\n🔹 Logging into Hugging Face API...")
-    login("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")  # Use your actual HF token
+    login("your token here")  # Use your actual HF token
     print("✅ Successfully authenticated with Hugging Face.")
 
     print("\n🔹 Loading embedding model and connecting to ChromaDB...")
