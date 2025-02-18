@@ -1,0 +1,1226 @@
+[
+  {
+    "question": "Write me the code for given class :  Application.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app;\n\nimport org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\n\n@SpringBootApplication\npublic class Application {\n\n\tpublic static void main(String[] args) {\n\t\tSpringApplication.run(Application.class, args);\n\t}\n\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  ServletInitializer.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app;\n\nimport org.springframework.boot.builder.SpringApplicationBuilder;\nimport org.springframework.boot.web.servlet.support.SpringBootServletInitializer;\n\npublic class ServletInitializer extends SpringBootServletInitializer {\n\n\t@Override\n\tprotected SpringApplicationBuilder configure(SpringApplicationBuilder application) {\n\t\treturn application.sources(Application.class);\n\t}\n\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  PassengerForBookingDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\nimport com.app.pojos.Gender;\nimport com.app.pojos.PassengerType;\n\npublic class PassengerForBookingDTO {\n\tprivate Gender gender;\n\tprivate int passengerAge;\n\tprivate String passengerName;\n\tprivate PassengerType passengerType;\n\tprivate int seatNumber;\n\t\n\tpublic PassengerForBookingDTO() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\n\tpublic PassengerForBookingDTO(PassengerType passengerType, String passengerName, int passengerAge, Gender gender, int seatNumber) {\n\t\tsuper();\n\t\tthis.passengerType = passengerType;\n\t\tthis.passengerName = passengerName;\n\t\tthis.passengerAge = passengerAge;\n\t\tthis.gender = gender;\n\t\tthis.seatNumber = seatNumber;\n\t}\n\n\tpublic PassengerType getPassengerType() {\n\t\treturn passengerType;\n\t}\n\n\tpublic void setPassengerType(PassengerType passengerType) {\n\t\tthis.passengerType = passengerType;\n\t}\n\n\tpublic String getPassengerName() {\n\t\treturn passengerName;\n\t}\n\n\tpublic void setPassengerName(String passengerName) {\n\t\tthis.passengerName = passengerName;\n\t}\n\n\tpublic int getPassengerAge() {\n\t\treturn passengerAge;\n\t}\n\n\tpublic void setPassengerAge(int passengerAge) {\n\t\tthis.passengerAge = passengerAge;\n\t}\n\n\tpublic Gender getGender() {\n\t\treturn gender;\n\t}\n\n\tpublic void setGender(Gender gender) {\n\t\tthis.gender = gender;\n\t}\n\n\tpublic int getSeatNumber() {\n\t\treturn seatNumber;\n\t}\n\n\tpublic void setSeatNumber(int seatNumber) {\n\t\tthis.seatNumber = seatNumber;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"PassengerDTO [passengerType=\" + passengerType + \", passengerName=\" + passengerName + \", passengerAge=\"\n\t\t\t\t+ passengerAge + \", gender=\" + gender + \", seatNumber=\" + seatNumber +\" ]\";\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  UpdateFlightDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\nimport java.time.LocalDate;\nimport java.util.Date;\n\nimport com.fasterxml.jackson.annotation.JsonFormat;\n\npublic class UpdateFlightDTO {\n\tprivate int id;\n\t@JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\", timezone = \"Asia/Kolkata\")\n\tprivate Date departureTime;\n\t@JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\", timezone = \"Asia/Kolkata\")\n\tprivate Date arrivalTime;\n\tprivate LocalDate departureDate;\n\tprivate LocalDate arrivalDate;\n\t\n\tpublic UpdateFlightDTO() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\n\tpublic UpdateFlightDTO(int id, Date departureTime, Date arrivalTime) {\n\t\tsuper();\n\t\tthis.id = id;\n\t\tthis.departureTime = departureTime;\n\t\tthis.arrivalTime = arrivalTime;\n\t}\n\n\tpublic UpdateFlightDTO(int id, Date departureTime, Date arrivalTime, LocalDate departureDate,\n\t\t\tLocalDate arrivalDate) {\n\t\tsuper();\n\t\tthis.id = id;\n\t\tthis.departureTime = departureTime;\n\t\tthis.arrivalTime = arrivalTime;\n\t\tthis.departureDate = departureDate;\n\t\tthis.arrivalDate = arrivalDate;\n\t}\n\n\tpublic int getId() {\n\t\treturn id;\n\t}\n\n\tpublic void setId(int id) {\n\t\tthis.id = id;\n\t}\n\n\tpublic Date getDepartureTime() {\n\t\treturn departureTime;\n\t}\n\n\tpublic void setDepartureTime(Date departureTime) {\n\t\tthis.departureTime = departureTime;\n\t}\n\n\tpublic Date getArrivalTime() {\n\t\treturn arrivalTime;\n\t}\n\n\tpublic void setArrivalTime(Date arrivalTime) {\n\t\tthis.arrivalTime = arrivalTime;\n\t}\n\n\tpublic LocalDate getDepartureDate() {\n\t\treturn departureDate;\n\t}\n\n\tpublic void setDepartureDate(LocalDate departureDate) {\n\t\tthis.departureDate = departureDate;\n\t}\n\n\tpublic LocalDate getArrivalDate() {\n\t\treturn arrivalDate;\n\t}\n\n\tpublic void setArrivalDate(LocalDate arrivalDate) {\n\t\tthis.arrivalDate = arrivalDate;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"UpdateFlightDTO [id=\" + id + \", departureTime=\" + departureTime + \", arrivalTime=\" + arrivalTime\n\t\t\t\t+ \", departureDate=\" + departureDate + \", arrivalDate=\" + arrivalDate + \"]\";\n\t}\n\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  AirlineDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\nimport java.time.LocalDate;\nimport java.util.Date;\n\nimport com.fasterxml.jackson.annotation.JsonFormat;\n\npublic class AirlineDTO {\n\tprivate String airlineName;\n\tprivate String airlineNo;\n\tprivate LocalDate departureDate;\n\tprivate LocalDate arrivalDate;\n\tprivate String fromCity;\n\tprivate String toCity;\n\t@JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\", timezone = \"Asia/Kolkata\")\n\tprivate Date departureTime;\n\t@JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\", timezone = \"Asia/Kolkata\")\n\tprivate Date arrivalTime;\n\tprivate int capacity;\n\tprivate int availableSeats;\n\tprivate double economyFare;\n\tprivate double businessFare;\n\n\tpublic AirlineDTO() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\n\tpublic AirlineDTO(String airlineName, String airlineNo, LocalDate departureDate, LocalDate arrivalDate,\n\t\t\tString fromCity, String toCity, Date departureTime, Date arrivalTime, int capacity, int availableSeats,\n\t\t\tdouble economyFare, double businessFare) {\n\t\tsuper();\n\t\tthis.airlineName = airlineName;\n\t\tthis.airlineNo = airlineNo;\n\t\tthis.departureDate = departureDate;\n\t\tthis.arrivalDate = arrivalDate;\n\t\tthis.fromCity = fromCity;\n\t\tthis.toCity = toCity;\n\t\tthis.departureTime = departureTime;\n\t\tthis.arrivalTime = arrivalTime;\n\t\tthis.capacity = capacity;\n\t\tthis.availableSeats = availableSeats;\n\t\tthis.economyFare = economyFare;\n\t\tthis.businessFare = businessFare;\n\t}\n\n\tpublic String getAirlineName() {\n\t\treturn airlineName;\n\t}\n\n\tpublic void setAirlineName(String airlineName) {\n\t\tthis.airlineName = airlineName;\n\t}\n\n\tpublic String getAirlineNo() {\n\t\treturn airlineNo;\n\t}\n\n\tpublic void setAirlineNo(String airlineNo) {\n\t\tthis.airlineNo = airlineNo;\n\t}\n\n\tpublic LocalDate getDepartureDate() {\n\t\treturn departureDate;\n\t}\n\n\tpublic void setDepartureDate(LocalDate departureDate) {\n\t\tthis.departureDate = departureDate;\n\t}\n\n\tpublic LocalDate getArrivalDate() {\n\t\treturn arrivalDate;\n\t}\n\n\tpublic void setArrivalDate(LocalDate arrivalDate) {\n\t\tthis.arrivalDate = arrivalDate;\n\t}\n\n\tpublic String getFromCity() {\n\t\treturn fromCity;\n\t}\n\n\tpublic void setFromCity(String fromCity) {\n\t\tthis.fromCity = fromCity;\n\t}\n\n\tpublic String getToCity() {\n\t\treturn toCity;\n\t}\n\n\tpublic void setToCity(String toCity) {\n\t\tthis.toCity = toCity;\n\t}\n\n\tpublic Date getDepartureTime() {\n\t\treturn departureTime;\n\t}\n\n\tpublic void setDepartureTime(Date departureTime) {\n\t\tthis.departureTime = departureTime;\n\t}\n\n\tpublic Date getArrivalTime() {\n\t\treturn arrivalTime;\n\t}\n\n\tpublic void setArrivalTime(Date arrivalTime) {\n\t\tthis.arrivalTime = arrivalTime;\n\t}\n\n\tpublic int getCapacity() {\n\t\treturn capacity;\n\t}\n\n\tpublic void setCapacity(int capacity) {\n\t\tthis.capacity = capacity;\n\t}\n\n\tpublic int getAvailableSeats() {\n\t\treturn availableSeats;\n\t}\n\n\tpublic void setAvailableSeats(int availableSeats) {\n\t\tthis.availableSeats = availableSeats;\n\t}\n\n\tpublic double getEconomyFare() {\n\t\treturn economyFare;\n\t}\n\n\tpublic void setEconomyFare(double economyFare) {\n\t\tthis.economyFare = economyFare;\n\t}\n\n\tpublic double getBusinessFare() {\n\t\treturn businessFare;\n\t}\n\n\tpublic void setBusinessFare(double businessFare) {\n\t\tthis.businessFare = businessFare;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"AirlineDTO [airlineName=\" + airlineName + \", airlineNo=\" + airlineNo + \", departureDate=\"\n\t\t\t\t+ departureDate + \", arrivalDate=\" + arrivalDate + \", fromCity=\" + fromCity + \", toCity=\" + toCity\n\t\t\t\t+ \", departureTime=\" + departureTime + \", arrivalTime=\" + arrivalTime + \", capacity=\" + capacity\n\t\t\t\t+ \", availableSeats=\" + availableSeats + \", economyFare=\" + economyFare + \", businessFare=\"\n\t\t\t\t+ businessFare + \"]\";\n\t}\n\t\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  GetBookingListDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\nimport java.time.LocalDate;\n\npublic class GetBookingListDTO {\n\tprivate int bookingId;\n\tprivate LocalDate bookingDate;\n\tprivate double totalFare;\n\tprivate LocalDate journeyDate;\n\tprivate LocalDate arrivalDate;\n\tprivate int status;\n\tprivate int airlineId;\n\tprivate int userId;\n\t\n\tpublic GetBookingListDTO(int bookingId, LocalDate bookingDate, double totalFare, LocalDate journeyDate,\n\t\t\tLocalDate arrivalDate, int status, int airlineId, int userId) {\n\t\tsuper();\n\t\tthis.bookingId = bookingId;\n\t\tthis.bookingDate = bookingDate;\n\t\tthis.totalFare = totalFare;\n\t\tthis.journeyDate = journeyDate;\n\t\tthis.arrivalDate = arrivalDate;\n\t\tthis.status = status;\n\t\tthis.airlineId = airlineId;\n\t\tthis.userId = userId;\n\t}\n\n\tpublic int getBookingId() {\n\t\treturn bookingId;\n\t}\n\n\tpublic void setBookingId(int bookingId) {\n\t\tthis.bookingId = bookingId;\n\t}\n\n\tpublic LocalDate getBookingDate() {\n\t\treturn bookingDate;\n\t}\n\n\tpublic void setBookingDate(LocalDate bookingDate) {\n\t\tthis.bookingDate = bookingDate;\n\t}\n\n\tpublic double getTotalFare() {\n\t\treturn totalFare;\n\t}\n\n\tpublic void setTotalFare(double totalFare) {\n\t\tthis.totalFare = totalFare;\n\t}\n\n\tpublic LocalDate getJourneyDate() {\n\t\treturn journeyDate;\n\t}\n\n\tpublic void setJourneyDate(LocalDate journeyDate) {\n\t\tthis.journeyDate = journeyDate;\n\t}\n\n\tpublic LocalDate getArrivalDate() {\n\t\treturn arrivalDate;\n\t}\n\n\tpublic void setArrivalDate(LocalDate arrivalDate) {\n\t\tthis.arrivalDate = arrivalDate;\n\t}\n\n\tpublic int getStatus() {\n\t\treturn status;\n\t}\n\n\tpublic void setStatus(int status) {\n\t\tthis.status = status;\n\t}\n\n\tpublic int getAirlineId() {\n\t\treturn airlineId;\n\t}\n\n\tpublic void setAirlineId(int airlineId) {\n\t\tthis.airlineId = airlineId;\n\t}\n\t\n\n\tpublic int getUserId() {\n\t\treturn userId;\n\t}\n\n\tpublic void setUserId(int userId) {\n\t\tthis.userId = userId;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"GetBookingListDTO [bookingId=\" + bookingId + \", bookingDate=\" + bookingDate + \", totalFare=\" + totalFare\n\t\t\t\t+ \", journeyDate=\" + journeyDate + \", arrivalDate=\" + arrivalDate + \", status=\" + status\n\t\t\t\t+ \", airlineId=\" + airlineId + \"]\";\n\t}\n\t\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  CardDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\nimport java.time.LocalDate;\n\npublic class CardDTO {\n\tprivate String cardNumber;\n\tprivate String nameOnCard;\n\tprivate LocalDate expiryDate;\n\t\n\tpublic CardDTO() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\n\tpublic CardDTO(String cardNumber, String nameOnCard, LocalDate expiryDate) {\n\t\tsuper();\n\t\tthis.cardNumber = cardNumber;\n\t\tthis.nameOnCard = nameOnCard;\n\t\tthis.expiryDate = expiryDate;\n\t}\n\n\tpublic String getCardNumber() {\n\t\treturn cardNumber;\n\t}\n\n\tpublic void setCardNumber(String cardNumber) {\n\t\tthis.cardNumber = cardNumber;\n\t}\n\n\tpublic String getNameOnCard() {\n\t\treturn nameOnCard;\n\t}\n\n\tpublic void setNameOnCard(String nameOnCard) {\n\t\tthis.nameOnCard = nameOnCard;\n\t}\n\n\tpublic LocalDate getExpiryDate() {\n\t\treturn expiryDate;\n\t}\n\n\tpublic void setExpiryDate(LocalDate expiryDate) {\n\t\tthis.expiryDate = expiryDate;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"CardDetails [cardNumber=\" + cardNumber + \", nameOnCard=\" + nameOnCard + \", expiryDate=\" + expiryDate\n\t\t\t\t+ \"]\";\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  PassengerDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\npublic class PassengerDTO {\n\tprivate String passengerName;\n\tprivate int passengerAge;\n\tprivate String passengerType;\n\tprivate String gender;\n\tprivate int seatNumber;\n\tpublic PassengerDTO() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\tpublic PassengerDTO(String passengerName, int passengerAge, String passengerType, String gender,int seatNumber) {\n\t\tsuper();\n\t\tthis.passengerName = passengerName;\n\t\tthis.passengerAge = passengerAge;\n\t\tthis.passengerType = passengerType;\n\t\tthis.gender = gender;\n\t\tthis.seatNumber = seatNumber;\n\t}\n\tpublic String getPassengerName() {\n\t\treturn passengerName;\n\t}\n\tpublic void setPassengerName(String passengerName) {\n\t\tthis.passengerName = passengerName;\n\t}\n\tpublic int getPassengerAge() {\n\t\treturn passengerAge;\n\t}\n\tpublic void setPassengerAge(int passengerAge) {\n\t\tthis.passengerAge = passengerAge;\n\t}\n\tpublic String getPassengerType() {\n\t\treturn passengerType;\n\t}\n\tpublic void setPassengerType(String passengerType) {\n\t\tthis.passengerType = passengerType;\n\t}\n\tpublic String getGender() {\n\t\treturn gender;\n\t}\n\tpublic void setGender(String gender) {\n\t\tthis.gender = gender;\n\t}\n\t\n\tpublic int getSeatNumber() {\n\t\treturn seatNumber;\n\t}\n\tpublic void setSeatNumber(int seatNumber) {\n\t\tthis.seatNumber = seatNumber;\n\t}\n\t@Override\n\tpublic String toString() {\n\t\treturn \"PassengerDTO [passengerName=\" + passengerName + \", passengerAge=\" + passengerAge + \", passengerType=\"\n\t\t\t\t+ passengerType + \", gender=\" + gender + \", seatNumber=\" + seatNumber + \"]\";\n\t}\n\t\n}\n\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  AirlineWiseRevenueDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\npublic class AirlineWiseRevenueDTO {\n\tprivate String airlineName;\n\tprivate double revenue;\n\tpublic AirlineWiseRevenueDTO() {\n\t\t// TODO Auto-generated constructor stub\n\t}\n\tpublic AirlineWiseRevenueDTO(String airlineName, double revenue) {\n\t\tsuper();\n\t\tthis.airlineName = airlineName;\n\t\tthis.revenue = revenue;\n\t}\n\tpublic String getAirlineName() {\n\t\treturn airlineName;\n\t}\n\tpublic void setAirlineName(String airlineName) {\n\t\tthis.airlineName = airlineName;\n\t}\n\tpublic double getRevenue() {\n\t\treturn revenue;\n\t}\n\tpublic void setRevenue(double revenue) {\n\t\tthis.revenue = revenue;\n\t}\n\t@Override\n\tpublic String toString() {\n\t\treturn \"AirlineWiseRevenue [airlineName=\" + airlineName + \", revenue=\" + revenue + \"]\";\n\t}\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  ResponseDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\npublic class ResponseDTO<T> {\nprivate String status;\nprivate T data;\npublic ResponseDTO() {\n\t// TODO Auto-generated constructor stub\n}\npublic ResponseDTO(String status, T data) {\n\tsuper();\n\tthis.status = status;\n\tthis.data = data;\n}\npublic String getStatus() {\n\treturn status;\n}\npublic void setStatus(String status) {\n\tthis.status = status;\n}\npublic T getData() {\n\treturn data;\n}\npublic void setData(T data) {\n\tthis.data = data;\n}\n@Override\npublic String toString() {\n\treturn \"ResponseDTO [status=\" + status + \", data=\" + data + \"]\";\n}\n\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  LoginDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\npublic class LoginDTO {\n\tprivate String email;\n\tprivate String password;\n\t\n\tpublic LoginDTO() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\n\tpublic LoginDTO(String email, String password) {\n\t\tsuper();\n\t\tthis.email = email;\n\t\tthis.password = password;\n\t}\n\n\tpublic String getEmail() {\n\t\treturn email;\n\t}\n\n\tpublic void setEmail(String email) {\n\t\tthis.email = email;\n\t}\n\n\tpublic String getPassword() {\n\t\treturn password;\n\t}\n\n\tpublic void setPassword(String password) {\n\t\tthis.password = password;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"LoginDTO [email=\" + email + \", password=\" + password + \"]\";\n\t}\n\t\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  CustomDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\nimport java.util.Arrays;\n\npublic class CustomDTO {\n\tprivate int userId;\n\tprivate CardDTO cardDto;\n\tprivate BookingDTO bookingDto;\n\tprivate PassengerForBookingDTO[] passengerDto ;\n\t\n\tpublic CustomDTO() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t\tthis.passengerDto = new PassengerForBookingDTO[10];\n\t}\n\n\tpublic CustomDTO(int userId, CardDTO cardDto, BookingDTO bookingDto, PassengerForBookingDTO[] passengerDtos) {\n\t\tsuper();\n\t\tthis.userId = userId;\n\t\tthis.cardDto = cardDto;\n\t\tthis.bookingDto = bookingDto;\n\t\tthis.passengerDto = passengerDtos;\n\t}\n\n\tpublic int getUserId() {\n\t\treturn userId;\n\t}\n\n\tpublic void setUserId(int userId) {\n\t\tthis.userId = userId;\n\t}\n\n\tpublic CardDTO getCardDto() {\n\t\treturn cardDto;\n\t}\n\n\tpublic void setCardDto(CardDTO cardDto) {\n\t\tthis.cardDto = cardDto;\n\t}\n\n\tpublic BookingDTO getBookingDto() {\n\t\treturn bookingDto;\n\t}\n\n\tpublic void setBookingDto(BookingDTO bookingDto) {\n\t\tthis.bookingDto = bookingDto;\n\t}\n\n\tpublic PassengerForBookingDTO[] getPassengerDto() {\n\t\treturn passengerDto;\n\t}\n\n\tpublic void setPassengerDto(PassengerForBookingDTO[] passengerDto) {\n\t\tthis.passengerDto = passengerDto;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"CustomDTO [userId=\" + userId + \", cardDto=\" + cardDto + \", bookingDto=\"\n\t\t\t\t+ bookingDto + \", passengerDto=\" + Arrays.toString(passengerDto) + \"]\";\n\t}\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  PostFeedbackDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\npublic class PostFeedbackDTO {\nprivate String feedback;\npublic PostFeedbackDTO() {\n\t// TODO Auto-generated constructor stub\n}\npublic PostFeedbackDTO(String feedback) {\n\tsuper();\n\tthis.feedback = feedback;\n}\npublic String getFeedback() {\n\treturn feedback;\n}\npublic void setFeedback(String feedback) {\n\tthis.feedback = feedback;\n}\n@Override\npublic String toString() {\n\treturn \"PostFeedbackDTO [feedback=\" + feedback + \"]\";\n}\n\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  MonthlyRevenueDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\npublic class MonthlyRevenueDTO {\n\tprivate int month;\n\tprivate double revenue;\n\tpublic MonthlyRevenueDTO() {\n\t\t// TODO Auto-generated constructor stub\n\t}\n\tpublic MonthlyRevenueDTO(int month, double revenue) {\n\t\tsuper();\n\t\tthis.month = month;\n\t\tthis.revenue = revenue;\n\t}\n\tpublic int getMonth() {\n\t\treturn month;\n\t}\n\tpublic void setMonth(int month) {\n\t\tthis.month = month;\n\t}\n\tpublic double getRevenue() {\n\t\treturn revenue;\n\t}\n\tpublic void setRevenue(double revenue) {\n\t\tthis.revenue = revenue;\n\t}\n\t@Override\n\tpublic String toString() {\n\t\treturn \"MonthlyRevenueDTO [month=\" + month + \", revenue=\" + revenue + \"]\";\n\t}\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  QuarterlyRevenueDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\npublic class QuarterlyRevenueDTO {\n\tprivate int quarter;\n\tprivate double revenue;\n\tpublic QuarterlyRevenueDTO() {\n\t\t// TODO Auto-generated constructor stub\n\t}\n\tpublic QuarterlyRevenueDTO(int quarter, double revenue) {\n\t\tthis.quarter = quarter;\n\t\tthis.revenue = revenue;\n\t}\n\tpublic int getQuarter() {\n\t\treturn quarter;\n\t}\n\tpublic void setQuarter(int quarter) {\n\t\tthis.quarter = quarter;\n\t}\n\tpublic double getRevenue() {\n\t\treturn revenue;\n\t}\n\tpublic void setRevenue(double revenue) {\n\t\tthis.revenue = revenue;\n\t}\n\t@Override\n\tpublic String toString() {\n\t\treturn \"QuarterlyRevenueDTO [quarter=\" + quarter + \", revenue=\" + revenue + \"]\";\n\t}\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  UserDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\npublic class UserDTO {\n\tprivate String firstName;\n\tprivate String lastName;\n\tprivate String email;\n\tprivate String password;\n\tprivate String mobileNo;\n\tprivate int status;\n\tpublic UserDTO() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\t\n\tpublic UserDTO(String firstName, String lastName, String email, String password, String mobileNo, int status) {\n\t\tsuper();\n\t\tthis.firstName = firstName;\n\t\tthis.lastName = lastName;\n\t\tthis.email = email;\n\t\tthis.password = password;\n\t\tthis.mobileNo = mobileNo;\n\t\tthis.status = status;\n\t}\n\n\tpublic String getFirstName() {\n\t\treturn firstName;\n\t}\n\tpublic void setFirstName(String firstName) {\n\t\tthis.firstName = firstName;\n\t}\n\tpublic String getLastName() {\n\t\treturn lastName;\n\t}\n\tpublic void setLastName(String lastName) {\n\t\tthis.lastName = lastName;\n\t}\n\tpublic String getEmail() {\n\t\treturn email;\n\t}\n\tpublic void setEmail(String email) {\n\t\tthis.email = email;\n\t}\n\tpublic String getPassword() {\n\t\treturn password;\n\t}\n\tpublic void setPassword(String password) {\n\t\tthis.password = password;\n\t}\n\tpublic String getMobileNo() {\n\t\treturn mobileNo;\n\t}\n\tpublic void setMobileNo(String mobileNo) {\n\t\tthis.mobileNo = mobileNo;\n\t}\n\tpublic int getStatus() {\n\t\treturn status;\n\t}\n\tpublic void setStatus(int status) {\n\t\tthis.status = status;\n\t}\n\t@Override\n\tpublic String toString() {\n\t\treturn \"UserDTO [firstName=\" + firstName + \", lastName=\" + lastName + \", email=\" + email + \", password=\"\n\t\t\t\t+ password + \", mobileNo=\" + mobileNo + \", status=\" + status + \"]\";\n\t}\n\t\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  ErrorResponse.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\nimport java.time.LocalDateTime;\n\npublic class ErrorResponse {\n\tprivate String message;\n\tprivate LocalDateTime timeStamp;\n\tprivate String errDetails;\n\tpublic ErrorResponse() {\n\t\t// TODO Auto-generated constructor stub\n\t}\n\tpublic ErrorResponse(String message,String errDetails) {\n\t\tsuper();\n\t\tthis.message = message;\n\t\tthis.errDetails=errDetails;\n\t\tthis.timeStamp=LocalDateTime.now();\n\t}\n\tpublic String getMessage() {\n\t\treturn message;\n\t}\n\tpublic void setMessage(String message) {\n\t\tthis.message = message;\n\t}\n\tpublic LocalDateTime getTimeStamp() {\n\t\treturn timeStamp;\n\t}\n\tpublic void setTimeStamp(LocalDateTime timeStamp) {\n\t\tthis.timeStamp = timeStamp;\n\t}\n\tpublic String getErrDetails() {\n\t\treturn errDetails;\n\t}\n\tpublic void setErrDetails(String errDetails) {\n\t\tthis.errDetails = errDetails;\n\t}\n\t@Override\n\tpublic String toString() {\n\t\treturn  message + \" timeStamp=\" + timeStamp ;\n\t}\n\t\n\t\n\t\n\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  YearlyRevenueDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\npublic class YearlyRevenueDTO {\n\tprivate int year;\n\tprivate double revenue;\n\tpublic YearlyRevenueDTO() {\n\t\t// TODO Auto-generated constructor stub\n\t}\n\tpublic YearlyRevenueDTO(int year, double revenue) {\n\t\tthis.year = year;\n\t\tthis.revenue = revenue;\n\t}\n\tpublic int getYear() {\n\t\treturn year;\n\t}\n\tpublic void setYear(int year) {\n\t\tthis.year = year;\n\t}\n\tpublic double getRevenue() {\n\t\treturn revenue;\n\t}\n\tpublic void setRevenue(double revenue) {\n\t\tthis.revenue = revenue;\n\t}\n\t@Override\n\tpublic String toString() {\n\t\treturn \"YearlyRevenueDTO [year=\" + year + \", revenue=\" + revenue + \"]\";\n\t}\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  FeedbackDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\npublic class FeedbackDTO {\n\tprivate int airlineId;\n\tprivate int bookingId;\n\tprivate int userId;\n\tprivate String feedback;\n\tpublic FeedbackDTO() {\n\t\t// TODO Auto-generated constructor stub\n\t}\n\tpublic FeedbackDTO(int airlineId, int bookingId, int userId, String feedback) {\n\t\tsuper();\n\t\tthis.airlineId = airlineId;\n\t\tthis.bookingId = bookingId;\n\t\tthis.userId = userId;\n\t\tthis.feedback = feedback;\n\t}\n\t\n\tpublic int getAirlineId() {\n\t\treturn airlineId;\n\t}\n\tpublic void setAirlineId(int airlineId) {\n\t\tthis.airlineId = airlineId;\n\t}\n\tpublic int getBookingId() {\n\t\treturn bookingId;\n\t}\n\tpublic void setBookingId(int bookingId) {\n\t\tthis.bookingId = bookingId;\n\t}\n\tpublic int getUserId() {\n\t\treturn userId;\n\t}\n\tpublic void setUserId(int userId) {\n\t\tthis.userId = userId;\n\t}\n\tpublic String getFeedback() {\n\t\treturn feedback;\n\t}\n\tpublic void setFeedback(String feedback) {\n\t\tthis.feedback = feedback;\n\t}\n\t@Override\n\tpublic String toString() {\n\t\treturn \"FeedbackDTO [airlineId=\" + airlineId + \", bookingId=\" + bookingId + \", userId=\" + userId + \", feedback=\"\n\t\t\t\t+ feedback + \"]\";\n\t}\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  CityDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\nimport java.util.Arrays;\n\npublic class CityDTO {\n\tprivate String[] cityNames;\n\n\tpublic CityDTO() {\n\t\tSystem.out.println(\"in ctor of CityDto\");\n\t}\n\n\tpublic CityDTO(String[] cityNames) {\n\t\tsuper();\n\t\tthis.cityNames = cityNames;\n\t}\n\n\tpublic String[] getCityNames() {\n\t\treturn cityNames;\n\t}\n\n\tpublic void setCityNames(String[] cityNames) {\n\t\tthis.cityNames = cityNames;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"CityDTO [cityNames=\" + Arrays.toString(cityNames) + \"]\";\n\t}\n\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  BookingDTO.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dto;\n\nimport com.app.pojos.SeatType;\n\npublic class BookingDTO {\n\tprivate double totalFare;\n\tprivate SeatType seatType;\n\tprivate int status;\n\tprivate int airlineId;\n\t\n\tpublic BookingDTO() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\n\tpublic BookingDTO(double totalFare, SeatType seatType, int status, int airlineId) {\n\t\tsuper();\n\t\tthis.totalFare = totalFare;\n\t\tthis.seatType = seatType;\n\t\tthis.status = status;\n\t\tthis.airlineId = airlineId;\n\t}\n\n\tpublic double getTotalFare() {\n\t\treturn totalFare;\n\t}\n\n\tpublic void setTotalFare(double totalFare) {\n\t\tthis.totalFare = totalFare;\n\t}\n\n\tpublic SeatType getSeatType() {\n\t\treturn seatType;\n\t}\n\n\tpublic void setSeatType(SeatType seatType) {\n\t\tthis.seatType = seatType;\n\t}\n\n\tpublic int getStatus() {\n\t\treturn status;\n\t}\n\n\tpublic void setStatus(int status) {\n\t\tthis.status = status;\n\t}\n\n\tpublic int getAirlineId() {\n\t\treturn airlineId;\n\t}\n\n\tpublic void setAirlineId(int airlineId) {\n\t\tthis.airlineId = airlineId;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"BookingDTO [totalFare=\" + totalFare + \", seatType=\" + seatType + \", status=\" + status + \", airlineId=\"\n\t\t\t\t+ airlineId + \"]\";\n\t}\n\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  CitiesRepository.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dao;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport org.springframework.data.jpa.repository.JpaRepository;\nimport org.springframework.data.jpa.repository.Query;\n\nimport com.app.pojos.Cities;\n\npublic interface CitiesRepository extends JpaRepository<Cities, Integer> {\n\t@Query(\"select c from Cities c\")\n\tList<Cities> getCities();\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  AirlineRepository.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dao;\n\nimport java.time.LocalDate;\nimport java.util.List;\n\nimport org.springframework.data.jpa.repository.JpaRepository;\nimport org.springframework.data.jpa.repository.Query;\n\nimport com.app.pojos.Airline;\n\npublic interface AirlineRepository extends JpaRepository<Airline, Integer> {\n\t//method to search flight by from, destination and departureDate\n\tList<Airline> findByFromCityAndToCityAndDepartureDate(String fromCity, String toCity, LocalDate departureDate);\n\t\n\t//method to get distinct AirlineNames\n\t@Query(\"select distinct airlineName from Airline\")\n\tList<String> findDistinctAirlineName();\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  UserRepository.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dao;\n\nimport org.springframework.data.jpa.repository.JpaRepository;\nimport org.springframework.data.jpa.repository.Query;\nimport org.springframework.data.repository.query.Param;\n\nimport com.app.pojos.User;\n\npublic interface UserRepository extends JpaRepository<User, Integer>{\n\t@Query(\"select u from User u where email=:em and password=:pwd\")\n\tUser getUser(@Param(\"em\") String email, @Param(\"pwd\") String password);\n\t//method to find user by email\n\tUser findByEmail(String email);\n\t//Method for user login\n\tUser findByEmailAndPassword(String email, String password);\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  PassengerRepository.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dao;\n\nimport java.util.List;\n\nimport org.springframework.data.jpa.repository.JpaRepository;\nimport org.springframework.data.jpa.repository.Modifying;\nimport org.springframework.data.jpa.repository.Query;\nimport org.springframework.data.repository.query.Param;\n\nimport com.app.pojos.Passenger;\n\npublic interface PassengerRepository extends JpaRepository<Passenger, Integer> {\n@Query(\"select p from Passenger p where p.bookingId.id=:bid\")\nList<Passenger>getPassengerByBookingId(@Param(\"bid\") int bookingId);\n@Modifying\n@Query(\"delete from Passenger p where p.bookingId.id=:bid\")\nint deletePassengerByBookingId(@Param(\"bid\")int bookingId);\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  BookingRepository.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.dao;\n\nimport java.util.List;\n\nimport org.springframework.data.jpa.repository.JpaRepository;\nimport org.springframework.data.jpa.repository.Modifying;\nimport org.springframework.data.jpa.repository.Query;\nimport org.springframework.data.repository.query.Param;\n\nimport com.app.dto.AirlineWiseRevenueDTO;\nimport com.app.dto.FeedbackDTO;\nimport com.app.dto.MonthlyRevenueDTO;\nimport com.app.dto.QuarterlyRevenueDTO;\nimport com.app.dto.YearlyRevenueDTO;\nimport com.app.pojos.Booking;\n\npublic interface BookingRepository extends JpaRepository<Booking, Integer> {\n\t@Query(\"select new com.app.dto.MonthlyRevenueDTO(month(b.bookingDate),sum(b.totalFare)) from Booking b inner join Airline a on a.id=b.airlineId where year(b.bookingDate)=year(current_date()) and b.status=1 and a.airlineName=:nm group by month(b.bookingDate) order by month(b.bookingDate)\")\n\tList<MonthlyRevenueDTO> getMonthlyRevenue(@Param(\"nm\") String airlineName);\n\t\n\t@Query(\"select b from Booking b where b.airlineId=:id\")\n\tList<Booking> getBookingByAirlineId(@Param(\"id\") int airId);\n\n\t@Modifying\n\t@Query(\"Update Booking b set b.feedback=:fd where b.id=:bid\")\n\tvoid postFeedback(@Param(\"bid\") int bookingId, @Param(\"fd\") String feedback);\n\t\n\tList<Booking> findByAirlineId(int airID);\n\t@Query(\"select b.airlineId from Booking b where b.id=:bid\")\n\tint getAirlineIdByBookingId(@Param(\"bid\")int bookingId);\n\t\n\t@Query(\"select new com.app.dto.FeedbackDTO(b.airlineId,b.id,b.userId.id,b.feedback) from Booking b where b.airlineId=:id\")\n\tList<FeedbackDTO> getFeedbackByAirlineId(@Param(\"id\") Integer airId);\n\t\n\t@Query(\"select new com.app.dto.QuarterlyRevenueDTO(quarter(b.bookingDate), sum(b.totalFare)) from Booking b inner join Airline a on a.id=b.airlineId where year(b.bookingDate)=year(current_date) and b.status=1 and a.airlineName=:nm group by Quarter(b.bookingDate) order by Quarter(b.bookingDate)\")\n\tList<QuarterlyRevenueDTO> getQuarterlyRevenue(@Param(\"nm\") String airlineName);\n\t\n\t@Query(\"select new com.app.dto.YearlyRevenueDTO(year(b.bookingDate), sum(b.totalFare)) from Booking b inner join Airline a on a.id=b.airlineId where status=1 and a.airlineName=:nm group by year(b.bookingDate) order by year(b.bookingDate)\")\n\tList<YearlyRevenueDTO> getYearlyRevenue(@Param(\"nm\") String airlineName);\n    \n\t@Query(\"select b from Booking b where b.userId.id=:id\")\n\tList<Booking> getBookingByUserId(@Param(\"id\") int userId);\n\t\n\t@Query(\"select count(b.id) from Booking b \")\n\tint getTotalBooking();\n\t\n\t@Query(\"select count(b.id) from Booking b where status=0\")\n\tint getCancelledBooking();\n\t\n\t@Query(\"select sum(b.totalFare) from Booking b where status=1\")\n\tdouble getTotalRevenue();\n\t\n\t@Query(\"select new com.app.dto.AirlineWiseRevenueDTO(a.airlineName,sum(b.totalFare)) from Booking b inner join Airline a on a.id=b.airlineId where b.status=1 group by a.airlineName\")\n\tList<AirlineWiseRevenueDTO> getAirlineRevenue();\n}\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  AdminController.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.controller;\n\nimport java.util.List;\n\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.http.HttpStatus;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.CrossOrigin;\nimport org.springframework.web.bind.annotation.DeleteMapping;\nimport org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.bind.annotation.PathVariable;\nimport org.springframework.web.bind.annotation.PutMapping;\nimport org.springframework.web.bind.annotation.RequestBody;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport org.springframework.web.bind.annotation.RequestParam;\nimport org.springframework.web.bind.annotation.RestController;\n\nimport com.app.dto.GetBookingListDTO;\nimport com.app.dto.PassengerDTO;\nimport com.app.dto.ResponseDTO;\nimport com.app.dto.UpdateFlightDTO;\nimport com.app.service.IAirlineService;\nimport com.app.service.IBookingService;\n\n@RestController\n@RequestMapping(\"/admin\")\n@CrossOrigin\npublic class AdminController {\n\tpublic AdminController() {\n\t\tSystem.out.println(\"in ctor of : \" + getClass().getName());\n\t}\n\t@Autowired\n\tprivate IBookingService bookingService;\n\t\n\t@Autowired\n\tprivate IAirlineService airService;\n\n\t@PutMapping(\"/update_airline\")\n\tpublic ResponseEntity<?> updateFlightSchedule(@RequestBody UpdateFlightDTO flightDto) {\n\t\tSystem.out.println(\"in update flight Schedule method\");\n\t\treturn new ResponseEntity<>(airService.updateAirline(flightDto), HttpStatus.OK);\n\t}\n\n\t@DeleteMapping(\"/cancel_flight/{air_id}\")\n\tpublic ResponseEntity<?> cancelFlight(@PathVariable int air_id) {\n\t\tSystem.out.println(\"in cancel flight Schedule method\");\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", airService.cancelFlight(air_id)) , HttpStatus.OK);\n\t}\n\t\n\t@GetMapping(\"/get_bookings/{aid}\")\n\tpublic ResponseEntity<?> getBookingsByAid(@PathVariable int aid){\n\t\tList<GetBookingListDTO> list = bookingService.findByAirlineId(aid);\n\t\tif (!list.isEmpty())\n\t\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", list), HttpStatus.OK);\n\t\telse\n\t\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"error\", \"no bookings yet\"), HttpStatus.OK);\n\t}\n\n\t@DeleteMapping(\"/delete_booking\")\n\tpublic ResponseEntity<?> deleteBooking(@RequestParam int bid) {\n\t\tSystem.out.println(\"in delete booking(admin controller) \" + bid);\n\n\t\tbookingService.deleteBooking(bid);\n\t\treturn new ResponseEntity<>(\"Booking Deleted Successfully!!!!\", HttpStatus.OK);\n\n\t}\n\t\n\t@GetMapping(\"/passenger_list/{airId}\")\n\tpublic ResponseEntity<?> passengerList(@PathVariable int airId) {\n\t\tSystem.out.println(\"in passenger List (admin controller) \" + airId);\n\t\tList<PassengerDTO> list=bookingService.getPassengerList(airId);\n\t\tif(!list.isEmpty())\n\t\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", list), HttpStatus.OK);\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"error\", \"List is empty\"), HttpStatus.OK);\n\t}\n\n\t@PutMapping(\"/update_booking/{airlineId}\")\n\tpublic ResponseEntity<?> updateBooking(@PathVariable int airlineId){\n\t\tSystem.out.println(\"in update booking\");\n\t\treturn new ResponseEntity<>(bookingService.updateBooking(airlineId),HttpStatus.OK);\n\t}\n\t\n\t@GetMapping(\"/get_flights\")\n\tpublic ResponseEntity<?> getAllFlights(){\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", airService.getAllFlights()), HttpStatus.OK);\n\t}\n}\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  SuperAdminController.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.controller;\n\nimport java.util.List;\n\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.http.HttpStatus;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.CrossOrigin;\nimport org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.bind.annotation.PostMapping;\nimport org.springframework.web.bind.annotation.PutMapping;\nimport org.springframework.web.bind.annotation.RequestBody;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport org.springframework.web.bind.annotation.RequestParam;\nimport org.springframework.web.bind.annotation.RestController;\n\nimport com.app.dto.AirlineDTO;\nimport com.app.dto.CityDTO;\nimport com.app.dto.FeedbackDTO;\nimport com.app.dto.ResponseDTO;\nimport com.app.dto.UserDTO;\nimport com.app.service.IAirlineService;\nimport com.app.service.ISuperAdminService;\n\n@RestController\n@RequestMapping(\"/superadmin\")\n@CrossOrigin\npublic class SuperAdminController {\n\tpublic SuperAdminController() {\n\t\tSystem.out.println(\"in ctor of : \" + getClass().getName());\n\t}\n\n\t@Autowired\n\tprivate ISuperAdminService saService;\n\t\n\t@Autowired\n\tprivate IAirlineService airService;\n\n\t@PostMapping(\"/add_admin\")\n\tpublic ResponseEntity<?> signupUser(@RequestBody UserDTO admindto) {\n\t\tSystem.out.println(\"in signup user : \" + admindto);\n\t\t\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", saService.addAdmin(admindto)), HttpStatus.OK);\n\n\t}\n\t\n\t@PostMapping(\"/add_airline\")\n\tpublic ResponseEntity<?> addAirline(@RequestBody AirlineDTO airlinedto){\n\t\tSystem.out.println(\"in add airline : \"+airlinedto);\n\t\tairService.addAirline(airlinedto);\n\t\treturn new ResponseEntity<>(\"Airline added to the db!!!\", HttpStatus.OK);\n\t}\n\t\n\t@GetMapping(\"/revenue_report\")\n\tpublic ResponseEntity<?> revenueReport(@RequestParam String airlineName, @RequestParam String interval) {\n\t\tSystem.out.println(\"in revenue report:SuperAdminController \");\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\",saService.revenueReport(airlineName, interval)), HttpStatus.OK);\n\t}\n\t\n\t@GetMapping(\"/feedback\")\n\tpublic ResponseEntity<?> customerFeedback(@RequestParam int airId){\n\t\tSystem.out.println(\"in customer feedback: SuperAdminController \");\n\t\tList<FeedbackDTO> fb = saService.getFeedback(airId);\n\t\tif(fb.isEmpty())\n\t\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"error\", \"No feedbacks available\"), HttpStatus.OK);\n\t\telse\n\t\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", fb), HttpStatus.OK);\n\t}\n\t\n\t@GetMapping(\"/airline_names\")\n\tpublic ResponseEntity<?> AirlineNames() {\n\t\tSystem.out.println(\"in Airline names : \");\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", airService.getAirlineNames()), HttpStatus.OK);\n\t}\n\t\n\t@GetMapping(\"/get_total_bookings\")\n\tpublic ResponseEntity<?> getTotalBooking(){\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", saService.getTotalBooking()), HttpStatus.OK);\n\t}\n\t\n\t@GetMapping(\"/get_cancelled_bookings\")\n\tpublic ResponseEntity<?> getCancelledBooking(){\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", saService.getCancelledBooking()), HttpStatus.OK);\n\t}\n\t\n\t@GetMapping(\"/get_total_revenue\")\n\tpublic ResponseEntity<?> getTotalRevenue(){\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", saService.getTotalRevenue()), HttpStatus.OK);\n\t}\n\t\n\t@GetMapping(\"/get_airline_revenue\")\n\tpublic ResponseEntity<?> getAirlineRevenue(){\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", saService.getAirlineRevenue()), HttpStatus.OK);\n\t}\n\t\n\t@PutMapping(\"/add_city\")\n\tpublic ResponseEntity<?> addCity(@RequestBody CityDTO cityDto){\n\t\tSystem.out.println(\"in addCity : \");\n\t\tsaService.addCity(cityDto);\n\t\treturn new ResponseEntity<>(\"success\",  HttpStatus.OK);\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  CustomerController.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.controller;\n\nimport java.time.LocalDate;\nimport java.util.List;\n\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.http.HttpStatus;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.CrossOrigin;\nimport org.springframework.web.bind.annotation.DeleteMapping;\nimport org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.bind.annotation.PathVariable;\nimport org.springframework.web.bind.annotation.PostMapping;\nimport org.springframework.web.bind.annotation.PutMapping;\nimport org.springframework.web.bind.annotation.RequestBody;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport org.springframework.web.bind.annotation.RequestParam;\nimport org.springframework.web.bind.annotation.RestController;\n\nimport com.app.dto.CustomDTO;\nimport com.app.dto.GetBookingListDTO;\nimport com.app.dto.PostFeedbackDTO;\nimport com.app.dto.ResponseDTO;\nimport com.app.pojos.Airline;\nimport com.app.service.IAirlineService;\nimport com.app.service.IBookingService;\n\n@RestController\n@RequestMapping(\"/customer\")\n@CrossOrigin\npublic class CustomerController {\n\tpublic CustomerController() {\n\t\tSystem.out.println(\"in ctor of : \" + getClass().getName());\n\t}\n\n\t@Autowired\n\tprivate IAirlineService airService;\n\t@Autowired\n\tprivate IBookingService bookingService;\n\n\t@GetMapping(\"/search_flight/{departureDate}\")\n\tpublic ResponseEntity<?> searchFlight(@RequestParam String fromCity, @RequestParam String toCity,\n\t\t\t@PathVariable String departureDate) {\n\t\tList<Airline> flightList = airService.searchFlights(fromCity, toCity, LocalDate.parse(departureDate));\n\t\tif (!flightList.isEmpty()) {\n\t\t\treturn new ResponseEntity<>(flightList, HttpStatus.OK);\n\t\t} else {\n\t\t\treturn new ResponseEntity<>(\"Currently No Flights Available For this Route\", HttpStatus.OK);\n\t\t}\n\n\t}\n\n\t@GetMapping(\"/select_flight\")\n\tpublic ResponseEntity<?> selectFlight(@RequestParam int aid) {\n\t\tSystem.out.println(\"in select flight : \" + aid);\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", airService.selectAirlineFromListById(aid)), HttpStatus.OK);\n\t}\n\n\t@PutMapping(\"/post_feedback\")\n\tpublic ResponseEntity<?> postFeedback(@RequestParam int bid, @RequestBody PostFeedbackDTO feedbackDto) {\n\t\tSystem.out.println(\"in post Feedback \" + bid + \" \" + feedbackDto);\n\n\t\treturn new ResponseEntity<>(bookingService.postFeedback(bid, feedbackDto.getFeedback()), HttpStatus.OK);\n\t}\n\n\t@PostMapping(\"/book-ticket\")\n\tpublic ResponseEntity<?> getData(@RequestBody CustomDTO custDto) {\n\t\treturn new ResponseEntity<>(bookingService.bookTicket(custDto), HttpStatus.OK);\n\t}\n\n\t@DeleteMapping(\"/cancel_ticket\")\n\tpublic ResponseEntity<?> cancelTicket(@RequestParam int bId) {\n\t\tbookingService.deleteBooking(bId);\n\t\treturn new ResponseEntity<>(\"Booking Deleted Successfully!!!!\", HttpStatus.OK);\n\t}\n\t@GetMapping(\"/get_userbookings/{uid}\")\n\tpublic ResponseEntity<?> getBookingByUserId(@PathVariable int uid){\n\t\tList<GetBookingListDTO> list = bookingService.findByUserId(uid);\n\t\tif (!list.isEmpty())\n\t\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", list), HttpStatus.OK);\n\t\telse\n\t\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"error\", \"no bookings yet\"), HttpStatus.OK);\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  CitiesController.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.controller;\n\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.http.HttpStatus;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.CrossOrigin;\nimport org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.bind.annotation.RestController;\n\nimport com.app.dao.CitiesRepository;\nimport com.app.dto.ResponseDTO;\n\n@RestController\n@CrossOrigin\npublic class CitiesController {\n\tpublic CitiesController() {\n\t\tSystem.out.println(\"in cities Controller\");\n\t}\n\t\n\t@Autowired\n\tprivate CitiesRepository cRepo;\n\t\n\t@GetMapping(\"/cities\")\n\tpublic ResponseEntity<?> getCities(){\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", cRepo.getCities()), HttpStatus.OK);\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  UserController.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.controller;\n\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.http.HttpStatus;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.CrossOrigin;\nimport org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.bind.annotation.PathVariable;\nimport org.springframework.web.bind.annotation.PostMapping;\nimport org.springframework.web.bind.annotation.PutMapping;\nimport org.springframework.web.bind.annotation.RequestBody;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport org.springframework.web.bind.annotation.RequestParam;\nimport org.springframework.web.bind.annotation.RestController;\n\nimport com.app.dao.UserRepository;\nimport com.app.dto.LoginDTO;\nimport com.app.dto.ResponseDTO;\nimport com.app.dto.UserDTO;\nimport com.app.pojos.User;\nimport com.app.service.IUserService;\n\n@CrossOrigin\n@RestController\n\n@RequestMapping(\"/user\")\npublic class UserController {\n\tpublic UserController() {\n\t\tSystem.out.println(\"in ctor of : \" + getClass().getName());\n\t}\n\n\t@Autowired\n\tprivate IUserService userService;\n\n\t@Autowired\n\tprivate UserRepository userRepo;\n\n\t@PostMapping(\"/login\")\n\tpublic ResponseEntity<?> authenticateUser(@RequestBody LoginDTO loginDto) {\n\t\tSystem.out.println(\"in authenticate user : \" + loginDto.getEmail() + \" \" + loginDto.getPassword());\n\t\tUser user = userService.getUser(loginDto.getEmail(), loginDto.getPassword());\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", user), HttpStatus.OK);\n\t}\n\n\t@PostMapping(\"/signup\")\n\tpublic ResponseEntity<?> signupUser(@RequestBody UserDTO userdto) {\n\t\tSystem.out.println(\"in signup user : \" + userdto);\n\t\tuserService.saveUser(userdto);\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", \"Signup Successful...Please login...!!!\"),\n\t\t\t\tHttpStatus.OK);\n\t}\n\n\t@PutMapping(\"/edit_profile\")\n\tpublic ResponseEntity<?> updateUserProfile(@RequestParam int uid, @RequestBody UserDTO userDTO) {\n\t\tSystem.out.println(\"inside update User profile(controller method)\" + userDTO);\n\t\tuserService.updateUserProfile(uid, userDTO);\n\t\treturn new ResponseEntity<>(\"User details updated!!!!!\", HttpStatus.OK);\n\n\t}\n\n\t@GetMapping(\"/get_user/{userid}\")\n\tpublic ResponseEntity<?> getUserById(@PathVariable int userid) {\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"success\", userRepo.findById(userid)), HttpStatus.OK);\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  UserAlreadyExistException.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.custom_exceptions;\n\npublic class UserAlreadyExistException extends RuntimeException{\n\t/**\n\t * \n\t */\n\tprivate static final long serialVersionUID = 1L;\n\n\tpublic UserAlreadyExistException(String msg) {\n\t\tsuper(msg);\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  UserNotFoundException.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.custom_exceptions;\n\npublic class UserNotFoundException extends RuntimeException{\n\t/**\n\t * \n\t */\n\tprivate static final long serialVersionUID = 1L;\n\n\tpublic UserNotFoundException(String msg) {\n\t\tsuper(msg);\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  FlightNotFoundException.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.custom_exceptions;\n\npublic class FlightNotFoundException extends RuntimeException{\n\t/**\n\t * \n\t */\n\tprivate static final long serialVersionUID = 1L;\n\n\tpublic FlightNotFoundException(String msg) {\n\t\tsuper(msg);\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  IBookingService.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.service;\n\nimport java.util.List;\n\nimport com.app.dto.CustomDTO;\nimport com.app.dto.GetBookingListDTO;\nimport com.app.dto.PassengerDTO;\n\npublic interface IBookingService {\n\tvoid deleteBooking(int id);\n\t\n\t//method for getting booking by airline id\n\tList<PassengerDTO> getPassengerList(int airId);\n\t\n\t//method for updating booking\n\t\tString updateBooking(int airlineId);\n\t\tString postFeedback(int bid, String feedback);\n\t\tString bookTicket(CustomDTO custDto);\n\t\tList<GetBookingListDTO> findByAirlineId(int aid);\n\t\tList<GetBookingListDTO> findByUserId(int uid);\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  IUserService.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.service;\n\nimport com.app.dto.UserDTO;\nimport com.app.pojos.User;\n\npublic interface IUserService {\n\t//Method for user login\n\tUser getUser(String email, String password);\n\n\t// method for signup\n\tUser saveUser(UserDTO userdto);\n        User updateUserProfile(int userId,UserDTO user);\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  IAirlineService.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.service;\n\nimport java.time.LocalDate;\nimport java.util.List;\n\nimport com.app.dto.AirlineDTO;\nimport com.app.dto.UpdateFlightDTO;\nimport com.app.pojos.Airline;\n\npublic interface IAirlineService {\n\t//method to add airline\n\tAirline addAirline(AirlineDTO airlinedto);\n\n\t// method to update flight schedule\n\tString updateAirline(UpdateFlightDTO flightDto);\n\n\t// method to cancel flight\n\tString cancelFlight(int airId);\n\t\n\t//method to search Flight\n\tList<Airline> searchFlights(String fromCity, String toCity, LocalDate departureDate);\n\t\n\t//method to select airline from airline list --> Booking process\n\tAirline selectAirlineFromListById(int aid);\n\t\n\t//get all airlines\n\tList<Airline> getAllFlights();\n\t\n\t//method to get distinct AirlineNames\n\tList<String> getAirlineNames();\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  SuperAdminServiceImpl.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.service;\n\nimport java.util.List;\n\nimport javax.transaction.Transactional;\n\nimport org.springframework.beans.BeanUtils;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.stereotype.Service;\n\nimport com.app.custom_exceptions.UserAlreadyExistException;\nimport com.app.dao.BookingRepository;\nimport com.app.dao.CitiesRepository;\nimport com.app.dao.UserRepository;\nimport com.app.dto.AirlineWiseRevenueDTO;\nimport com.app.dto.CityDTO;\nimport com.app.dto.FeedbackDTO;\nimport com.app.dto.UserDTO;\nimport com.app.pojos.Cities;\nimport com.app.pojos.Role;\nimport com.app.pojos.User;\n\n@Service\n@Transactional\npublic class SuperAdminServiceImpl implements ISuperAdminService{\n\t@Autowired\n\tprivate UserRepository userRepo;\n\n\t@Autowired\n\tprivate BookingRepository bookRepo;\n\t\n\t@Autowired\n\tprivate CitiesRepository cityRepo;\n\t\n\t@Override\n\tpublic User addAdmin(UserDTO admindto) {\n\t\tUser admin = new User();\n\t\tif(userRepo.findByEmail(admindto.getEmail()) == null) {\n\t\t\tBeanUtils.copyProperties(admindto, admin);\n\t\t\tadmin.setUserRole(Role.ADMIN);\n\t\t\tSystem.out.println(admin);\n\t\t\treturn userRepo.save(admin);\n\t\t}else\n\t\t\tthrow new UserAlreadyExistException(\"User Already Exist, Please login or try with another email\");\n\t}\n\t\n\t@Override\n\tpublic List<?> revenueReport(String airlineName, String interval) {\n\t\tSystem.out.println(\"in revenue report:SuperAdminService : \"+airlineName);\n\t\tList<?> revenue=null;\n\t\tif(interval.equalsIgnoreCase(\"Monthly\")) {\n\t\t\trevenue=bookRepo.getMonthlyRevenue(airlineName);\n\t\t}\n\t\telse if(interval.equalsIgnoreCase(\"Quarterly\")) {\n\t\t\trevenue=bookRepo.getQuarterlyRevenue(airlineName);\n\t\t}\n\t\telse if(interval.equalsIgnoreCase(\"Yearly\")) {\n\t\t\trevenue=bookRepo.getYearlyRevenue(airlineName);\n\t\t}\n\t\t System.out.println(\"in revenue report:SuperAdminService after : \"+airlineName);\n\t\t return revenue;\n\t}\n\t\n\t@Override\n\tpublic List<FeedbackDTO> getFeedback(int airId) {\n\t\tSystem.out.println(\"in get feedback :SuperAdminService \");\n\t\tList<FeedbackDTO> fb=bookRepo.getFeedbackByAirlineId(airId);\n\t\treturn fb;\n\t}\n\t@Override\n\tpublic int getTotalBooking() {\n\t\treturn bookRepo.getTotalBooking();\n\t}\n\t\n\t@Override\n\tpublic int getCancelledBooking() {\n\t\treturn bookRepo.getCancelledBooking();\n\t}\n\t\n\t@Override\n\tpublic double getTotalRevenue() {\n\t\treturn bookRepo.getTotalRevenue();\n\t}\n\n\t@Override\n\tpublic List<AirlineWiseRevenueDTO> getAirlineRevenue() {\n\t\treturn bookRepo.getAirlineRevenue();\n\t}\n\n\t@Override\n\tpublic void addCity(CityDTO cityDto) {\n\t\tList<Cities> cities=cityRepo.getCities();\n\t\tString[] cityArray=cityDto.getCityNames();\n\t\tif(cities.isEmpty()) {\n\t\t\tcityRepo.save(new Cities(cityArray[0]));\n\t\t\tcityRepo.save(new Cities(cityArray[1]));\n\t\t}\n\t\telse {\n\t\t\tfor(int i=0; i<cityArray.length; i++) {\n\t\t\t\tboolean flag=false;\n\t\t\t\twhile(!flag ) {\n\t\t\t\t\tfor(Cities city:cities) {\n\t\t\t\t\t\tif((cityArray[i].equalsIgnoreCase(city.getCity()))) {\n\t\t\t\t\t\t\tflag=true;\n\t\t\t\t\t\t\tbreak;\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tif(!flag)\n\t\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t\tif(!flag)\n\t\t\t\t\tcityRepo.save(new Cities(cityArray[i]));\n\t\t\t}\n\t\t}\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  ISuperAdminService.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.service;\n\nimport java.util.List;\n\nimport com.app.dto.AirlineWiseRevenueDTO;\nimport com.app.dto.CityDTO;\nimport com.app.dto.FeedbackDTO;\nimport com.app.dto.UserDTO;\nimport com.app.pojos.User;\n\npublic interface ISuperAdminService {\n\t//method to add admin \n\tUser addAdmin(UserDTO admin);\n\t\n\t//method to generate revenue report\n\tList<?> revenueReport(String airlineName, String interval);\n\t\n\t//method to check feedback from customer\n\tList<FeedbackDTO> getFeedback(int airId);\n\t\t\n\t//method to get total number of bookings\n\tint getTotalBooking();\n\t\n\t//method to get total number of cancelled bookings\n\tint getCancelledBooking();\n\t\n\t//method to get total Amount of revenue\n\tdouble getTotalRevenue();\n\t\n\t//method to get Airline wise Revenue\n\tList<AirlineWiseRevenueDTO> getAirlineRevenue();\n\t\n\t//method to add City in City Table\n\tvoid addCity(CityDTO cityDto);\n\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  AirlineServiceImpl.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.service;\n\nimport java.time.LocalDate;\nimport java.util.List;\n\nimport javax.transaction.Transactional;\n\nimport org.springframework.beans.BeanUtils;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.stereotype.Service;\n\nimport com.app.dao.AirlineRepository;\nimport com.app.dao.BookingRepository;\nimport com.app.dao.PassengerRepository;\nimport com.app.dto.AirlineDTO;\nimport com.app.dto.UpdateFlightDTO;\nimport com.app.pojos.Airline;\nimport com.app.pojos.Booking;\n\n@Service\n@Transactional\npublic class AirlineServiceImpl implements IAirlineService {\n\t@Autowired\n\tprivate AirlineRepository airRepo;\n\t@Autowired\n\tprivate BookingRepository bookRepo;\n\t@Autowired \n\tprivate PassengerRepository passRepo;\n\t@Override\n\tpublic Airline addAirline(AirlineDTO airlinedto) {\n\t\tSystem.out.println(\"in add airline method\");\n\t\tAirline airline = new Airline();\n\t\tBeanUtils.copyProperties(airlinedto, airline);\n\t\tSystem.out.println(\"airline dtls : \" + airline);\n\t\treturn airRepo.save(airline);\n\t}\n\n\t@Override\n\tpublic String updateAirline(UpdateFlightDTO flightDto) {\n\t\tSystem.out.println(\"in update airline method\");\n\t\tAirline a1 = airRepo.findById(flightDto.getId()).get();\n\t\ta1.setDepartureTime(flightDto.getDepartureTime());\n\t\ta1.setArrivalTime(flightDto.getArrivalTime());\n\t\ta1.setDepartureDate(flightDto.getDepartureDate());\n\t\ta1.setArrivalDate(flightDto.getArrivalDate());\n\t\tairRepo.save(a1);\n\t\treturn \"Airline updated Successfully!!!!\";\n\n\t}\n\t\n\t@Override\n\tpublic String cancelFlight(int airId) {\n\t\tSystem.out.println(\"in update airline method\");\n\t\tAirline a1 = airRepo.findById(airId).get();\n\t\tList<Booking> list=bookRepo.getBookingByAirlineId(airId);\n\t\tlist.forEach((b)->{\n\t\t\tpassRepo.deletePassengerByBookingId(b.getId());\n\t\t\tb.setStatus(0);\n\t\t});\n\t\tairRepo.delete(a1);\n\t\treturn \"Flight canceled Successfully!!!!\";\n\n\t}\n\n\t@Override\n\tpublic List<Airline> searchFlights(String fromCity, String toCity, LocalDate departureDate) {\n\t\treturn airRepo.findByFromCityAndToCityAndDepartureDate(fromCity, toCity, departureDate);\n\t}\n\n\t@Override\n\tpublic Airline selectAirlineFromListById(int aid) {\n\t\treturn airRepo.findById(aid).get();\n\t}\n\n\t@Override\n\tpublic List<Airline> getAllFlights() {\n\t\t\n\t\treturn airRepo.findAll();\n\t}\n\t\n\t@Override\n\tpublic List<String> getAirlineNames() {\n\t\treturn airRepo.findDistinctAirlineName();\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  UserServiceImpl.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.service;\n\nimport javax.transaction.Transactional;\n\nimport org.springframework.beans.BeanUtils;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.stereotype.Service;\n\nimport com.app.custom_exceptions.UserAlreadyExistException;\nimport com.app.custom_exceptions.UserNotFoundException;\nimport com.app.dao.UserRepository;\nimport com.app.dto.UserDTO;\nimport com.app.pojos.Role;\nimport com.app.pojos.User;\n@Service\n@Transactional\npublic class UserServiceImpl implements IUserService {\n\t@Autowired\n\tprivate UserRepository userRepo;\n\t@Override\n\tpublic User getUser(String email, String password) {\n\t\tUser user =  userRepo.findByEmailAndPassword(email, password);\n\t\tif(user != null)\n\t\t\treturn user;\n\t\telse\n\t\t\tthrow new UserNotFoundException(\"User not found, please try with correct credentials\");\n\t}\n\t\n\t@Override\n\tpublic User saveUser(UserDTO userdto) {\n\t\tUser user = new User();\n\t\tif(userRepo.findByEmail(userdto.getEmail()) == null) {\n\t\t\tBeanUtils.copyProperties(userdto, user);\n\t\t\tuser.setUserRole(Role.CUSTOMER);\n\t\t\tSystem.out.println(user);\n\t\t\treturn userRepo.save(user);\n\t\t}else\n\t\t\tthrow new UserAlreadyExistException(\"User Already Exist, Please login or try with another email\");\n\t}\n        @Override\n\tpublic User updateUserProfile(int userId, UserDTO userDTO) {\n\t\tSystem.out.println(\"inside updateUserProfile (service method) \"+userDTO);\n\t\tUser userDetails=userRepo.findById(userId).get();\n\t\tSystem.out.println(\"user details from \"+userDetails);\n\t\tuserDetails.setPassword(userDTO.getPassword());\n\t\tuserDetails.setMobileNo(userDTO.getMobileNo());\n\t\tSystem.out.println(\"Updated user Details \"+userDetails);\n\t\treturn userDetails;\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  BookingServiceImpl.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.service;\n\nimport java.time.LocalDate;\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.stereotype.Service;\nimport org.springframework.transaction.annotation.Transactional;\n\nimport com.app.dao.AirlineRepository;\nimport com.app.dao.BookingRepository;\nimport com.app.dao.PassengerRepository;\nimport com.app.dao.UserRepository;\nimport com.app.dto.CustomDTO;\nimport com.app.dto.GetBookingListDTO;\nimport com.app.dto.PassengerDTO;\nimport com.app.dto.PassengerForBookingDTO;\nimport com.app.pojos.Airline;\nimport com.app.pojos.Booking;\nimport com.app.pojos.CardDetails;\nimport com.app.pojos.Passenger;\nimport com.app.pojos.User;\n\n@Service\n@Transactional\npublic class BookingServiceImpl implements IBookingService {\n\t@Autowired\n\tprivate BookingRepository bookingRepo;\n\t@Autowired\n\tprivate UserRepository userRepo;\n\t@Autowired\n\tprivate AirlineRepository airRepo;\n\t@Autowired\n\tprivate PassengerRepository passengerRepo;\n\n\t@Override\n\tpublic void deleteBooking(int id) {\n\t\tSystem.out.println(\"in deleteBooking bookingService \" + id);\n\t\tList<Passenger> l = passengerRepo.getPassengerByBookingId(id);\n\t\tint size = l.size();\n\t\tSystem.out.println(\"size \" + size);\n\t\tAirline airline = airRepo.findById(bookingRepo.getAirlineIdByBookingId(id)).get();\n\t\tSystem.out.println(\"before updating available seats: \" + airline);\n\t\tairline.setAvailableSeats(airline.getAvailableSeats() + size);\n\t\tSystem.out.println(\"after updating available seats:\" + airline);\n\t\tBooking booking = bookingRepo.findById(id).get();\n\t\tbooking.setStatus(0);\n\t\tSystem.out.println(\"after cancelling booking \" + booking);\n\t\tpassengerRepo.deletePassengerByBookingId(id);\n\t\treturn;\n\t}\n\n\t@Override\n\tpublic List<PassengerDTO> getPassengerList(int airId) {\n\t\tSystem.out.println(\"in getPassengerList adminService \" + airId);\n\t\tList<Booking> bookList = bookingRepo.getBookingByAirlineId(airId);\n\t\tList<PassengerDTO> passList = new ArrayList<>();\n\t\tbookList.forEach((b) -> b.getPassengerList().forEach((p) -> passList.add(new PassengerDTO(p.getPassengerName(),\n\t\t\t\tp.getPassengerAge(), p.getGender().toString(), p.getPassengerType().toString(), p.getSeatNumber()))));\n\t\treturn passList;\n\t}\n\n\t@Override\n\tpublic String updateBooking(int airlineId) {\n\t\tSystem.out.println(\"in updateBooking updateService\");\n\n\t\tAirline air = airRepo.findById(airlineId).get();\n\t\tList<Booking> bList = bookingRepo.findByAirlineId(airlineId);\n\t\tif (bList.isEmpty()) {\n\t\t\treturn \"There are no booking to modify\";\n\t\t} else {\n\t\t\tbList.forEach((booking) -> {\n\t\t\t\tif (booking.getStatus() == 1) {\n\t\t\t\t\tbooking.setJourneyDate(air.getDepartureDate());\n\t\t\t\t\tbooking.setArrivalDate(air.getArrivalDate());\n\t\t\t\t\tbooking.setArrivalTime(air.getArrivalTime());\n\t\t\t\t\tbooking.setDepartureTime(air.getDepartureTime());\n\t\t\t\t}\n\t\t\t});\n\t\t\treturn \"Bookings updated Successfully\";\n\t\t}\n\t}\n\n\t@Override\n\tpublic String postFeedback(int bid, String feedback) {\n\t\tbookingRepo.postFeedback(bid, feedback);\n\n\t\treturn \"Feedback posted successfully!!!!\";\n\t}\n\n\t@Override\n\tpublic String bookTicket(CustomDTO custDto) {\n\t\tUser user = userRepo.findById(custDto.getUserId()).get();\n\n\t\tAirline airline = airRepo.findById(custDto.getBookingDto().getAirlineId()).get();\n\t\tif (airline.getAvailableSeats() >= custDto.getPassengerDto().length) {\n\t\t\tuser.setCardDetails(new CardDetails(custDto.getCardDto().getCardNumber(),\n\t\t\t\t\tcustDto.getCardDto().getNameOnCard(), custDto.getCardDto().getExpiryDate()));\n\n\t\t\tBooking bookings = new Booking(LocalDate.now(), custDto.getBookingDto().getTotalFare(),\n\t\t\t\t\tairline.getDepartureDate(), airline.getArrivalDate(), custDto.getBookingDto().getSeatType(),\n\t\t\t\t\tcustDto.getBookingDto().getStatus(), \"-\", airline.getDepartureTime(), airline.getArrivalTime(),\n\t\t\t\t\tcustDto.getBookingDto().getAirlineId());\n\n\t\t\tPassengerForBookingDTO[] passDto = custDto.getPassengerDto();\n\n\t\t\tList<Passenger> passList = bookings.getPassengerList();\n\n\t\t\tfor (int i = 0; i < passDto.length; i++) {\n\t\t\t\tPassenger passenger = new Passenger(passDto[i].getPassengerType(), passDto[i].getPassengerName(),\n\t\t\t\t\t\tpassDto[i].getPassengerAge(), passDto[i].getGender(), passDto[i].getSeatNumber());\n\t\t\t\tpassenger.setBookingId(bookings);\n\t\t\t\tpassList.add(passenger);\n\t\t\t\tairline.setAvailableSeats(airline.getAvailableSeats() - 1);\n\t\t\t}\n\n\t\t\tuser.getBookingList().add(bookings);\n\t\t\tbookings.setUserId(user);\n\t\t\treturn \"Ticket Booking SuccessFul\";\n\t\t} else {\n\t\t\treturn \"Ticket Booking UnSuccessFul!!! Seats not available\";\n\t\t}\n\t}\n\n\t@Override\n\tpublic List<GetBookingListDTO> findByAirlineId(int aid) {\n\t\tList<GetBookingListDTO> bookList = new ArrayList<>();\n\t\tList<Booking> bList = bookingRepo.getBookingByAirlineId(aid);\n\t\tbList.forEach((b) -> {\n\t\t\tif (b.getStatus() == 1)\n\t\t\t\tbookList.add(new GetBookingListDTO(b.getId(), b.getBookingDate(), b.getTotalFare(), b.getJourneyDate(),\n\t\t\t\t\t\tb.getArrivalDate(), b.getStatus(), b.getAirlineId(), b.getUserId().getId()));\n\t\t});\n\t\treturn bookList;\n\n\t}\n\t@Override\n\tpublic List<GetBookingListDTO> findByUserId(int uid) {\n\t\tList<GetBookingListDTO> bookList = new ArrayList<>();\n\t\tList<Booking> bList = bookingRepo.getBookingByUserId(uid);\n\t\tbList.forEach((b) -> {\n\t\t\t\n\t\t\t\tbookList.add(new GetBookingListDTO(b.getId(), b.getBookingDate(), b.getTotalFare(), b.getJourneyDate(), b.getArrivalDate(), b.getStatus(), b.getAirlineId(), b.getUserId().getId()));\n\t\t});\n\t\treturn bookList;\n\t\t\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  PassengerType.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.pojos;\n\npublic enum PassengerType {\n\tADULT, MINOR, SENIOR\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  Cities.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.pojos;\n\nimport javax.persistence.Entity;\nimport javax.persistence.Table;\n\n@Entity\n@Table(name = \"cities\")\npublic class Cities extends BaseEntity {\n\tprivate String City;\n\t\n\tpublic Cities() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\n\tpublic Cities(String city) {\n\t\tsuper();\n\t\tCity = city;\n\t}\n\n\tpublic String getCity() {\n\t\treturn City;\n\t}\n\n\tpublic void setCity(String city) {\n\t\tCity = city;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"CitiesId=\"+getId()+\" City=\" + City + \"\";\n\t}\n\t\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  Booking.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.pojos;\n\nimport java.time.LocalDate;\nimport java.util.ArrayList;\nimport java.util.Date;\nimport java.util.List;\n\nimport javax.persistence.CascadeType;\nimport javax.persistence.Column;\nimport javax.persistence.Entity;\nimport javax.persistence.EnumType;\nimport javax.persistence.Enumerated;\nimport javax.persistence.FetchType;\nimport javax.persistence.JoinColumn;\nimport javax.persistence.ManyToOne;\nimport javax.persistence.OneToMany;\nimport javax.persistence.Table;\nimport javax.persistence.Temporal;\nimport javax.persistence.TemporalType;\n\nimport com.fasterxml.jackson.annotation.JsonFormat;\n\n@Entity\n@Table(name = \"bookings\")\npublic class Booking extends BaseEntity{\n\tprivate LocalDate bookingDate;\n\tprivate double totalFare;\n\tprivate LocalDate journeyDate;\n\tprivate LocalDate arrivalDate;\n\t@Enumerated(EnumType.STRING)\n\tprivate SeatType seatType;\n\t//0-->cancelled, 1-->confirmed\n\tprivate int status;\n\t@Column(length = 1000)\n\tprivate String feedback;\n\t@Temporal(TemporalType.TIME)\n\t@JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\")\n\tprivate java.util.Date departureTime;\n\t@Temporal(TemporalType.TIME)\n\t@JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\")\n\tprivate Date arrivalTime;\n\t@OneToMany(mappedBy = \"bookingId\", cascade = CascadeType.ALL, orphanRemoval = true)\n\tprivate List<Passenger> passengerList = new ArrayList<Passenger>();\n\tprivate int airlineId;\n\t@ManyToOne(fetch = FetchType.LAZY)\n\t@JoinColumn(name = \"user_id\")\n\tprivate User userId;\n\t\n\tpublic Booking() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\n\tpublic Booking(LocalDate bookingDate, double totalFare, LocalDate journeyDate, SeatType seatType, int status,\n\t\t\tString feedback, int airlineId) {\n\t\tsuper();\n\t\tthis.bookingDate = bookingDate;\n\t\tthis.totalFare = totalFare;\n\t\tthis.journeyDate = journeyDate;\n\t\tthis.seatType = seatType;\n\t\tthis.status = status;\n\t\tthis.feedback = feedback;\n\t\tthis.airlineId = airlineId;\n\t}\n\tpublic Booking(LocalDate bookingDate, double totalFare, LocalDate journeyDate, LocalDate arrivalDate,\n\t\t\tSeatType seatType, int status, String feedback, Date departureTime, Date arrivalTime, int airlineId) {\n\t\tsuper();\n\t\tthis.bookingDate = bookingDate;\n\t\tthis.totalFare = totalFare;\n\t\tthis.journeyDate = journeyDate;\n\t\tthis.arrivalDate = arrivalDate;\n\t\tthis.seatType = seatType;\n\t\tthis.status = status;\n\t\tthis.feedback = feedback;\n\t\tthis.departureTime = departureTime;\n\t\tthis.arrivalTime = arrivalTime;\n\t\tthis.airlineId = airlineId;\n\t}\n\tpublic LocalDate getBookingDate() {\n\t\treturn bookingDate;\n\t}\n\n\tpublic void setBookingDate(LocalDate bookingDate) {\n\t\tthis.bookingDate = bookingDate;\n\t}\n\n\tpublic double getTotalFare() {\n\t\treturn totalFare;\n\t}\n\n\tpublic void setTotalFare(double totalFare) {\n\t\tthis.totalFare = totalFare;\n\t}\n\n\tpublic LocalDate getJourneyDate() {\n\t\treturn journeyDate;\n\t}\n\n\tpublic void setJourneyDate(LocalDate journeyDate) {\n\t\tthis.journeyDate = journeyDate;\n\t}\n\n\tpublic SeatType getSeatType() {\n\t\treturn seatType;\n\t}\n\n\tpublic void setSeatType(SeatType seatType) {\n\t\tthis.seatType = seatType;\n\t}\n\n\tpublic int getStatus() {\n\t\treturn status;\n\t}\n\n\tpublic void setStatus(int status) {\n\t\tthis.status = status;\n\t}\n\n\tpublic String getFeedback() {\n\t\treturn feedback;\n\t}\n\n\tpublic void setFeedback(String feedback) {\n\t\tthis.feedback = feedback;\n\t}\n\n\tpublic List<Passenger> getPassengerList() {\n\t\treturn passengerList;\n\t}\n\n\tpublic void setPassengerList(List<Passenger> passengerList) {\n\t\tthis.passengerList = passengerList;\n\t}\n\t\n\tpublic int getAirlineId() {\n\t\treturn airlineId;\n\t}\n\n\tpublic void setAirlineId(int airlineId) {\n\t\tthis.airlineId = airlineId;\n\t}\n\n\tpublic User getUserId() {\n\t\treturn userId;\n\t}\n\n\tpublic void setUserId(User userId) {\n\t\tthis.userId = userId;\n\t}\n\n\tpublic LocalDate getArrivalDate() {\n\t\treturn arrivalDate;\n\t}\n\n\tpublic void setArrivalDate(LocalDate arrivalDate) {\n\t\tthis.arrivalDate = arrivalDate;\n\t}\n\n\tpublic java.util.Date getDepartureTime() {\n\t\treturn departureTime;\n\t}\n\n\tpublic void setDepartureTime(java.util.Date departureTime) {\n\t\tthis.departureTime = departureTime;\n\t}\n\n\tpublic Date getArrivalTime() {\n\t\treturn arrivalTime;\n\t}\n\n\tpublic void setArrivalTime(Date arrivalTime) {\n\t\tthis.arrivalTime = arrivalTime;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"Booking [bookingDate=\" + bookingDate + \", totalFare=\" + totalFare + \", journeyDate=\" + journeyDate\n\t\t\t\t+ \", arrivalDate=\" + arrivalDate + \", seatType=\" + seatType + \", status=\" + status + \", feedback=\"\n\t\t\t\t+ feedback + \", departureTime=\" + departureTime + \", arrivalTime=\" + arrivalTime + \", airlineId=\"\n\t\t\t\t+ airlineId + \"]\";\n\t}\n\t\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  Airline.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.pojos;\n\nimport java.time.LocalDate;\nimport java.util.Date;\n\nimport javax.persistence.Column;\nimport javax.persistence.Entity;\nimport javax.persistence.Table;\nimport javax.persistence.Temporal;\nimport javax.persistence.TemporalType;\n\nimport com.fasterxml.jackson.annotation.JsonFormat;\n\n@Entity\n@Table(name = \"airline\")\npublic class Airline extends BaseEntity {\n\t@Column(length = 30)\n\tprivate String airlineName;\n\t@Column(length = 30, unique = true)\n\tprivate String airlineNo;\n\tprivate LocalDate departureDate;\n\tprivate LocalDate arrivalDate;\n\t@Column(length = 30)\n\tprivate String fromCity;\n\t@Column(length = 30)\n\tprivate String toCity;\n\t@Temporal(TemporalType.TIME)\n\t@JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\")\n\tprivate java.util.Date departureTime;\n\t@Temporal(TemporalType.TIME)\n\t@JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\")\n\tprivate Date arrivalTime;\n\tprivate int capacity;\n\tprivate int availableSeats;\n\tprivate double economyFare;\n\tprivate double businessFare;\n\tpublic Airline() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\tpublic Airline(String airlineName, String airlineNo, LocalDate departureDate, LocalDate arrivalDate,\n\t\t\tString fromCity, String toCity, Date departureTime, Date arrivalTime, int capacity,\n\t\t\tint availableSeats, double economyFare, double businessFare) {\n\t\tsuper();\n\t\tthis.airlineName = airlineName;\n\t\tthis.airlineNo = airlineNo;\n\t\tthis.departureDate = departureDate;\n\t\tthis.arrivalDate = arrivalDate;\n\t\tthis.fromCity = fromCity;\n\t\tthis.toCity = toCity;\n\t\tthis.departureTime = departureTime;\n\t\tthis.arrivalTime = arrivalTime;\n\t\tthis.capacity = capacity;\n\t\tthis.availableSeats = availableSeats;\n\t\tthis.economyFare = economyFare;\n\t\tthis.businessFare = businessFare;\n\t}\n\tpublic String getAirlineName() {\n\t\treturn airlineName;\n\t}\n\tpublic void setAirlineName(String airlineName) {\n\t\tthis.airlineName = airlineName;\n\t}\n\tpublic String getAirlineNo() {\n\t\treturn airlineNo;\n\t}\n\tpublic void setAirlineNo(String airlineNo) {\n\t\tthis.airlineNo = airlineNo;\n\t}\n\tpublic LocalDate getDepartureDate() {\n\t\treturn departureDate;\n\t}\n\tpublic void setDepartureDate(LocalDate departureDate) {\n\t\tthis.departureDate = departureDate;\n\t}\n\tpublic LocalDate getArrivalDate() {\n\t\treturn arrivalDate;\n\t}\n\tpublic void setArrivalDate(LocalDate arrivalDate) {\n\t\tthis.arrivalDate = arrivalDate;\n\t}\n\tpublic String getFromCity() {\n\t\treturn fromCity;\n\t}\n\tpublic void setFromCity(String fromCity) {\n\t\tthis.fromCity = fromCity;\n\t}\n\tpublic String getToCity() {\n\t\treturn toCity;\n\t}\n\tpublic void setToCity(String toCity) {\n\t\tthis.toCity = toCity;\n\t}\n\t\n\tpublic Date getDepartureTime() {\n\t\treturn departureTime;\n\t}\n\tpublic void setDepartureTime(Date departureTime) {\n\t\tthis.departureTime = departureTime;\n\t}\n\tpublic Date getArrivalTime() {\n\t\treturn arrivalTime;\n\t}\n\tpublic void setArrivalTime(Date arrivalTime) {\n\t\tthis.arrivalTime = arrivalTime;\n\t}\n\tpublic int getCapacity() {\n\t\treturn capacity;\n\t}\n\tpublic void setCapacity(int capacity) {\n\t\tthis.capacity = capacity;\n\t}\n\tpublic int getAvailableSeats() {\n\t\treturn availableSeats;\n\t}\n\tpublic void setAvailableSeats(int availableSeats) {\n\t\tthis.availableSeats = availableSeats;\n\t}\n\tpublic double getEconomyFare() {\n\t\treturn economyFare;\n\t}\n\tpublic void setEconomyFare(double economyFare) {\n\t\tthis.economyFare = economyFare;\n\t}\n\tpublic double getBusinessFare() {\n\t\treturn businessFare;\n\t}\n\tpublic void setBusinessFare(double businessFare) {\n\t\tthis.businessFare = businessFare;\n\t}\n\t@Override\n\tpublic String toString() {\n\t\treturn \"AirlineId=\"+getId()+\"airlineName=\" + airlineName + \", airlineNo=\" + airlineNo + \", departureDate=\" + departureDate\n\t\t\t\t+ \", arrivalDate=\" + arrivalDate + \", fromCity=\" + fromCity + \", toCity=\" + toCity + \", departureTime=\"\n\t\t\t\t+ departureTime + \", arrivalTime=\" + arrivalTime + \", capacity=\" + capacity + \", availableSeats=\"\n\t\t\t\t+ availableSeats + \", economyFare=\" + economyFare + \", businessFare=\" + businessFare + \"]\";\n\t}\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  SeatType.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.pojos;\n\npublic enum SeatType {\n\tBUSINESS, ECONOMY\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  BaseEntity.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.pojos;\n\nimport javax.persistence.GeneratedValue;\nimport javax.persistence.GenerationType;\nimport javax.persistence.Id;\nimport javax.persistence.MappedSuperclass;\n\n@MappedSuperclass\npublic class BaseEntity {\n\t@Id\n\t@GeneratedValue(strategy = GenerationType.IDENTITY)\n\tprivate Integer id;\n\t\n\tpublic Integer getId() {\n\t\treturn id;\n\t}\n\n\tpublic void setId(Integer id) {\n\t\tthis.id = id;\n\t}\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  User.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.pojos;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport javax.persistence.CascadeType;\nimport javax.persistence.Column;\nimport javax.persistence.Embedded;\nimport javax.persistence.Entity;\nimport javax.persistence.EnumType;\nimport javax.persistence.Enumerated;\nimport javax.persistence.OneToMany;\nimport javax.persistence.Table;\n\nimport com.fasterxml.jackson.annotation.JsonIgnore;\n\n@Entity\n@Table(name = \"users\")\npublic class User extends BaseEntity {\n\t@Column(length = 30)\n\tprivate String firstName;\n\t@Column(length = 30)\n\tprivate String lastName;\n\t@Column(length = 30, nullable = false, unique = true)\n\tprivate String email;\n\t@Column(length = 30, nullable = false)\n\tprivate String password;\n\t@Column(length = 15)\n\tprivate String mobileNo;\n\t@Enumerated(EnumType.STRING)\n\tprivate Role userRole;\n\t//0-->notVerified, 1-->verified, 2-->Suspended\n\tprivate int status;\n\t@JsonIgnore\n\t@OneToMany(mappedBy = \"userId\", orphanRemoval = true, cascade = CascadeType.ALL)\n\tprivate List<Booking> bookingList = new ArrayList<>();\n\t@Embedded\n\tprivate CardDetails cardDetails;\n\tpublic User() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\n\tpublic User(String firstName, String lastName, String email, String password, String mobileNo, Role userRole,\n\t\t\tint status) {\n\t\tsuper();\n\t\tthis.firstName = firstName;\n\t\tthis.lastName = lastName;\n\t\tthis.email = email;\n\t\tthis.password = password;\n\t\tthis.mobileNo = mobileNo;\n\t\tthis.userRole = userRole;\n\t\tthis.status = status;\n\t}\n\n\tpublic String getFirstName() {\n\t\treturn firstName;\n\t}\n\n\tpublic void setFirstName(String firstName) {\n\t\tthis.firstName = firstName;\n\t}\n\n\tpublic String getLastName() {\n\t\treturn lastName;\n\t}\n\n\tpublic void setLastName(String lastName) {\n\t\tthis.lastName = lastName;\n\t}\n\n\tpublic String getEmail() {\n\t\treturn email;\n\t}\n\n\tpublic void setEmail(String email) {\n\t\tthis.email = email;\n\t}\n\n\tpublic String getPassword() {\n\t\treturn password;\n\t}\n\n\tpublic void setPassword(String password) {\n\t\tthis.password = password;\n\t}\n\n\tpublic String getMobileNo() {\n\t\treturn mobileNo;\n\t}\n\n\tpublic void setMobileNo(String mobileNo) {\n\t\tthis.mobileNo = mobileNo;\n\t}\n\n\tpublic Role getUserRole() {\n\t\treturn userRole;\n\t}\n\n\tpublic void setUserRole(Role userRole) {\n\t\tthis.userRole = userRole;\n\t}\n\n\tpublic int getStatus() {\n\t\treturn status;\n\t}\n\n\tpublic void setStatus(int status) {\n\t\tthis.status = status;\n\t}\n\n\tpublic List<Booking> getBookingList() {\n\t\treturn bookingList;\n\t}\n\n\tpublic void setBookingList(List<Booking> bookingList) {\n\t\tthis.bookingList = bookingList;\n\t}\n\n\tpublic CardDetails getCardDetails() {\n\t\treturn cardDetails;\n\t}\n\n\tpublic void setCardDetails(CardDetails cardDetails) {\n\t\tthis.cardDetails = cardDetails;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"UserId=\"+getId()+\" firstName=\" + firstName + \", lastName=\" + lastName + \", email=\" + email + \", password=\" + password\n\t\t\t\t+ \", mobileNo=\" + mobileNo + \", userRole=\" + userRole + \", status=\" + status + \"\";\n\t}\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  Gender.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.pojos;\n\npublic enum Gender {\n\tMALE, FEMALE, TRANSGENDER\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  Role.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.pojos;\n\npublic enum Role {\n\tADMIN, CUSTOMER, AIRLINEEXECUTIVE, SUPERADMIN\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  CardDetails.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.pojos;\n\nimport java.time.LocalDate;\n\nimport javax.persistence.Column;\nimport javax.persistence.Embeddable;\n\n@Embeddable\npublic class CardDetails {\n\t@Column(unique = true)\n\tprivate String cardNumber;\n\tprivate String nameOnCard;\n\tprivate LocalDate expiryDate;\n\t\n\tpublic CardDetails() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\n\tpublic CardDetails(String cardNumber, String nameOnCard, LocalDate expiryDate) {\n\t\tsuper();\n\t\tthis.cardNumber = cardNumber;\n\t\tthis.nameOnCard = nameOnCard;\n\t\tthis.expiryDate = expiryDate;\n\t}\n\n\tpublic String getCardNumber() {\n\t\treturn cardNumber;\n\t}\n\n\tpublic void setCardNumber(String cardNumber) {\n\t\tthis.cardNumber = cardNumber;\n\t}\n\n\tpublic String getNameOnCard() {\n\t\treturn nameOnCard;\n\t}\n\n\tpublic void setNameOnCard(String nameOnCard) {\n\t\tthis.nameOnCard = nameOnCard;\n\t}\n\n\tpublic LocalDate getExpiryDate() {\n\t\treturn expiryDate;\n\t}\n\n\tpublic void setExpiryDate(LocalDate expiryDate) {\n\t\tthis.expiryDate = expiryDate;\n\t}\n\n\t@Override\n\tpublic String toString() {\n\t\treturn \"CardDetails [cardNumber=\" + cardNumber + \", nameOnCard=\" + nameOnCard + \", expiryDate=\" + expiryDate\n\t\t\t\t+ \"]\";\n\t}\n\t\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  Passenger.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.pojos;\n\nimport javax.persistence.Column;\nimport javax.persistence.Entity;\nimport javax.persistence.EnumType;\nimport javax.persistence.Enumerated;\nimport javax.persistence.FetchType;\nimport javax.persistence.JoinColumn;\nimport javax.persistence.ManyToOne;\nimport javax.persistence.Table;\n\n@Entity\n@Table(name = \"passengers\")\npublic class Passenger extends BaseEntity {\n\t@Enumerated(EnumType.STRING)\n\tprivate PassengerType passengerType;\n\t@Column(length = 30)\n\tprivate String passengerName;\n\tprivate int passengerAge;\n\tprivate int seatNumber;\n\t@Enumerated(EnumType.STRING)\n\tprivate Gender gender;\n\t@ManyToOne(fetch = FetchType.LAZY)\n\t@JoinColumn(name = \"booking_id\")\n\tprivate Booking bookingId;\n\t\n\tpublic Passenger() {\n\t\tSystem.out.println(\"in ctor of : \"+getClass().getName());\n\t}\n\n\tpublic Passenger(PassengerType passengerType, String passengerName, int passengerAge, Gender gender, int seatNumber) {\n\t\tsuper();\n\t\tthis.passengerType = passengerType;\n\t\tthis.passengerName = passengerName;\n\t\tthis.passengerAge = passengerAge;\n\t\tthis.gender = gender;\n\t\tthis.seatNumber = seatNumber;\n\t}\n\n\tpublic PassengerType getPassengerType() {\n\t\treturn passengerType;\n\t}\n\n\tpublic void setPassengerType(PassengerType passengerType) {\n\t\tthis.passengerType = passengerType;\n\t}\n\n\tpublic String getPassengerName() {\n\t\treturn passengerName;\n\t}\n\n\tpublic void setPassengerName(String passengerName) {\n\t\tthis.passengerName = passengerName;\n\t}\n\n\tpublic int getPassengerAge() {\n\t\treturn passengerAge;\n\t}\n\n\tpublic void setPassengerAge(int passengerAge) {\n\t\tthis.passengerAge = passengerAge;\n\t}\n\n\tpublic Gender getGender() {\n\t\treturn gender;\n\t}\n\n\tpublic void setGender(Gender gender) {\n\t\tthis.gender = gender;\n\t}\n\n\tpublic Booking getBookingId() {\n\t\treturn bookingId;\n\t}\n\n\tpublic void setBookingId(Booking bookingId) {\n\t\tthis.bookingId = bookingId;\n\t}\n\tpublic int getSeatNumber() {\n\t\treturn seatNumber;\n\t}\n\n\tpublic void setSeatNumber(int seatNumber) {\n\t\tthis.seatNumber = seatNumber;\n\t}\n\t@Override\n\tpublic String toString() {\n\t\treturn \"PassengerId\"+getId()+\" passengerType=\" + passengerType + \", passengerName=\" + passengerName + \", passengerAge=\"\n\t\t\t\t+ passengerAge + \", gender=\" + gender + \", seatNumber=\" + seatNumber +\"\";\n\t}\n\t\n\t\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Write me the code for given class :  GlobalExceptionHandler.java",
+    "answer": "\t\t//What this Java class contains:\npackage com.app.exc_handler;\n\nimport java.util.NoSuchElementException;\n\nimport org.springframework.http.HttpStatus;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.ControllerAdvice;\nimport org.springframework.web.bind.annotation.ExceptionHandler;\n\nimport com.app.custom_exceptions.FlightNotFoundException;\nimport com.app.custom_exceptions.UserAlreadyExistException;\nimport com.app.custom_exceptions.UserNotFoundException;\nimport com.app.dto.ErrorResponse;\nimport com.app.dto.ResponseDTO;\n\n@ControllerAdvice\npublic class GlobalExceptionHandler {\n\t// exception handling methods\n\t// if user already exist\n\t@ExceptionHandler(UserAlreadyExistException.class)\n\tpublic ResponseEntity<?> handleUserAlreadyExistException(UserAlreadyExistException e) {\n\t\tSystem.out.println(\"in handle user already exist exception\");\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"error\", e.getMessage()), HttpStatus.UNAUTHORIZED);\n\t}\n\n\t// if user not found while login\n\t@ExceptionHandler(UserNotFoundException.class)\n\tpublic ResponseEntity<?> handleUserNotFoundException(UserNotFoundException e) {\n\t\tSystem.out.println(\"in handle user not found exception\");\n\t\treturn new ResponseEntity<>(new ResponseDTO<>(\"error\", e.getMessage()),\n\t\t\t\tHttpStatus.INTERNAL_SERVER_ERROR);\n\t}\n\n\t// catch flight not found exception\n\t@ExceptionHandler(FlightNotFoundException.class)\n\tpublic ResponseEntity<?> handleFlightNotFoundException(FlightNotFoundException e) {\n\t\tSystem.out.println(\"in handle FlightNotFoundException\");\n\t\treturn new ResponseEntity<>(new ErrorResponse(\"flight not found\", e.getMessage()), HttpStatus.NOT_FOUND);\n\t}\n\t//illegal argument exception\n\t@ExceptionHandler(NoSuchElementException.class)\n\tpublic ResponseEntity<ErrorResponse> handleNoSuchElementException(NoSuchElementException e) {\n\t\tSystem.out.println(\"in handle any NoSuchElementException\");\n\t\treturn new ResponseEntity<>(new ErrorResponse(\"Resource with given ID not Found\", e.getMessage()),\n\t\t\t\tHttpStatus.BAD_REQUEST);\n\t}\n\t\n\t// catch all equivalent exceptions\n\t@ExceptionHandler(Exception.class)\n\tpublic ResponseEntity<ErrorResponse> handleException(Exception e) {\n\t\tSystem.out.println(\"in handle any exc\");\n\t\treturn new ResponseEntity<>(new ErrorResponse(\"server side error\", e.getMessage()),\n\t\t\t\tHttpStatus.INTERNAL_SERVER_ERROR);\n\t}\n\n}\n\nEnd of explanation."
+  },
+  {
+    "question": "Explain this Java class: Application.java",
+    "answer": "This is the main class where the Spring Boot application starts. It contains the main method that invokes SpringApplication.run to launch the application."
+  },
+  {
+    "question": "What is the purpose of the ServletInitializer class?",
+    "answer": "ServletInitializer extends SpringBootServletInitializer and overrides the configure method. It helps deploy the application as a traditional WAR file in a servlet container."
+  },
+  {
+    "question": "Describe the PassengerForBookingDTO class.",
+    "answer": "PassengerForBookingDTO is a Data Transfer Object (DTO) that holds passenger details like name, age, gender, type, and seat number. It is used during the flight booking process."
+  },
+  {
+    "question": "What does the AirlineDTO class represent?",
+    "answer": "AirlineDTO is a DTO that encapsulates airline details such as airline name, flight number, departure/arrival dates and times, capacity, and fare details."
+  },
+  {
+    "question": "How does the UserController handle user authentication?",
+    "answer": "UserController provides an endpoint '/user/login' that accepts a LoginDTO object with email and password. It verifies credentials and returns the user details if authentication is successful."
+  },
+  {
+    "question": "What is the purpose of the IAirlineService interface?",
+    "answer": "IAirlineService defines the business logic methods related to airline management, such as adding, updating, and canceling flights, as well as retrieving flight details."
+  },
+  {
+    "question": "Describe the BookingDTO class.",
+    "answer": "BookingDTO is a DTO that holds booking details such as total fare, seat type, booking status, and associated airline ID."
+  },
+  {
+    "question": "What does the BookingRepository interface do?",
+    "answer": "BookingRepository extends JpaRepository and provides custom query methods to fetch booking details, airline revenue, and feedback."
+  },
+  {
+    "question": "Explain the role of the AdminController class.",
+    "answer": "AdminController provides REST endpoints for admin-related operations, such as updating flight schedules, canceling flights, and fetching booking details."
+  },
+  {
+    "question": "What is the significance of the @SpringBootApplication annotation?",
+    "answer": "@SpringBootApplication is a convenience annotation that combines @Configuration, @EnableAutoConfiguration, and @ComponentScan, making it easier to bootstrap Spring Boot applications."
+  },
+  {
+    "question": "Describe the ErrorResponse class.",
+    "answer": "ErrorResponse is a simple DTO that holds error message details, timestamps, and error descriptions for handling exceptions."
+  },
+  {
+    "question": "How does the BookingServiceImpl class process a flight booking?",
+    "answer": "BookingServiceImpl checks seat availability, creates a new booking, associates it with the user, and deducts available seats from the airline."
+  },
+  {
+    "question": "What does the QuarterlyRevenueDTO class represent?",
+    "answer": "QuarterlyRevenueDTO is a DTO that stores revenue details for each quarter, used for financial reporting."
+  },
+  {
+    "question": "What is the role of the UserDTO class?",
+    "answer": "UserDTO is a DTO that encapsulates user details such as first name, last name, email, password, and mobile number."
+  },
+  {
+    "question": "Explain the function of the CitiesRepository interface.",
+    "answer": "CitiesRepository extends JpaRepository and includes a custom query method to fetch a list of available cities."
+  },
+  {
+    "question": "How does the AirlineServiceImpl class update an airline's schedule?",
+    "answer": "It fetches the airline record, updates its departure and arrival times, and saves the updated entity in the repository."
+  },
+  {
+    "question": "What exception is thrown when a user already exists in the system?",
+    "answer": "UserAlreadyExistException is thrown when a user attempts to register with an email that is already in use."
+  },
+  {
+    "question": "What does the RevenueReport endpoint in SuperAdminController return?",
+    "answer": "It returns revenue details for an airline based on the selected interval (monthly, quarterly, or yearly)."
+  },
+  {
+    "question": "How does the system handle canceled bookings?",
+    "answer": "The cancel booking process updates the booking status to canceled, restores the available seats in the airline entity, and deletes associated passengers."
+  },
+  {
+    "question": "Describe the LoginDTO class.",
+    "answer": "LoginDTO is a simple DTO that contains email and password fields for user authentication."
+  },
+  {
+    "question": "Explain this Java class: Application.java",
+    "answer": "This is the main class where the Spring Boot application starts. It contains the main method that invokes SpringApplication.run to launch the application."
+  },
+  {
+    "question": "What is the purpose of the ServletInitializer class?",
+    "answer": "ServletInitializer extends SpringBootServletInitializer and overrides the configure method. It helps deploy the application as a traditional WAR file in a servlet container."
+  },
+  {
+    "question": "Describe the PassengerForBookingDTO class.",
+    "answer": "PassengerForBookingDTO is a Data Transfer Object (DTO) that holds passenger details like name, age, gender, type, and seat number. It is used during the flight booking process."
+  },
+  {
+    "question": "What are the fields in the PassengerForBookingDTO class?",
+    "answer": "The fields include gender, passengerAge, passengerName, passengerType, and seatNumber. These fields store relevant passenger information for a booking."
+  },
+  {
+    "question": "What entity relationships exist in the Booking entity?",
+    "answer": "The Booking entity has a Many-to-One relationship with User and Airline, and a One-to-Many relationship with Passenger."
+  },
+  {
+    "question": "How is the User entity structured?",
+    "answer": "The User entity includes fields like firstName, lastName, email, password, mobileNo, and status. It also has relationships with bookings and roles."
+  },
+  {
+    "question": "Describe the Airline entity and its relationships.",
+    "answer": "The Airline entity contains fields like airlineName, airlineNo, departureDate, arrivalDate, capacity, and availableSeats. It has a One-to-Many relationship with Booking."
+  },
+  {
+    "question": "What annotations are used in the Booking entity?",
+    "answer": "The Booking entity uses @Entity, @Table, @ManyToOne for User and Airline, and @OneToMany for Passenger."
+  },
+  {
+    "question": "How does the Passenger entity relate to other entities?",
+    "answer": "Passenger has a Many-to-One relationship with Booking and includes fields such as passengerName, passengerAge, passengerType, gender, and seatNumber."
+  },
+  {
+    "question": "What fields are included in the AirlineWiseRevenueDTO class?",
+    "answer": "This DTO contains airlineName and revenue fields, which represent the total earnings of a specific airline."
+  },
+  {
+    "question": "What is the purpose of the ResponseDTO class?",
+    "answer": "ResponseDTO is a generic answer wrapper that contains a status and a data field, helping standardize API responses."
+  },
+  {
+    "question": "Describe the MonthlyRevenueDTO class.",
+    "answer": "MonthlyRevenueDTO stores the month and revenue details, used to generate monthly financial reports."
+  },
+  {
+    "question": "What fields are in the GetBookingListDTO class?",
+    "answer": "It includes bookingId, bookingDate, totalFare, journeyDate, arrivalDate, status, airlineId, and userId to encapsulate booking details."
+  },
+  {
+    "question": "What is the purpose of the CardDTO class?",
+    "answer": "CardDTO stores payment details such as cardNumber, nameOnCard, and expiryDate for processing transactions."
+  },
+  {
+    "question": "How does the LoginDTO class function?",
+    "answer": "LoginDTO is used for authentication, containing fields email and password to validate user credentials."
+  },
+  {
+    "question": "What entity relationships exist in the BookingRepository interface?",
+    "answer": "BookingRepository extends JpaRepository and provides methods to retrieve airline revenue, feedback, and booking details based on various parameters."
+  },
+  {
+    "question": "How does the UserRepository interface retrieve user data?",
+    "answer": "UserRepository extends JpaRepository and includes methods like findByEmail and findByEmailAndPassword to fetch user records."
+  },
+  {
+    "question": "What is the function of the AirlineServiceImpl class?",
+    "answer": "AirlineServiceImpl implements IAirlineService, providing business logic for adding, updating, canceling, and retrieving airline details."
+  },
+  {
+    "question": "What exception is thrown when a flight is not found?",
+    "answer": "FlightNotFoundException is a custom exception that is thrown when an airline ID does not exist in the database."
+  },
+  {
+    "question": "What fields are in the ErrorResponse class?",
+    "answer": "The ErrorResponse class contains message, timeStamp, and errDetails fields, which store information about an API error."
+  },
+  {
+    "question": "What is the purpose of the Application class in this project?",
+    "answer": "The Application class is the main entry point for the Spring Boot application. It uses SpringApplication.run() to bootstrap the application."
+  },
+  {
+    "question": "What role does the Airline entity play in the system?",
+    "answer": "The Airline entity represents airline details, including flight number, departure and arrival times, seat capacity, and fare pricing. It is used to manage flight operations."
+  },
+  {
+    "question": "How is a booking associated with a user in the system?",
+    "answer": "The Booking entity has a Many-to-One relationship with the User entity, meaning each booking is linked to a specific user who made the reservation."
+  },
+  {
+    "question": "What fields are present in the Passenger entity, and what do they represent?",
+    "answer": "The Passenger entity contains passengerName, passengerAge, passengerType, gender, and seatNumber fields, representing a traveler's details for a booking."
+  },
+  {
+    "question": "How does the BookingRepository retrieve airline revenue data?",
+    "answer": "BookingRepository includes a custom query method getAirlineRevenue(), which aggregates total fare amounts for each airline."
+  },
+  {
+    "question": "What is the role of the AdminController class in the project?",
+    "answer": "AdminController provides REST endpoints for admin operations like updating flight schedules, canceling flights, and fetching passenger lists."
+  },
+  {
+    "question": "How does the system handle user authentication?",
+    "answer": "User authentication is managed via UserController, which verifies email and password against stored user records in the database."
+  },
+  {
+    "question": "How are flight details updated in the system?",
+    "answer": "Flight details are updated via the updateAirline() method in AirlineServiceImpl, which modifies departure and arrival times based on admin question."
+  },
+  {
+    "question": "What is the function of the ResponseDTO class?",
+    "answer": "ResponseDTO is a generic answer wrapper used to standardize API responses. It includes a status and a data field."
+  },
+  {
+    "question": "What entity relationships exist in the booking system?",
+    "answer": "Booking is linked to User (Many-to-One), Airline (Many-to-One), and Passenger (One-to-Many). Each booking is associated with a flight and multiple passengers."
+  },
+  {
+    "question": "How does the system store and retrieve city details?",
+    "answer": "City details are managed by the Cities entity and retrieved via CitiesRepository, which fetches available city records."
+  },
+  {
+    "question": "How does the CustomerController facilitate flight searches?",
+    "answer": "CustomerController exposes an endpoint /search_flight/{departureDate} to search flights based on origin, destination, and date."
+  },
+  {
+    "question": "How does the system ensure seat availability before booking?",
+    "answer": "Before creating a booking, the system checks availableSeats in the Airline entity to prevent overbooking."
+  },
+  {
+    "question": "What fields are included in the CustomDTO class?",
+    "answer": "CustomDTO encapsulates booking details, user payment information (CardDTO), and passenger details for the booking process."
+  },
+  {
+    "question": "How does the system calculate total revenue?",
+    "answer": "The total revenue is computed by summing all confirmed bookings' totalFare fields via BookingRepository."
+  },
+  {
+    "question": "What exception is thrown when a user attempts to register with an existing email?",
+    "answer": "UserAlreadyExistException is thrown when a user tries to register with an email already present in the database."
+  },
+  {
+    "question": "How does the system handle feedback from customers?",
+    "answer": "Customers can post feedback via the postFeedback() method in BookingServiceImpl, which updates the booking record."
+  },
+  {
+    "question": "What is the purpose of the AirlineDTO class?",
+    "answer": "AirlineDTO is used to transfer airline-related data between the client and server, encapsulating details such as airline name, flight number, and timings."
+  },
+  {
+    "question": "How is a payment processed in the system?",
+    "answer": "Payment details are stored in the CardDTO class, which is associated with a user to process transactions securely."
+  },
+  {
+    "question": "What is the purpose of the Application class in this project?",
+    "answer": "The Application class is the main entry point for the Spring Boot application. It uses SpringApplication.run() to bootstrap the application."
+  },
+  {
+    "question": "What role does the Airline entity play in the system?",
+    "answer": "The Airline entity represents airline details, including flight number, departure and arrival times, seat capacity, and fare pricing. It is used to manage flight operations."
+  },
+  {
+    "question": "How is a booking associated with a user in the system?",
+    "answer": "The Booking entity has a Many-to-One relationship with the User entity, meaning each booking is linked to a specific user who made the reservation."
+  },
+  {
+    "question": "What fields are present in the Passenger entity, and what do they represent?",
+    "answer": "The Passenger entity contains passengerName, passengerAge, passengerType, gender, and seatNumber fields, representing a traveler's details for a booking."
+  },
+  {
+    "question": "What is the function of the Payment entity in the booking process?",
+    "answer": "The Payment entity stores transaction details related to bookings, including payment status, transaction ID, and card details."
+  },
+  {
+    "question": "How does the system prevent duplicate flight bookings?",
+    "answer": "Before processing a booking, the system checks existing confirmed bookings for the same user and flight to prevent duplicates."
+  },
+  {
+    "question": "What are the key fields in the Feedback entity?",
+    "answer": "The Feedback entity contains fields such as userId, airlineId, rating, and comments to collect user feedback on flights."
+  },
+  {
+    "question": "How does the system calculate available seats for a flight?",
+    "answer": "The availableSeats field in the Airline entity is decremented each time a new booking is confirmed and incremented when a booking is canceled."
+  },
+  {
+    "question": "What security measures are in place for storing user passwords?",
+    "answer": "User passwords are stored in encrypted format using bcrypt hashing to enhance security."
+  },
+  {
+    "question": "What is the role of the SeatType enumeration in the system?",
+    "answer": "SeatType is an enum that defines different seat categories such as Economy, Business, and First Class. It is used in booking and pricing calculations."
+  },
+  {
+    "question": "How does the system handle flight cancellations initiated by the airline?",
+    "answer": "The cancelFlight method in AirlineServiceImpl marks affected bookings as canceled and refunds payments where applicable."
+  },
+  {
+    "question": "What is the function of the UserRole enum in the system?",
+    "answer": "UserRole defines different user roles such as ADMIN, CUSTOMER, and SUPER_ADMIN, which control access to different functionalities."
+  },
+  {
+    "question": "How does the system ensure data consistency when deleting a user?",
+    "answer": "Before deleting a user, the system checks for active bookings and prevents deletion if pending transactions exist."
+  },
+  {
+    "question": "How does the system validate airline registration?",
+    "answer": "Before registering a new airline, the system checks for duplicate airline numbers and verifies required details such as capacity and route."
+  },
+  {
+    "question": "What are the main responsibilities of the SuperAdminController?",
+    "answer": "SuperAdminController manages airline registration, revenue reports, feedback review, and global system settings."
+  },
+  {
+    "question": "How does the system generate financial reports for airlines?",
+    "answer": "The system aggregates revenue data from confirmed bookings and provides reports in monthly, quarterly, and yearly formats."
+  },
+  {
+    "question": "How does the Passenger entity relate to Booking in the database schema?",
+    "answer": "Passenger has a Many-to-One relationship with Booking, meaning each booking can have multiple passengers linked to it."
+  },
+  {
+    "question": "What is the function of the CitiesController in the system?",
+    "answer": "CitiesController provides an API endpoint to retrieve a list of supported cities for flight searches."
+  },
+  {
+    "question": "How does the system determine flight eligibility for booking?",
+    "answer": "Flights must have available seats, be within the bookable time window, and be active in the system before allowing a booking."
+  },
+  {
+    "question": "What is the purpose of the Application class in this project?",
+    "answer": "The Application class is the main entry point for the Spring Boot application. It uses SpringApplication.run() to bootstrap the application."
+  },
+  {
+    "question": "What role does the Airline entity play in the system?",
+    "answer": "The Airline entity represents airline details, including flight number, departure and arrival times, seat capacity, and fare pricing. It is used to manage flight operations."
+  },
+  {
+    "question": "How is a booking associated with a user in the system?",
+    "answer": "The Booking entity has a Many-to-One relationship with the User entity, meaning each booking is linked to a specific user who made the reservation."
+  },
+  {
+    "question": "What fields are present in the Passenger entity, and what do they represent?",
+    "answer": "The Passenger entity contains passengerName, passengerAge, passengerType, gender, and seatNumber fields, representing a traveler's details for a booking."
+  },
+  {
+    "question": "What is the function of the Payment entity in the booking process?",
+    "answer": "The Payment entity stores transaction details related to bookings, including payment status, transaction ID, and card details."
+  },
+  {
+    "question": "What are the steps involved in booking a flight?",
+    "answer": "1. User searches for available flights. 2. User selects a flight and enters passenger details. 3. System checks seat availability. 4. User enters payment details. 5. System processes the payment and confirms booking. 6. Booking details are stored, and the user receives confirmation."
+  },
+  {
+    "question": "How does the system prevent duplicate flight bookings?",
+    "answer": "Before processing a booking, the system checks existing confirmed bookings for the same user and flight to prevent duplicates."
+  },
+  {
+    "question": "What validations are applied when a user books a flight?",
+    "answer": "The system validates user authentication, seat availability, correct passenger details, and successful payment before confirming the booking."
+  },
+  {
+    "question": "What are the key fields in the Feedback entity?",
+    "answer": "The Feedback entity contains fields such as userId, airlineId, rating, and comments to collect user feedback on flights."
+  },
+  {
+    "question": "How does the system calculate available seats for a flight?",
+    "answer": "The availableSeats field in the Airline entity is decremented each time a new booking is confirmed and incremented when a booking is canceled."
+  },
+  {
+    "question": "What happens if a user cancels their booking?",
+    "answer": "If a user cancels their booking, the system updates the booking status, increments the availableSeats in the Airline entity, and processes a refund if applicable."
+  },
+  {
+    "question": "What security measures are in place for storing user passwords?",
+    "answer": "User passwords are stored in encrypted format using bcrypt hashing to enhance security."
+  },
+  {
+    "question": "What is the role of the SeatType enumeration in the system?",
+    "answer": "SeatType is an enum that defines different seat categories such as Economy, Business, and First Class. It is used in booking and pricing calculations."
+  },
+  {
+    "question": "How does the system handle flight cancellations initiated by the airline?",
+    "answer": "The cancelFlight method in AirlineServiceImpl marks affected bookings as canceled and refunds payments where applicable."
+  },
+  {
+    "question": "What is the function of the UserRole enum in the system?",
+    "answer": "UserRole defines different user roles such as ADMIN, CUSTOMER, and SUPER_ADMIN, which control access to different functionalities."
+  },
+  {
+    "question": "How does the system ensure data consistency when deleting a user?",
+    "answer": "Before deleting a user, the system checks for active bookings and prevents deletion if pending transactions exist."
+  },
+  {
+    "question": "How does the system validate airline registration?",
+    "answer": "Before registering a new airline, the system checks for duplicate airline numbers and verifies required details such as capacity and route."
+  },
+  {
+    "question": "What are the main responsibilities of the SuperAdminController?",
+    "answer": "SuperAdminController manages airline registration, revenue reports, feedback review, and global system settings."
+  },
+  {
+    "question": "How does the system generate financial reports for airlines?",
+    "answer": "The system aggregates revenue data from confirmed bookings and provides reports in monthly, quarterly, and yearly formats."
+  },
+  {
+    "question": "How does the Passenger entity relate to Booking in the database schema?",
+    "answer": "Passenger has a Many-to-One relationship with Booking, meaning each booking can have multiple passengers linked to it."
+  },
+  {
+    "question": "What is the function of the CitiesController in the system?",
+    "answer": "CitiesController provides an API endpoint to retrieve a list of supported cities for flight searches."
+  },
+  {
+    "question": "How does the system determine flight eligibility for booking?",
+    "answer": "Flights must have available seats, be within the bookable time window, and be active in the system before allowing a booking."
+  },
+  {
+    "question": "How does the system handle multi-city flight bookings?",
+    "answer": "The system allows users to select multiple destinations in a single booking. It creates separate bookings for each leg of the journey and links them under a single transaction."
+  },
+  {
+    "question": "What happens if a flight is delayed?",
+    "answer": "If a flight is delayed, the system updates the departure and arrival times in the Airline entity. Users receive a notification about the delay, and affected bookings are adjusted accordingly."
+  },
+  {
+    "question": "How does the system handle special meal requests?",
+    "answer": "During booking, users can select special meal preferences. These preferences are stored in the Passenger entity and communicated to the airline."
+  },
+  {
+    "question": "What steps are involved in refund processing after a booking cancellation?",
+    "answer": "The system checks if the booking is eligible for a refund, calculates the refundable amount based on airline policies, and processes the refund transaction via the Payment entity."
+  },
+  {
+    "question": "How does the system handle loyalty points for frequent flyers?",
+    "answer": "Each booking contributes to the user's loyalty points, stored in the User entity. Users can redeem points for discounts on future bookings."
+  },
+  {
+    "question": "What happens if a user enters incorrect passenger details?",
+    "answer": "If incorrect details are detected before confirmation, the user can update them. After confirmation, changes may require airline approval and additional charges."
+  },
+  {
+    "question": "How does the system handle group bookings?",
+    "answer": "For group bookings, the system ensures enough available seats, assigns them together, and may provide bulk discounts. Each passenger is linked to the same booking reference."
+  },
+  {
+    "question": "What is the purpose of the check-in feature in the system?",
+    "answer": "The system allows users to check in online before their flight, select seats, and generate a digital boarding pass. Check-in status is updated in the Booking entity."
+  },
+  {
+    "question": "How does the system handle baggage allowances?",
+    "answer": "Each airline defines baggage policies stored in the Airline entity. Users are informed about baggage limits during booking, and extra baggage can be added for a fee."
+  },
+  {
+    "question": "What measures does the system take to prevent unauthorized booking modifications?",
+    "answer": "Only authenticated users can modify bookings. Changes require verification, and sensitive modifications (e.g., passenger name) may require airline approval."
+  },
+  {
+    "question": "How does the system handle multi-city flight bookings?",
+    "answer": "The system allows users to select multiple destinations in a single booking. It creates separate bookings for each leg of the journey and links them under a single transaction."
+  },
+  {
+    "question": "What happens if a flight is delayed?",
+    "answer": "If a flight is delayed, the system updates the departure and arrival times in the Airline entity. Users receive a notification about the delay, and affected bookings are adjusted accordingly."
+  },
+  {
+    "question": "How does the system handle special meal requests?",
+    "answer": "During booking, users can select special meal preferences. These preferences are stored in the Passenger entity and communicated to the airline."
+  },
+  {
+    "question": "What steps are involved in refund processing after a booking cancellation?",
+    "answer": "The system checks if the booking is eligible for a refund, calculates the refundable amount based on airline policies, and processes the refund transaction via the Payment entity."
+  },
+  {
+    "question": "How does the system handle loyalty points for frequent flyers?",
+    "answer": "Each booking contributes to the user's loyalty points, stored in the User entity. Users can redeem points for discounts on future bookings."
+  },
+  {
+    "question": "What happens if a user enters incorrect passenger details?",
+    "answer": "If incorrect details are detected before confirmation, the user can update them. After confirmation, changes may require airline approval and additional charges."
+  },
+  {
+    "question": "How does the system handle group bookings?",
+    "answer": "For group bookings, the system ensures enough available seats, assigns them together, and may provide bulk discounts. Each passenger is linked to the same booking reference."
+  },
+  {
+    "question": "What is the purpose of the check-in feature in the system?",
+    "answer": "The system allows users to check in online before their flight, select seats, and generate a digital boarding pass. Check-in status is updated in the Booking entity."
+  },
+  {
+    "question": "How does the system handle baggage allowances?",
+    "answer": "Each airline defines baggage policies stored in the Airline entity. Users are informed about baggage limits during booking, and extra baggage can be added for a fee."
+  },
+  {
+    "question": "What measures does the system take to prevent unauthorized booking modifications?",
+    "answer": "Only authenticated users can modify bookings. Changes require verification, and sensitive modifications (e.g., passenger name) may require airline approval."
+  },
+  {
+    "question": "What is the purpose of Application.java?",
+    "answer": "Application.java is the main Spring Boot class containing the entry point (main method) that starts the application using SpringApplication.run(). It's annotated with @SpringBootApplication which enables auto-configuration and component scanning."
+  },
+  {
+    "question": "How does ServletInitializer.java help in deployment?",
+    "answer": "ServletInitializer extends SpringBootServletInitializer to configure the application when deployed to a servlet container like Tomcat. It overrides configure() to specify the Spring application class."
+  },
+  {
+    "question": "What is the role of PassengerForBookingDTO?",
+    "answer": "PassengerForBookingDTO is a Data Transfer Object used during booking process to capture passenger details like name, age, gender, seat number and passenger type (ADULT/MINOR/SENIOR)."
+  },
+  {
+    "question": "How are entity relationships established between User and Booking?",
+    "answer": "User and Booking have a one-to-many relationship via @OneToMany mapping in User entity (List<Booking>) and @ManyToOne in Booking entity. This represents a user having multiple bookings."
+  },
+  {
+    "question": "What is the purpose of @Embedded annotation in User entity?",
+    "answer": "@Embedded is used for CardDetails component to store credit card information as part of the User entity without needing a separate table, using composition."
+  },
+  {
+    "question": "How does the booking process work from controller to service?",
+    "answer": "1. CustomerController receives CustomDTO via /book-ticket endpoint 2. BookingService validates seat availability 3. Creates Booking entity 4. Creates Passenger entities 5. Updates Airline available seats 6. Links with User and persists data."
+  },
+  {
+    "question": "How to cancel a booking?",
+    "answer": "DELETE /customer/cancel_ticket?bId=X calls BookingService which: 1. Marks booking status as 0 (cancelled) 2. Deletes related passengers 3. Restores available seats in Airline 4. Updates database via @Transactional."
+  },
+  {
+    "question": "What is the purpose of ResponseDTO?",
+    "answer": "ResponseDTO is a generic wrapper for API responses containing status (success/error) and data payload. Provides standardized answer format across all endpoints."
+  },
+  {
+    "question": "How does Spring Security authentication work in UserController?",
+    "answer": "POST /user/login uses UserService to authenticate via findByEmailAndPassword. Returns User entity wrapped in ResponseDTO if credentials match, else throws UserNotFoundException."
+  },
+  {
+    "question": "What is the role of @Query annotation in repositories?",
+    "answer": "@Query allows custom JPQL/SQL queries like in BookingRepository.getMonthlyRevenue. Enables complex joins and DTO projections that can't be expressed through method names alone."
+  },
+  {
+    "question": "How are enums like SeatType stored in database?",
+    "answer": "@Enumerated(EnumType.STRING) stores enum values as strings (e.g., 'BUSINESS') instead of ordinal numbers. Used in Booking.seatType and Passenger.passengerType."
+  },
+  {
+    "question": "What is the purpose of GlobalExceptionHandler?",
+    "answer": "Central exception handler using @ControllerAdvice. Catches exceptions like UserNotFoundException and converts them to standardized ErrorResponse JSON with timestamp and error details."
+  },
+  {
+    "question": "How does flight search functionality work?",
+    "answer": "GET /customer/search_flight uses AirlineRepository.findByFromCityAndToCityAndDepartureDate() to find flights matching source, destination and date parameters."
+  },
+  {
+    "question": "What is the difference between AirlineDTO and UpdateFlightDTO?",
+    "answer": "AirlineDTO contains all airline creation fields. UpdateFlightDTO focuses on schedule updates - departure/arrival times and dates. Separates creation vs update concerns."
+  },
+  {
+    "question": "How are temporal fields like departureTime handled?",
+    "answer": "@Temporal(TemporalType.TIME) with @JsonFormat(pattern) in Airline entity ensures proper time storage in DB and JSON serialization format for frontend."
+  },
+  {
+    "question": "What is the role of @Transactional in services?",
+    "answer": "Ensures atomic database operations. For example, booking process updates multiple entities (User, Airline, Booking, Passengers) in a single transaction that rolls back on failure."
+  },
+  {
+    "question": "How does revenue reporting work for super admin?",
+    "answer": "GET /superadmin/revenue_report uses BookingRepository methods with JPQL date functions (month(), quarter(), year()) to aggregate revenue by different time intervals."
+  },
+  {
+    "question": "What is the purpose of CitiesRepository?",
+    "answer": "Manages Cities entities containing available flight cities. Uses @Query('select c from Cities c') to get all cities for flight search dropdowns."
+  },
+  {
+    "question": "How are soft deletes handled for bookings?",
+    "answer": "Instead of physical deletion, bookings are marked status=0. Maintains historical data while freeing up seats via availableSeats update in Airline."
+  },
+  {
+    "question": "What is the role of PassengerType enum?",
+    "answer": "Defines passenger categories (ADULT, MINOR, SENIOR) used in fare calculation and seat allocation logic. Stored as strings via @Enumerated(EnumType.STRING)."
+  },
+  {
+    "question": "How does feedback posting work?",
+    "answer": "PUT /customer/post_feedback updates Booking.feedback field via @Modifying query in BookingRepository. Links feedback to specific booking ID."
+  },
+  {
+    "question": "What is the purpose of @CrossOrigin on controllers?",
+    "answer": "Enables CORS (Cross-Origin Resource Sharing) to allow frontend applications from different domains/ports to access the API endpoints."
+  },
+  {
+    "question": "How are user roles managed?",
+    "answer": "Role enum (ADMIN, CUSTOMER etc.) stored in User.userRole. Controls access to endpoints like /admin and /superadmin through controller-level authorization checks."
+  },
+  {
+    "question": "What is the sequence of a new user signup?",
+    "answer": "1. POST /user/signup with UserDTO 2. UserService checks email uniqueness 3. Encodes password 4. Sets Role.CUSTOMER 5. Persists User entity 6. Returns success answer."
+  },
+  {
+    "question": "How does seat allocation work during booking?",
+    "answer": "PassengerDTO contains seatNumber. Service checks Airline.availableSeats, decrements count for each passenger, and ensures no duplicate seat numbers in a flight."
+  },
+  {
+    "question": "What is the purpose of BaseEntity?",
+    "answer": "@MappedSuperclass providing common ID field (@Id @GeneratedValue) to all entities. Avoids repeating primary key definition in each entity class."
+  },
+  {
+    "question": "How are nested objects like CardDetails stored?",
+    "answer": "@Embeddable class stored as columns in users table via @Embedded. Contains credit card info without separate table while keeping domain model clean."
+  },
+  {
+    "question": "What is the difference between UserDTO and LoginDTO?",
+    "answer": "UserDTO contains full registration fields. LoginDTO only needs email/password for authentication. Separate DTOs prevent exposing unnecessary fields in login API."
+  },
+  {
+    "question": "How does flight cancellation affect existing bookings?",
+    "answer": "DELETE /admin/cancel_flight cancels all related bookings: 1. Marks bookings as cancelled 2. Deletes passengers 3. Restores airline seats 4. Deletes airline record."
+  },
+  {
+    "question": "What is the role of @JsonIgnore on User.bookingList?",
+    "answer": "Prevents infinite recursion during JSON serialization of bidirectional User<->Booking relationship by omitting bookings when serializing User objects."
+  },
+  {
+    "question": "How are enum values validated in DTOs?",
+    "answer": "For fields like SeatType in BookingDTO, Spring automatically validates against enum values during deserialization, throwing MethodArgumentNotValidException for invalid values."
+  },
+  {
+    "question": "What is the purpose of CustomDTO?",
+    "answer": "Aggregates booking data: User ID, CardDTO, BookingDTO, and array of PassengerForBookingDTO. Single transaction object for complete booking request."
+  },
+  {
+    "question": "How does @Modifying annotation work in repositories?",
+    "answer": "Marks JPQL queries that modify data (UPDATE/DELETE). Required along with @Query for write operations to trigger proper persistence context synchronization."
+  },
+  {
+    "question": "What is the role of ErrorResponse class?",
+    "answer": "Standard error format containing message, timestamp and error details. Used by GlobalExceptionHandler to return consistent error responses across all APIs."
+  },
+  {
+    "question": "How are city names managed in the system?",
+    "answer": "SuperAdmin can add cities via /superadmin/add_city endpoint. Cities stored in separate table, used to populate flight search dropdowns via GET /cities."
+  },
+  {
+    "question": "What is the purpose of PassengerRepository.deletePassengerByBookingId?",
+    "answer": "Custom delete query to remove all passengers associated with a booking when it's cancelled. Uses @Modifying and @Query for bulk delete operation."
+  },
+  {
+    "question": "How does date handling work between Java and DB?",
+    "answer": "LocalDate for dates (YYYY-MM-DD) and @Temporal(TemporalType.TIME) for java.util.Date time fields. @JsonFormat ensures proper JSON serialization format."
+  },
+  {
+    "question": "What is the role of @JoinColumn in Passenger entity?",
+    "answer": "Specifies booking_id foreign key column in passengers table for the @ManyToOne relationship with Booking. Maintains database referential integrity."
+  },
+  {
+    "question": "How are fare calculations handled during booking?",
+    "answer": "Total fare calculated frontend based on seat type (BUSINESS/ECONOMY) and passenger types. Sent in BookingDTO.totalFare and validated against airline fares in service layer."
+  },
+  {
+    "question": "What is the purpose of status fields in entities?",
+    "answer": "Soft status indicators: User.status (0=notVerified, 1=verified, 2=suspended), Booking.status (0=cancelled, 1=confirmed). Enables soft deletes and state management."
+  },
+  {
+    "question": "How does the update booking functionality work?",
+    "answer": "PUT /admin/update_booking/{airlineId} propagates flight schedule changes to all confirmed bookings. Updates journey dates/times via JPQL update queries."
+  },
+  {
+    "question": "What is the role of BeanUtils.copyProperties?",
+    "answer": "Used in services to copy DTO properties to entities (e.g., AirlineDTO to Airline). Avoids manual field-by-field copying while transferring data between layers."
+  },
+  {
+    "question": "How are unique constraints enforced?",
+    "answer": "Via JPA annotations: @Column(unique=true) on Airline.airlineNo and User.email. Database unique indexes prevent duplicate entries at persistence layer."
+  },
+  {
+    "question": "What is the purpose of Booking.passengerList?",
+    "answer": "@OneToMany relationship with cascade=CascadeType.ALL. Automatically persists/removes passengers when booking is saved/deleted. Maintains referential integrity."
+  },
+  {
+    "question": "How does passenger type affect booking?",
+    "answer": "Stored as Passenger.passengerType enum. Could be used for fare calculations (e.g., discounts for SENIOR) though current implementation uses fixed seat type fares."
+  },
+  {
+    "question": "What is the role of @RequestParam vs @PathVariable?",
+    "answer": "@RequestParam gets ?bid=123 parameters. @PathVariable gets /cancel_flight/{air_id} segments. Used appropriately across controllers for different parameter types."
+  },
+  {
+    "question": "How are flight schedules updated?",
+    "answer": "PUT /admin/update_airline with UpdateFlightDTO. Service fetches Airline entity, updates date/time fields, and saves changes. Triggers booking updates if needed."
+  },
+  {
+    "question": "What is the purpose of User.userRole field?",
+    "answer": "Defines access control via Role enum (ADMIN, CUSTOMER etc.). Determines which controller endpoints a user can access based on their role (not fully implemented in current code)."
+  },
+  {
+    "question": "How are database transactions managed?",
+    "answer": "@Transactional on service methods ensures ACID properties. For example, booking process either completes all DB operations (user, airline, booking, passengers) or rolls back."
+  },
+  {
+    "question": "Explain the structure and purpose of AirlineDTO",
+    "answer": "AirlineDTO contains flight creation parameters: airlineName, airlineNo, departure/arrival dates, cities, times, capacity, fares. Used in POST /superadmin/add_airline to transfer data without exposing entity internals."
+  },
+  {
+    "question": "What fields does UpdateFlightDTO contain and when is it used?",
+    "answer": "Contains id, departureTime, arrivalTime, departureDate, arrivalDate. Used in PUT /admin/update_airline to modify flight schedules while keeping other details immutable."
+  },
+  {
+    "question": "What methods does AirlineRepository provide?",
+    "answer": "Key methods: 1. findByFromCityAndToCityAndDepartureDate() - flight search 2. findDistinctAirlineName() - get unique carriers 3. Inherited JpaRepository methods like save(), findAll()"
+  },
+  {
+    "question": "How does PassengerRepository handle passenger deletions?",
+    "answer": "Provides deletePassengerByBookingId() with @Modifying @Query to bulk delete passengers when bookings are cancelled. Uses JPQL 'delete from Passenger where bookingId=:bid'"
+  },
+  {
+    "question": "What endpoints does AdminController expose?",
+    "answer": "Key endpoints: PUT /update_airline, DELETE /cancel_flight, GET /passenger_list, GET /get_flights. Manages flight schedules and booking-related admin operations."
+  },
+  {
+    "question": "What is the responsibility of CitiesController?",
+    "answer": "Exposes GET /cities endpoint using CitiesRepository.getCities() to fetch all available cities for flight search dropdowns in UI."
+  },
+  {
+    "question": "What business logic does BookingServiceImpl implement?",
+    "answer": "Methods: 1. deleteBooking() handles cascading deletes 2. bookTicket() validates seats 3. getPassengerList() aggregates data 4. updateBooking() propagates flight changes. Uses @Transactional for ACID compliance."
+  },
+  {
+    "question": "How does UserServiceImpl handle authentication?",
+    "answer": "Implements: 1. getUser() via findByEmailAndPassword 2. saveUser() with email uniqueness check 3. updateUserProfile() for password/mobile updates. Throws UserNotFoundException for invalid logins."
+  },
+  {
+    "question": "What JPA annotations are used in Booking entity?",
+    "answer": "@Entity @Table, @Enumerated for seatType, @Temporal for dates, @OneToMany for passengers, @ManyToOne for user. Stores all booking transaction details with status tracking."
+  },
+  {
+    "question": "How is the User entity mapped to database?",
+    "answer": "@Table(name='users') with fields: email(unique), password, role, status. @OneToMany for bookings, @Embedded for cardDetails. Status codes: 0=unverified,1=active,2=suspended."
+  },
+  {
+    "question": "What values does SeatType enum contain?",
+    "answer": "BUSINESS and ECONOMY - determines fare calculation during booking. Stored as VARCHAR in database via @Enumerated(EnumType.STRING)."
+  },
+  {
+    "question": "How is Gender enum used in Passenger entity?",
+    "answer": "MALE, FEMALE, TRANSGENDER options stored as strings. Bound to Passenger.gender field during booking via PassengerForBookingDTO gender selection."
+  },
+  {
+    "question": "When is UserAlreadyExistException thrown?",
+    "answer": "Thrown by UserServiceImpl.saveUser() when email exists in database. Caught by GlobalExceptionHandler to return 401 UNAUTHORIZED with error message."
+  },
+  {
+    "question": "What is the purpose of MavenWrapperDownloader?",
+    "answer": "Auto-downloads Maven wrapper JAR during build if missing. Uses FileOutputStream and Java NIO channels to download from repo.maven.apache.org."
+  },
+  {
+    "question": "How does AirlineServiceImpl.cancelFlight() work?",
+    "answer": "1. Fetches Airline by ID 2. Finds all related bookings 3. Deletes passengers 4. Marks bookings as cancelled 5. Deletes airline 6. Returns success message. Atomic via @Transactional."
+  },
+  {
+    "question": "What does BookingRepository.getMonthlyRevenue() do?",
+    "answer": "JPQL query: SELECT month(b.bookingDate), SUM(totalFare) GROUP BY month WHERE year=current AND status=1. Returns MonthlyRevenueDTO list for dashboard charts."
+  },
+  {
+    "question": "Why is @JsonFormat used in Airline departureTime?",
+    "answer": "Serializes Date to 'yyyy-MM-dd HH:mm:ss' format in JSON responses. Aligns with frontend expectations and maintains timezone consistency (Asia/Kolkata)."
+  },
+  {
+    "question": "What is @Embeddable used for in CardDetails?",
+    "answer": "Marks class as embeddable component. Its fields become columns in User table (card_number, name_on_card etc) rather than separate table."
+  },
+  {
+    "question": "How are User and Booking entities related?",
+    "answer": "Bidirectional @OneToMany (User) ↔ @ManyToOne (Booking). User contains List<Booking>, Booking has User userId. Managed via JPA cascading on persist operations."
+  },
+  {
+    "question": "What cascade types are used in Booking.passengerList?",
+    "answer": "CascadeType.ALL - any booking operation (save/delete) cascades to passengers. OrphanRemoval=true deletes passengers when removed from list."
+  },
+  {
+    "question": "How does getAirlineRevenue() query work?",
+    "answer": "JPQL: SELECT a.airlineName, SUM(b.totalFare) FROM Booking b JOIN Airline a GROUP BY a.airlineName. Returns AirlineWiseRevenueDTO for revenue analytics."
+  },
+  {
+    "question": "What does UserRepository.findByEmail() do?",
+    "answer": "Spring Data derived query method. Generates 'SELECT * FROM users WHERE email = ?1'. Used during signup to check email uniqueness."
+  },
+  {
+    "question": "How is the Passenger entity mapped to the database?",
+    "answer": "Passenger is an @Entity with @Table(name='passengers'). It contains fields: passengerType (enum), passengerName, passengerAge, seatNumber, and gender (enum). It has a @ManyToOne relationship with Booking via booking_id foreign key."
+  },
+  {
+    "question": "How are passengers added during the booking process?",
+    "answer": "Passengers are added via CustomDTO.passengerDto array. For each passenger, a new Passenger entity is created, linked to the Booking entity, and persisted. The seatNumber is validated against Airline.availableSeats."
+  },
+  {
+    "question": "What happens to passengers when a booking is cancelled?",
+    "answer": "When a booking is cancelled, all associated passengers are deleted using PassengerRepository.deletePassengerByBookingId(). This is a bulk delete operation that ensures no orphaned passenger records remain."
+  },
+  {
+    "question": "What is the purpose of FeedbackDTO?",
+    "answer": "FeedbackDTO contains airlineId, bookingId, userId, and feedback fields. It is used to transfer feedback data between layers, especially in GET /superadmin/feedback to retrieve feedback for a specific airline."
+  },
+  {
+    "question": "How is feedback stored in the database?",
+    "answer": "Feedback is stored as a String in the Booking.feedback field. It is updated via BookingRepository.postFeedback() using a @Modifying query."
+  },
+  {
+    "question": "How does the feedback retrieval process work?",
+    "answer": "GET /superadmin/feedback?airId=X calls BookingRepository.getFeedbackByAirlineId(), which returns a list of FeedbackDTO objects containing feedback for the specified airline."
+  },
+  {
+    "question": "How are user roles defined in the system?",
+    "answer": "Roles are defined in the Role enum: ADMIN, CUSTOMER, AIRLINEEXECUTIVE, SUPERADMIN. Each User entity has a userRole field that determines their access level."
+  },
+  {
+    "question": "How does the system enforce role-based access?",
+    "answer": "Access is enforced at the controller level by checking the userRole field. For example, only users with Role.ADMIN can access endpoints in AdminController."
+  },
+  {
+    "question": "What is the role of SUPERADMIN?",
+    "answer": "SUPERADMIN has the highest access level and can perform operations like adding new admins, managing airlines, and generating revenue reports via SuperAdminController."
+  },
+  {
+    "question": "How are validation errors handled in the system?",
+    "answer": "Validation errors are handled by Spring's @Valid annotation and MethodArgumentNotValidException. GlobalExceptionHandler converts these errors into ErrorResponse objects with appropriate HTTP status codes."
+  },
+  {
+    "question": "What happens when a flight is not found?",
+    "answer": "FlightNotFoundException is thrown, which is caught by GlobalExceptionHandler. It returns a 404 NOT_FOUND answer with an error message."
+  },
+  {
+    "question": "How are duplicate email entries prevented during signup?",
+    "answer": "UserRepository.findByEmail() checks for existing emails. If found, UserAlreadyExistException is thrown, preventing duplicate entries."
+  },
+  {
+    "question": "How are dates handled in the Airline entity?",
+    "answer": "Dates are stored as LocalDate for departureDate and arrivalDate. Times are stored as @Temporal(TemporalType.TIME) Date fields with @JsonFormat(pattern) for JSON serialization."
+  },
+  {
+    "question": "How does the system handle timezones?",
+    "answer": "Timezones are handled via @JsonFormat(timezone = 'Asia/Kolkata') in Airline and Booking entities, ensuring consistent time representation across the application."
+  },
+  {
+    "question": "What is the purpose of @Temporal in Booking entity?",
+    "answer": "@Temporal(TemporalType.TIME) ensures that departureTime and arrivalTime are stored as TIME type in the database, while @JsonFormat ensures proper JSON serialization."
+  },
+  {
+    "question": "How are seats allocated during booking?",
+    "answer": "Seats are allocated based on the seatNumber in PassengerDTO. The system checks Airline.availableSeats and decrements the count for each passenger. Duplicate seat numbers are prevented by validation."
+  },
+  {
+    "question": "How are fares calculated for different seat types?",
+    "answer": "Fares are calculated based on SeatType (BUSINESS/ECONOMY) and passenger type (ADULT/MINOR/SENIOR). The total fare is sent in BookingDTO.totalFare and validated against Airline fares."
+  },
+  {
+    "question": "What happens if there are not enough seats available?",
+    "answer": "If Airline.availableSeats is less than the number of passengers in the booking request, the system returns an error message indicating insufficient seats."
+  },
+  {
+    "question": "How is monthly revenue calculated?",
+    "answer": "Monthly revenue is calculated using BookingRepository.getMonthlyRevenue(), which aggregates totalFare by month for confirmed bookings (status=1)."
+  },
+  {
+    "question": "What is the purpose of QuarterlyRevenueDTO?",
+    "answer": "QuarterlyRevenueDTO contains quarter and revenue fields. It is used in GET /superadmin/revenue_report to return revenue aggregated by quarter."
+  },
+  {
+    "question": "How does the system calculate total revenue?",
+    "answer": "Total revenue is calculated using BookingRepository.getTotalRevenue(), which sums totalFare for all confirmed bookings (status=1)."
+  },
+  {
+    "question": "How are Booking and Passenger entities related?",
+    "answer": "Booking and Passenger have a @OneToMany relationship. Booking contains a List<Passenger>, and each Passenger has a @ManyToOne relationship with Booking via booking_id."
+  },
+  {
+    "question": "What is the relationship between Airline and Booking?",
+    "answer": "Airline and Booking have a @ManyToOne relationship. Booking contains airlineId, linking it to the specific Airline entity."
+  },
+  {
+    "question": "How are User and CardDetails related?",
+    "answer": "User and CardDetails have a composition relationship via @Embedded. CardDetails fields are stored as columns in the users table."
+  },
+  {
+    "question": "How is user authentication handled?",
+    "answer": "Authentication is handled via UserServiceImpl.getUser(), which checks email and password against the database. Invalid credentials throw UserNotFoundException."
+  },
+  {
+    "question": "What is the role of User.status field?",
+    "answer": "User.status indicates account state: 0=notVerified, 1=verified, 2=suspended. Controls access to the system and can be updated by admins."
+  },
+  {
+    "question": "How are passwords stored securely?",
+    "answer": "Passwords are stored as plain text in the current implementation. For production, they should be hashed using BCrypt or similar algorithms."
+  },
+  {
+    "question": "What happens when a user tries to book a flight with invalid data?",
+    "answer": "Invalid data triggers MethodArgumentNotValidException, which is handled by GlobalExceptionHandler. It returns a 400 BAD_REQUEST answer with validation error details."
+  },
+  {
+    "question": "What is the flow for updating a user profile?",
+    "answer": "PUT /user/edit_profile updates User fields (password, mobileNo) via UserServiceImpl.updateUserProfile(). It validates the user ID and persists changes."
+  },
+  {
+    "question": "How does the system handle flight search with no results?",
+    "answer": "If no flights match the search criteria, AirlineRepository.findByFromCityAndToCityAndDepartureDate() returns an empty list, and the controller responds with 'No Flights Available'."
+  },
+  {
+    "question": "What is the purpose of ApplicationTests.java?",
+    "answer": "ApplicationTests is a Spring Boot test class annotated with @SpringBootTest. It ensures the application context loads correctly during integration testing."
+  },
+  {
+    "question": "How does MavenWrapperDownloader work?",
+    "answer": "MavenWrapperDownloader downloads the Maven wrapper JAR from repo.maven.apache.org if missing. It uses Java NIO channels for efficient file transfer."
+  },
+  {
+    "question": "What is the role of @SpringBootApplication in Application.java?",
+    "answer": "@SpringBootApplication enables auto-configuration, component scanning, and property support. It marks the class as the entry point for the Spring Boot application."
+  },
+  {
+    "question": "What does the PUT /admin/update_airline endpoint do?",
+    "answer": "Updates flight schedule details. Accepts UpdateFlightDTO in the request body to modify departure/arrival times and dates. Returns updated airline data via IAirlineService."
+  },
+  {
+    "question": "What is the purpose of DELETE /admin/cancel_flight/{air_id}?",
+    "answer": "Cancels a flight by its ID (path variable `air_id`). Deletes the airline and marks related bookings as cancelled. Returns success message."
+  },
+  {
+    "question": "How does GET /admin/get_bookings/{aid} work?",
+    "answer": "Fetches bookings for a specific airline ID (`aid` path variable). Returns list of GetBookingListDTO wrapped in ResponseDTO."
+  },
+  {
+    "question": "What is DELETE /admin/delete_booking used for?",
+    "answer": "Deletes a booking by its ID (`bid` request parameter). Removes passengers and restores airline seats. Returns plain text success message."
+  },
+  {
+    "question": "Explain GET /admin/passenger_list/{airId}",
+    "answer": "Returns passenger details for an airline (path variable `airId`). Converts Passenger entities to PassengerDTO list via IBookingService."
+  },
+  {
+    "question": "What does PUT /admin/update_booking/{airlineId} do?",
+    "answer": "Updates bookings when flight schedules change (path variable `airlineId`). Propagates new dates/times to confirmed bookings."
+  },
+  {
+    "question": "How does GET /admin/get_flights work?",
+    "answer": "Fetches all airlines via IAirlineService.getAllFlights(). Returns list of Airline entities in ResponseDTO."
+  },
+  {
+    "question": "What is POST /superadmin/add_admin for?",
+    "answer": "Adds a new admin user. Accepts UserDTO in request body, sets role to ADMIN. Throws UserAlreadyExistException for duplicate emails."
+  },
+  {
+    "question": "What does POST /superadmin/add_airline do?",
+    "answer": "Creates a new airline. Accepts AirlineDTO in request body. Persists Airline entity via IAirlineService."
+  },
+  {
+    "question": "Explain GET /superadmin/revenue_report",
+    "answer": "Generates revenue reports (monthly/quarterly/yearly) for an airline. Parameters: `airlineName` and `interval`. Returns list of DTOs like MonthlyRevenueDTO."
+  },
+  {
+    "question": "What is GET /superadmin/feedback used for?",
+    "answer": "Fetches feedback for an airline (request param `airId`). Returns list of FeedbackDTO containing booking IDs and feedback text."
+  },
+  {
+    "question": "What does GET /superadmin/airline_names do?",
+    "answer": "Returns distinct airline names via AirlineRepository.findDistinctAirlineName(). Used for dropdowns in UI."
+  },
+  {
+    "question": "Explain GET /superadmin/get_total_bookings",
+    "answer": "Returns total bookings count via BookingRepository.getTotalBooking(). Wrapped in ResponseDTO."
+  },
+  {
+    "question": "What is GET /superadmin/get_cancelled_bookings for?",
+    "answer": "Fetches count of cancelled bookings (status=0). Uses BookingRepository.getCancelledBooking()."
+  },
+  {
+    "question": "How does GET /superadmin/get_total_revenue work?",
+    "answer": "Calculates total revenue from confirmed bookings (status=1). Returns sum via BookingRepository.getTotalRevenue()."
+  },
+  {
+    "question": "What does GET /superadmin/get_airline_revenue do?",
+    "answer": "Returns revenue per airline using AirlineWiseRevenueDTO. Aggregates data via JPQL query in BookingRepository."
+  },
+  {
+    "question": "Explain PUT /superadmin/add_city",
+    "answer": "Adds new cities to Cities table. Accepts CityDTO with cityNames array. Avoids duplicates via CitiesRepository."
+  },
+  {
+    "question": "What does GET /customer/search_flight/{departureDate} do?",
+    "answer": "Searches flights by fromCity, toCity (request params), and departureDate (path variable). Returns Airline list or 'No Flights' message."
+  },
+  {
+    "question": "How does GET /customer/select_flight work?",
+    "answer": "Fetches flight details by airline ID (`aid` request param). Returns Airline entity via IAirlineService.selectAirlineFromListById()."
+  },
+  {
+    "question": "What is PUT /customer/post_feedback for?",
+    "answer": "Submits feedback for a booking. Accepts PostFeedbackDTO in request body and booking ID (`bid` param). Updates Booking.feedback field."
+  },
+  {
+    "question": "Explain POST /customer/book-ticket",
+    "answer": "Creates a booking. Accepts CustomDTO (user ID, card details, passengers). Validates seat availability and persists Booking/Passenger entities."
+  },
+  {
+    "question": "What does DELETE /customer/cancel_ticket do?",
+    "answer": "Cancels a booking by ID (`bId` param). Marks status=0, deletes passengers, restores airline seats. Returns success message."
+  },
+  {
+    "question": "How does GET /customer/get_userbookings/{uid} work?",
+    "answer": "Fetches bookings for a user (path variable `uid`). Returns GetBookingListDTO list via IBookingService.findByUserId()."
+  },
+  {
+    "question": "What is GET /cities used for?",
+    "answer": "Returns all cities from Cities table via CitiesRepository.getCities(). Used in flight search UI dropdowns."
+  },
+  {
+    "question": "Explain POST /user/login",
+    "answer": "Authenticates user with LoginDTO (email/password). Returns User entity in ResponseDTO or throws UserNotFoundException."
+  },
+  {
+    "question": "What does POST /user/signup do?",
+    "answer": "Creates a new user (Role.CUSTOMER). Accepts UserDTO, checks email uniqueness. Returns success message or error."
+  },
+  {
+    "question": "How does PUT /user/edit_profile work?",
+    "answer": "Updates user profile (password/mobileNo). Accepts UserDTO and user ID (`uid` param). Uses UserService.updateUserProfile()."
+  },
+  {
+    "question": "What is GET /user/get_user/{userid} for?",
+    "answer": "Fetches user details by ID (path variable `userid`). Returns User entity via UserRepository.findById()."
+  }
+]

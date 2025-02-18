@@ -1,0 +1,3127 @@
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/.mvn/wrapper/MavenWrapperDownloader.java
+/*
+ * Copyright 2007-present the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import java.net.*;
+import java.io.*;
+import java.nio.channels.*;
+import java.util.Properties;
+
+public class MavenWrapperDownloader {
+
+    private static final String WRAPPER_VERSION = "0.5.6";
+    /**
+     * Default URL to download the maven-wrapper.jar from, if no 'downloadUrl' is provided.
+     */
+    private static final String DEFAULT_DOWNLOAD_URL = "https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/"
+        + WRAPPER_VERSION + "/maven-wrapper-" + WRAPPER_VERSION + ".jar";
+
+    /**
+     * Path to the maven-wrapper.properties file, which might contain a downloadUrl property to
+     * use instead of the default one.
+     */
+    private static final String MAVEN_WRAPPER_PROPERTIES_PATH =
+            ".mvn/wrapper/maven-wrapper.properties";
+
+    /**
+     * Path where the maven-wrapper.jar will be saved to.
+     */
+    private static final String MAVEN_WRAPPER_JAR_PATH =
+            ".mvn/wrapper/maven-wrapper.jar";
+
+    /**
+     * Name of the property which should be used to override the default download url for the wrapper.
+     */
+    private static final String PROPERTY_NAME_WRAPPER_URL = "wrapperUrl";
+
+    public static void main(String args[]) {
+        System.out.println("- Downloader started");
+        File baseDirectory = new File(args[0]);
+        System.out.println("- Using base directory: " + baseDirectory.getAbsolutePath());
+
+        // If the maven-wrapper.properties exists, read it and check if it contains a custom
+        // wrapperUrl parameter.
+        File mavenWrapperPropertyFile = new File(baseDirectory, MAVEN_WRAPPER_PROPERTIES_PATH);
+        String url = DEFAULT_DOWNLOAD_URL;
+        if(mavenWrapperPropertyFile.exists()) {
+            FileInputStream mavenWrapperPropertyFileInputStream = null;
+            try {
+                mavenWrapperPropertyFileInputStream = new FileInputStream(mavenWrapperPropertyFile);
+                Properties mavenWrapperProperties = new Properties();
+                mavenWrapperProperties.load(mavenWrapperPropertyFileInputStream);
+                url = mavenWrapperProperties.getProperty(PROPERTY_NAME_WRAPPER_URL, url);
+            } catch (IOException e) {
+                System.out.println("- ERROR loading '" + MAVEN_WRAPPER_PROPERTIES_PATH + "'");
+            } finally {
+                try {
+                    if(mavenWrapperPropertyFileInputStream != null) {
+                        mavenWrapperPropertyFileInputStream.close();
+                    }
+                } catch (IOException e) {
+                    // Ignore ...
+                }
+            }
+        }
+        System.out.println("- Downloading from: " + url);
+
+        File outputFile = new File(baseDirectory.getAbsolutePath(), MAVEN_WRAPPER_JAR_PATH);
+        if(!outputFile.getParentFile().exists()) {
+            if(!outputFile.getParentFile().mkdirs()) {
+                System.out.println(
+                        "- ERROR creating output directory '" + outputFile.getParentFile().getAbsolutePath() + "'");
+            }
+        }
+        System.out.println("- Downloading to: " + outputFile.getAbsolutePath());
+        try {
+            downloadFileFromURL(url, outputFile);
+            System.out.println("Done");
+            System.exit(0);
+        } catch (Throwable e) {
+            System.out.println("- Error downloading");
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
+    private static void downloadFileFromURL(String urlString, File destination) throws Exception {
+        if (System.getenv("MVNW_USERNAME") != null && System.getenv("MVNW_PASSWORD") != null) {
+            String username = System.getenv("MVNW_USERNAME");
+            char[] password = System.getenv("MVNW_PASSWORD").toCharArray();
+            Authenticator.setDefault(new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password);
+                }
+            });
+        }
+        URL website = new URL(urlString);
+        ReadableByteChannel rbc;
+        rbc = Channels.newChannel(website.openStream());
+        FileOutputStream fos = new FileOutputStream(destination);
+        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        fos.close();
+        rbc.close();
+    }
+
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/test/java/com/app/ApplicationTests.java
+package com.app;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class ApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/Application.java
+package com.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/ServletInitializer.java
+package com.app;
+
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+public class ServletInitializer extends SpringBootServletInitializer {
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(Application.class);
+	}
+
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/PassengerForBookingDTO.java
+package com.app.dto;
+
+import com.app.pojos.Gender;
+import com.app.pojos.PassengerType;
+
+public class PassengerForBookingDTO {
+	private Gender gender;
+	private int passengerAge;
+	private String passengerName;
+	private PassengerType passengerType;
+	private int seatNumber;
+	
+	public PassengerForBookingDTO() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+
+	public PassengerForBookingDTO(PassengerType passengerType, String passengerName, int passengerAge, Gender gender, int seatNumber) {
+		super();
+		this.passengerType = passengerType;
+		this.passengerName = passengerName;
+		this.passengerAge = passengerAge;
+		this.gender = gender;
+		this.seatNumber = seatNumber;
+	}
+
+	public PassengerType getPassengerType() {
+		return passengerType;
+	}
+
+	public void setPassengerType(PassengerType passengerType) {
+		this.passengerType = passengerType;
+	}
+
+	public String getPassengerName() {
+		return passengerName;
+	}
+
+	public void setPassengerName(String passengerName) {
+		this.passengerName = passengerName;
+	}
+
+	public int getPassengerAge() {
+		return passengerAge;
+	}
+
+	public void setPassengerAge(int passengerAge) {
+		this.passengerAge = passengerAge;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public int getSeatNumber() {
+		return seatNumber;
+	}
+
+	public void setSeatNumber(int seatNumber) {
+		this.seatNumber = seatNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "PassengerDTO [passengerType=" + passengerType + ", passengerName=" + passengerName + ", passengerAge="
+				+ passengerAge + ", gender=" + gender + ", seatNumber=" + seatNumber +" ]";
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/UpdateFlightDTO.java
+package com.app.dto;
+
+import java.time.LocalDate;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+public class UpdateFlightDTO {
+	private int id;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Kolkata")
+	private Date departureTime;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Kolkata")
+	private Date arrivalTime;
+	private LocalDate departureDate;
+	private LocalDate arrivalDate;
+	
+	public UpdateFlightDTO() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+
+	public UpdateFlightDTO(int id, Date departureTime, Date arrivalTime) {
+		super();
+		this.id = id;
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
+	}
+
+	public UpdateFlightDTO(int id, Date departureTime, Date arrivalTime, LocalDate departureDate,
+			LocalDate arrivalDate) {
+		super();
+		this.id = id;
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
+		this.departureDate = departureDate;
+		this.arrivalDate = arrivalDate;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Date getDepartureTime() {
+		return departureTime;
+	}
+
+	public void setDepartureTime(Date departureTime) {
+		this.departureTime = departureTime;
+	}
+
+	public Date getArrivalTime() {
+		return arrivalTime;
+	}
+
+	public void setArrivalTime(Date arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+
+	public LocalDate getDepartureDate() {
+		return departureDate;
+	}
+
+	public void setDepartureDate(LocalDate departureDate) {
+		this.departureDate = departureDate;
+	}
+
+	public LocalDate getArrivalDate() {
+		return arrivalDate;
+	}
+
+	public void setArrivalDate(LocalDate arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
+
+	@Override
+	public String toString() {
+		return "UpdateFlightDTO [id=" + id + ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime
+				+ ", departureDate=" + departureDate + ", arrivalDate=" + arrivalDate + "]";
+	}
+
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/AirlineDTO.java
+package com.app.dto;
+
+import java.time.LocalDate;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+public class AirlineDTO {
+	private String airlineName;
+	private String airlineNo;
+	private LocalDate departureDate;
+	private LocalDate arrivalDate;
+	private String fromCity;
+	private String toCity;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Kolkata")
+	private Date departureTime;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Kolkata")
+	private Date arrivalTime;
+	private int capacity;
+	private int availableSeats;
+	private double economyFare;
+	private double businessFare;
+
+	public AirlineDTO() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+
+	public AirlineDTO(String airlineName, String airlineNo, LocalDate departureDate, LocalDate arrivalDate,
+			String fromCity, String toCity, Date departureTime, Date arrivalTime, int capacity, int availableSeats,
+			double economyFare, double businessFare) {
+		super();
+		this.airlineName = airlineName;
+		this.airlineNo = airlineNo;
+		this.departureDate = departureDate;
+		this.arrivalDate = arrivalDate;
+		this.fromCity = fromCity;
+		this.toCity = toCity;
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
+		this.capacity = capacity;
+		this.availableSeats = availableSeats;
+		this.economyFare = economyFare;
+		this.businessFare = businessFare;
+	}
+
+	public String getAirlineName() {
+		return airlineName;
+	}
+
+	public void setAirlineName(String airlineName) {
+		this.airlineName = airlineName;
+	}
+
+	public String getAirlineNo() {
+		return airlineNo;
+	}
+
+	public void setAirlineNo(String airlineNo) {
+		this.airlineNo = airlineNo;
+	}
+
+	public LocalDate getDepartureDate() {
+		return departureDate;
+	}
+
+	public void setDepartureDate(LocalDate departureDate) {
+		this.departureDate = departureDate;
+	}
+
+	public LocalDate getArrivalDate() {
+		return arrivalDate;
+	}
+
+	public void setArrivalDate(LocalDate arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
+
+	public String getFromCity() {
+		return fromCity;
+	}
+
+	public void setFromCity(String fromCity) {
+		this.fromCity = fromCity;
+	}
+
+	public String getToCity() {
+		return toCity;
+	}
+
+	public void setToCity(String toCity) {
+		this.toCity = toCity;
+	}
+
+	public Date getDepartureTime() {
+		return departureTime;
+	}
+
+	public void setDepartureTime(Date departureTime) {
+		this.departureTime = departureTime;
+	}
+
+	public Date getArrivalTime() {
+		return arrivalTime;
+	}
+
+	public void setArrivalTime(Date arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public int getAvailableSeats() {
+		return availableSeats;
+	}
+
+	public void setAvailableSeats(int availableSeats) {
+		this.availableSeats = availableSeats;
+	}
+
+	public double getEconomyFare() {
+		return economyFare;
+	}
+
+	public void setEconomyFare(double economyFare) {
+		this.economyFare = economyFare;
+	}
+
+	public double getBusinessFare() {
+		return businessFare;
+	}
+
+	public void setBusinessFare(double businessFare) {
+		this.businessFare = businessFare;
+	}
+
+	@Override
+	public String toString() {
+		return "AirlineDTO [airlineName=" + airlineName + ", airlineNo=" + airlineNo + ", departureDate="
+				+ departureDate + ", arrivalDate=" + arrivalDate + ", fromCity=" + fromCity + ", toCity=" + toCity
+				+ ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + ", capacity=" + capacity
+				+ ", availableSeats=" + availableSeats + ", economyFare=" + economyFare + ", businessFare="
+				+ businessFare + "]";
+	}
+	
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/GetBookingListDTO.java
+package com.app.dto;
+
+import java.time.LocalDate;
+
+public class GetBookingListDTO {
+	private int bookingId;
+	private LocalDate bookingDate;
+	private double totalFare;
+	private LocalDate journeyDate;
+	private LocalDate arrivalDate;
+	private int status;
+	private int airlineId;
+	private int userId;
+	
+	public GetBookingListDTO(int bookingId, LocalDate bookingDate, double totalFare, LocalDate journeyDate,
+			LocalDate arrivalDate, int status, int airlineId, int userId) {
+		super();
+		this.bookingId = bookingId;
+		this.bookingDate = bookingDate;
+		this.totalFare = totalFare;
+		this.journeyDate = journeyDate;
+		this.arrivalDate = arrivalDate;
+		this.status = status;
+		this.airlineId = airlineId;
+		this.userId = userId;
+	}
+
+	public int getBookingId() {
+		return bookingId;
+	}
+
+	public void setBookingId(int bookingId) {
+		this.bookingId = bookingId;
+	}
+
+	public LocalDate getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(LocalDate bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
+	public double getTotalFare() {
+		return totalFare;
+	}
+
+	public void setTotalFare(double totalFare) {
+		this.totalFare = totalFare;
+	}
+
+	public LocalDate getJourneyDate() {
+		return journeyDate;
+	}
+
+	public void setJourneyDate(LocalDate journeyDate) {
+		this.journeyDate = journeyDate;
+	}
+
+	public LocalDate getArrivalDate() {
+		return arrivalDate;
+	}
+
+	public void setArrivalDate(LocalDate arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public int getAirlineId() {
+		return airlineId;
+	}
+
+	public void setAirlineId(int airlineId) {
+		this.airlineId = airlineId;
+	}
+	
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public String toString() {
+		return "GetBookingListDTO [bookingId=" + bookingId + ", bookingDate=" + bookingDate + ", totalFare=" + totalFare
+				+ ", journeyDate=" + journeyDate + ", arrivalDate=" + arrivalDate + ", status=" + status
+				+ ", airlineId=" + airlineId + "]";
+	}
+	
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/CardDTO.java
+package com.app.dto;
+
+import java.time.LocalDate;
+
+public class CardDTO {
+	private String cardNumber;
+	private String nameOnCard;
+	private LocalDate expiryDate;
+	
+	public CardDTO() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+
+	public CardDTO(String cardNumber, String nameOnCard, LocalDate expiryDate) {
+		super();
+		this.cardNumber = cardNumber;
+		this.nameOnCard = nameOnCard;
+		this.expiryDate = expiryDate;
+	}
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+
+	public String getNameOnCard() {
+		return nameOnCard;
+	}
+
+	public void setNameOnCard(String nameOnCard) {
+		this.nameOnCard = nameOnCard;
+	}
+
+	public LocalDate getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(LocalDate expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+
+	@Override
+	public String toString() {
+		return "CardDetails [cardNumber=" + cardNumber + ", nameOnCard=" + nameOnCard + ", expiryDate=" + expiryDate
+				+ "]";
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/PassengerDTO.java
+package com.app.dto;
+
+public class PassengerDTO {
+	private String passengerName;
+	private int passengerAge;
+	private String passengerType;
+	private String gender;
+	private int seatNumber;
+	public PassengerDTO() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+	public PassengerDTO(String passengerName, int passengerAge, String passengerType, String gender,int seatNumber) {
+		super();
+		this.passengerName = passengerName;
+		this.passengerAge = passengerAge;
+		this.passengerType = passengerType;
+		this.gender = gender;
+		this.seatNumber = seatNumber;
+	}
+	public String getPassengerName() {
+		return passengerName;
+	}
+	public void setPassengerName(String passengerName) {
+		this.passengerName = passengerName;
+	}
+	public int getPassengerAge() {
+		return passengerAge;
+	}
+	public void setPassengerAge(int passengerAge) {
+		this.passengerAge = passengerAge;
+	}
+	public String getPassengerType() {
+		return passengerType;
+	}
+	public void setPassengerType(String passengerType) {
+		this.passengerType = passengerType;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	
+	public int getSeatNumber() {
+		return seatNumber;
+	}
+	public void setSeatNumber(int seatNumber) {
+		this.seatNumber = seatNumber;
+	}
+	@Override
+	public String toString() {
+		return "PassengerDTO [passengerName=" + passengerName + ", passengerAge=" + passengerAge + ", passengerType="
+				+ passengerType + ", gender=" + gender + ", seatNumber=" + seatNumber + "]";
+	}
+	
+}
+
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/AirlineWiseRevenueDTO.java
+package com.app.dto;
+
+public class AirlineWiseRevenueDTO {
+	private String airlineName;
+	private double revenue;
+	public AirlineWiseRevenueDTO() {
+		// TODO Auto-generated constructor stub
+	}
+	public AirlineWiseRevenueDTO(String airlineName, double revenue) {
+		super();
+		this.airlineName = airlineName;
+		this.revenue = revenue;
+	}
+	public String getAirlineName() {
+		return airlineName;
+	}
+	public void setAirlineName(String airlineName) {
+		this.airlineName = airlineName;
+	}
+	public double getRevenue() {
+		return revenue;
+	}
+	public void setRevenue(double revenue) {
+		this.revenue = revenue;
+	}
+	@Override
+	public String toString() {
+		return "AirlineWiseRevenue [airlineName=" + airlineName + ", revenue=" + revenue + "]";
+	}
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/ResponseDTO.java
+package com.app.dto;
+
+public class ResponseDTO<T> {
+private String status;
+private T data;
+public ResponseDTO() {
+	// TODO Auto-generated constructor stub
+}
+public ResponseDTO(String status, T data) {
+	super();
+	this.status = status;
+	this.data = data;
+}
+public String getStatus() {
+	return status;
+}
+public void setStatus(String status) {
+	this.status = status;
+}
+public T getData() {
+	return data;
+}
+public void setData(T data) {
+	this.data = data;
+}
+@Override
+public String toString() {
+	return "ResponseDTO [status=" + status + ", data=" + data + "]";
+}
+
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/LoginDTO.java
+package com.app.dto;
+
+public class LoginDTO {
+	private String email;
+	private String password;
+	
+	public LoginDTO() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+
+	public LoginDTO(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "LoginDTO [email=" + email + ", password=" + password + "]";
+	}
+	
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/CustomDTO.java
+package com.app.dto;
+
+import java.util.Arrays;
+
+public class CustomDTO {
+	private int userId;
+	private CardDTO cardDto;
+	private BookingDTO bookingDto;
+	private PassengerForBookingDTO[] passengerDto ;
+	
+	public CustomDTO() {
+		System.out.println("in ctor of : "+getClass().getName());
+		this.passengerDto = new PassengerForBookingDTO[10];
+	}
+
+	public CustomDTO(int userId, CardDTO cardDto, BookingDTO bookingDto, PassengerForBookingDTO[] passengerDtos) {
+		super();
+		this.userId = userId;
+		this.cardDto = cardDto;
+		this.bookingDto = bookingDto;
+		this.passengerDto = passengerDtos;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public CardDTO getCardDto() {
+		return cardDto;
+	}
+
+	public void setCardDto(CardDTO cardDto) {
+		this.cardDto = cardDto;
+	}
+
+	public BookingDTO getBookingDto() {
+		return bookingDto;
+	}
+
+	public void setBookingDto(BookingDTO bookingDto) {
+		this.bookingDto = bookingDto;
+	}
+
+	public PassengerForBookingDTO[] getPassengerDto() {
+		return passengerDto;
+	}
+
+	public void setPassengerDto(PassengerForBookingDTO[] passengerDto) {
+		this.passengerDto = passengerDto;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomDTO [userId=" + userId + ", cardDto=" + cardDto + ", bookingDto="
+				+ bookingDto + ", passengerDto=" + Arrays.toString(passengerDto) + "]";
+	}
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/PostFeedbackDTO.java
+package com.app.dto;
+
+public class PostFeedbackDTO {
+private String feedback;
+public PostFeedbackDTO() {
+	// TODO Auto-generated constructor stub
+}
+public PostFeedbackDTO(String feedback) {
+	super();
+	this.feedback = feedback;
+}
+public String getFeedback() {
+	return feedback;
+}
+public void setFeedback(String feedback) {
+	this.feedback = feedback;
+}
+@Override
+public String toString() {
+	return "PostFeedbackDTO [feedback=" + feedback + "]";
+}
+
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/MonthlyRevenueDTO.java
+package com.app.dto;
+
+public class MonthlyRevenueDTO {
+	private int month;
+	private double revenue;
+	public MonthlyRevenueDTO() {
+		// TODO Auto-generated constructor stub
+	}
+	public MonthlyRevenueDTO(int month, double revenue) {
+		super();
+		this.month = month;
+		this.revenue = revenue;
+	}
+	public int getMonth() {
+		return month;
+	}
+	public void setMonth(int month) {
+		this.month = month;
+	}
+	public double getRevenue() {
+		return revenue;
+	}
+	public void setRevenue(double revenue) {
+		this.revenue = revenue;
+	}
+	@Override
+	public String toString() {
+		return "MonthlyRevenueDTO [month=" + month + ", revenue=" + revenue + "]";
+	}
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/QuarterlyRevenueDTO.java
+package com.app.dto;
+
+public class QuarterlyRevenueDTO {
+	private int quarter;
+	private double revenue;
+	public QuarterlyRevenueDTO() {
+		// TODO Auto-generated constructor stub
+	}
+	public QuarterlyRevenueDTO(int quarter, double revenue) {
+		this.quarter = quarter;
+		this.revenue = revenue;
+	}
+	public int getQuarter() {
+		return quarter;
+	}
+	public void setQuarter(int quarter) {
+		this.quarter = quarter;
+	}
+	public double getRevenue() {
+		return revenue;
+	}
+	public void setRevenue(double revenue) {
+		this.revenue = revenue;
+	}
+	@Override
+	public String toString() {
+		return "QuarterlyRevenueDTO [quarter=" + quarter + ", revenue=" + revenue + "]";
+	}
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/UserDTO.java
+package com.app.dto;
+
+public class UserDTO {
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String password;
+	private String mobileNo;
+	private int status;
+	public UserDTO() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+	
+	public UserDTO(String firstName, String lastName, String email, String password, String mobileNo, int status) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.mobileNo = mobileNo;
+		this.status = status;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getMobileNo() {
+		return mobileNo;
+	}
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	@Override
+	public String toString() {
+		return "UserDTO [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password="
+				+ password + ", mobileNo=" + mobileNo + ", status=" + status + "]";
+	}
+	
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/ErrorResponse.java
+package com.app.dto;
+
+import java.time.LocalDateTime;
+
+public class ErrorResponse {
+	private String message;
+	private LocalDateTime timeStamp;
+	private String errDetails;
+	public ErrorResponse() {
+		// TODO Auto-generated constructor stub
+	}
+	public ErrorResponse(String message,String errDetails) {
+		super();
+		this.message = message;
+		this.errDetails=errDetails;
+		this.timeStamp=LocalDateTime.now();
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public LocalDateTime getTimeStamp() {
+		return timeStamp;
+	}
+	public void setTimeStamp(LocalDateTime timeStamp) {
+		this.timeStamp = timeStamp;
+	}
+	public String getErrDetails() {
+		return errDetails;
+	}
+	public void setErrDetails(String errDetails) {
+		this.errDetails = errDetails;
+	}
+	@Override
+	public String toString() {
+		return  message + " timeStamp=" + timeStamp ;
+	}
+	
+	
+	
+
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/YearlyRevenueDTO.java
+package com.app.dto;
+
+public class YearlyRevenueDTO {
+	private int year;
+	private double revenue;
+	public YearlyRevenueDTO() {
+		// TODO Auto-generated constructor stub
+	}
+	public YearlyRevenueDTO(int year, double revenue) {
+		this.year = year;
+		this.revenue = revenue;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public double getRevenue() {
+		return revenue;
+	}
+	public void setRevenue(double revenue) {
+		this.revenue = revenue;
+	}
+	@Override
+	public String toString() {
+		return "YearlyRevenueDTO [year=" + year + ", revenue=" + revenue + "]";
+	}
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/FeedbackDTO.java
+package com.app.dto;
+
+public class FeedbackDTO {
+	private int airlineId;
+	private int bookingId;
+	private int userId;
+	private String feedback;
+	public FeedbackDTO() {
+		// TODO Auto-generated constructor stub
+	}
+	public FeedbackDTO(int airlineId, int bookingId, int userId, String feedback) {
+		super();
+		this.airlineId = airlineId;
+		this.bookingId = bookingId;
+		this.userId = userId;
+		this.feedback = feedback;
+	}
+	
+	public int getAirlineId() {
+		return airlineId;
+	}
+	public void setAirlineId(int airlineId) {
+		this.airlineId = airlineId;
+	}
+	public int getBookingId() {
+		return bookingId;
+	}
+	public void setBookingId(int bookingId) {
+		this.bookingId = bookingId;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public String getFeedback() {
+		return feedback;
+	}
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
+	}
+	@Override
+	public String toString() {
+		return "FeedbackDTO [airlineId=" + airlineId + ", bookingId=" + bookingId + ", userId=" + userId + ", feedback="
+				+ feedback + "]";
+	}
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/CityDTO.java
+package com.app.dto;
+
+import java.util.Arrays;
+
+public class CityDTO {
+	private String[] cityNames;
+
+	public CityDTO() {
+		System.out.println("in ctor of CityDto");
+	}
+
+	public CityDTO(String[] cityNames) {
+		super();
+		this.cityNames = cityNames;
+	}
+
+	public String[] getCityNames() {
+		return cityNames;
+	}
+
+	public void setCityNames(String[] cityNames) {
+		this.cityNames = cityNames;
+	}
+
+	@Override
+	public String toString() {
+		return "CityDTO [cityNames=" + Arrays.toString(cityNames) + "]";
+	}
+
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dto/BookingDTO.java
+package com.app.dto;
+
+import com.app.pojos.SeatType;
+
+public class BookingDTO {
+	private double totalFare;
+	private SeatType seatType;
+	private int status;
+	private int airlineId;
+	
+	public BookingDTO() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+
+	public BookingDTO(double totalFare, SeatType seatType, int status, int airlineId) {
+		super();
+		this.totalFare = totalFare;
+		this.seatType = seatType;
+		this.status = status;
+		this.airlineId = airlineId;
+	}
+
+	public double getTotalFare() {
+		return totalFare;
+	}
+
+	public void setTotalFare(double totalFare) {
+		this.totalFare = totalFare;
+	}
+
+	public SeatType getSeatType() {
+		return seatType;
+	}
+
+	public void setSeatType(SeatType seatType) {
+		this.seatType = seatType;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public int getAirlineId() {
+		return airlineId;
+	}
+
+	public void setAirlineId(int airlineId) {
+		this.airlineId = airlineId;
+	}
+
+	@Override
+	public String toString() {
+		return "BookingDTO [totalFare=" + totalFare + ", seatType=" + seatType + ", status=" + status + ", airlineId="
+				+ airlineId + "]";
+	}
+
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dao/CitiesRepository.java
+package com.app.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.app.pojos.Cities;
+
+public interface CitiesRepository extends JpaRepository<Cities, Integer> {
+	@Query("select c from Cities c")
+	List<Cities> getCities();
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dao/AirlineRepository.java
+package com.app.dao;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.app.pojos.Airline;
+
+public interface AirlineRepository extends JpaRepository<Airline, Integer> {
+	//method to search flight by from, destination and departureDate
+	List<Airline> findByFromCityAndToCityAndDepartureDate(String fromCity, String toCity, LocalDate departureDate);
+	
+	//method to get distinct AirlineNames
+	@Query("select distinct airlineName from Airline")
+	List<String> findDistinctAirlineName();
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dao/UserRepository.java
+package com.app.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.app.pojos.User;
+
+public interface UserRepository extends JpaRepository<User, Integer>{
+	@Query("select u from User u where email=:em and password=:pwd")
+	User getUser(@Param("em") String email, @Param("pwd") String password);
+	//method to find user by email
+	User findByEmail(String email);
+	//Method for user login
+	User findByEmailAndPassword(String email, String password);
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dao/PassengerRepository.java
+package com.app.dao;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.app.pojos.Passenger;
+
+public interface PassengerRepository extends JpaRepository<Passenger, Integer> {
+@Query("select p from Passenger p where p.bookingId.id=:bid")
+List<Passenger>getPassengerByBookingId(@Param("bid") int bookingId);
+@Modifying
+@Query("delete from Passenger p where p.bookingId.id=:bid")
+int deletePassengerByBookingId(@Param("bid")int bookingId);
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/dao/BookingRepository.java
+package com.app.dao;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.app.dto.AirlineWiseRevenueDTO;
+import com.app.dto.FeedbackDTO;
+import com.app.dto.MonthlyRevenueDTO;
+import com.app.dto.QuarterlyRevenueDTO;
+import com.app.dto.YearlyRevenueDTO;
+import com.app.pojos.Booking;
+
+public interface BookingRepository extends JpaRepository<Booking, Integer> {
+	@Query("select new com.app.dto.MonthlyRevenueDTO(month(b.bookingDate),sum(b.totalFare)) from Booking b inner join Airline a on a.id=b.airlineId where year(b.bookingDate)=year(current_date()) and b.status=1 and a.airlineName=:nm group by month(b.bookingDate) order by month(b.bookingDate)")
+	List<MonthlyRevenueDTO> getMonthlyRevenue(@Param("nm") String airlineName);
+	
+	@Query("select b from Booking b where b.airlineId=:id")
+	List<Booking> getBookingByAirlineId(@Param("id") int airId);
+
+	@Modifying
+	@Query("Update Booking b set b.feedback=:fd where b.id=:bid")
+	void postFeedback(@Param("bid") int bookingId, @Param("fd") String feedback);
+	
+	List<Booking> findByAirlineId(int airID);
+	@Query("select b.airlineId from Booking b where b.id=:bid")
+	int getAirlineIdByBookingId(@Param("bid")int bookingId);
+	
+	@Query("select new com.app.dto.FeedbackDTO(b.airlineId,b.id,b.userId.id,b.feedback) from Booking b where b.airlineId=:id")
+	List<FeedbackDTO> getFeedbackByAirlineId(@Param("id") Integer airId);
+	
+	@Query("select new com.app.dto.QuarterlyRevenueDTO(quarter(b.bookingDate), sum(b.totalFare)) from Booking b inner join Airline a on a.id=b.airlineId where year(b.bookingDate)=year(current_date) and b.status=1 and a.airlineName=:nm group by Quarter(b.bookingDate) order by Quarter(b.bookingDate)")
+	List<QuarterlyRevenueDTO> getQuarterlyRevenue(@Param("nm") String airlineName);
+	
+	@Query("select new com.app.dto.YearlyRevenueDTO(year(b.bookingDate), sum(b.totalFare)) from Booking b inner join Airline a on a.id=b.airlineId where status=1 and a.airlineName=:nm group by year(b.bookingDate) order by year(b.bookingDate)")
+	List<YearlyRevenueDTO> getYearlyRevenue(@Param("nm") String airlineName);
+    
+	@Query("select b from Booking b where b.userId.id=:id")
+	List<Booking> getBookingByUserId(@Param("id") int userId);
+	
+	@Query("select count(b.id) from Booking b ")
+	int getTotalBooking();
+	
+	@Query("select count(b.id) from Booking b where status=0")
+	int getCancelledBooking();
+	
+	@Query("select sum(b.totalFare) from Booking b where status=1")
+	double getTotalRevenue();
+	
+	@Query("select new com.app.dto.AirlineWiseRevenueDTO(a.airlineName,sum(b.totalFare)) from Booking b inner join Airline a on a.id=b.airlineId where b.status=1 group by a.airlineName")
+	List<AirlineWiseRevenueDTO> getAirlineRevenue();
+}
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/controller/AdminController.java
+package com.app.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.dto.GetBookingListDTO;
+import com.app.dto.PassengerDTO;
+import com.app.dto.ResponseDTO;
+import com.app.dto.UpdateFlightDTO;
+import com.app.service.IAirlineService;
+import com.app.service.IBookingService;
+
+@RestController
+@RequestMapping("/admin")
+@CrossOrigin
+public class AdminController {
+	public AdminController() {
+		System.out.println("in ctor of : " + getClass().getName());
+	}
+	@Autowired
+	private IBookingService bookingService;
+	
+	@Autowired
+	private IAirlineService airService;
+
+	@PutMapping("/update_airline")
+	public ResponseEntity<?> updateFlightSchedule(@RequestBody UpdateFlightDTO flightDto) {
+		System.out.println("in update flight Schedule method");
+		return new ResponseEntity<>(airService.updateAirline(flightDto), HttpStatus.OK);
+	}
+
+	@DeleteMapping("/cancel_flight/{air_id}")
+	public ResponseEntity<?> cancelFlight(@PathVariable int air_id) {
+		System.out.println("in cancel flight Schedule method");
+		return new ResponseEntity<>(new ResponseDTO<>("success", airService.cancelFlight(air_id)) , HttpStatus.OK);
+	}
+	
+	@GetMapping("/get_bookings/{aid}")
+	public ResponseEntity<?> getBookingsByAid(@PathVariable int aid){
+		List<GetBookingListDTO> list = bookingService.findByAirlineId(aid);
+		if (!list.isEmpty())
+			return new ResponseEntity<>(new ResponseDTO<>("success", list), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(new ResponseDTO<>("error", "no bookings yet"), HttpStatus.OK);
+	}
+
+	@DeleteMapping("/delete_booking")
+	public ResponseEntity<?> deleteBooking(@RequestParam int bid) {
+		System.out.println("in delete booking(admin controller) " + bid);
+
+		bookingService.deleteBooking(bid);
+		return new ResponseEntity<>("Booking Deleted Successfully!!!!", HttpStatus.OK);
+
+	}
+	
+	@GetMapping("/passenger_list/{airId}")
+	public ResponseEntity<?> passengerList(@PathVariable int airId) {
+		System.out.println("in passenger List (admin controller) " + airId);
+		List<PassengerDTO> list=bookingService.getPassengerList(airId);
+		if(!list.isEmpty())
+			return new ResponseEntity<>(new ResponseDTO<>("success", list), HttpStatus.OK);
+		return new ResponseEntity<>(new ResponseDTO<>("error", "List is empty"), HttpStatus.OK);
+	}
+
+	@PutMapping("/update_booking/{airlineId}")
+	public ResponseEntity<?> updateBooking(@PathVariable int airlineId){
+		System.out.println("in update booking");
+		return new ResponseEntity<>(bookingService.updateBooking(airlineId),HttpStatus.OK);
+	}
+	
+	@GetMapping("/get_flights")
+	public ResponseEntity<?> getAllFlights(){
+		return new ResponseEntity<>(new ResponseDTO<>("success", airService.getAllFlights()), HttpStatus.OK);
+	}
+}
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/controller/SuperAdminController.java
+package com.app.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.dto.AirlineDTO;
+import com.app.dto.CityDTO;
+import com.app.dto.FeedbackDTO;
+import com.app.dto.ResponseDTO;
+import com.app.dto.UserDTO;
+import com.app.service.IAirlineService;
+import com.app.service.ISuperAdminService;
+
+@RestController
+@RequestMapping("/superadmin")
+@CrossOrigin
+public class SuperAdminController {
+	public SuperAdminController() {
+		System.out.println("in ctor of : " + getClass().getName());
+	}
+
+	@Autowired
+	private ISuperAdminService saService;
+	
+	@Autowired
+	private IAirlineService airService;
+
+	@PostMapping("/add_admin")
+	public ResponseEntity<?> signupUser(@RequestBody UserDTO admindto) {
+		System.out.println("in signup user : " + admindto);
+		
+		return new ResponseEntity<>(new ResponseDTO<>("success", saService.addAdmin(admindto)), HttpStatus.OK);
+
+	}
+	
+	@PostMapping("/add_airline")
+	public ResponseEntity<?> addAirline(@RequestBody AirlineDTO airlinedto){
+		System.out.println("in add airline : "+airlinedto);
+		airService.addAirline(airlinedto);
+		return new ResponseEntity<>("Airline added to the db!!!", HttpStatus.OK);
+	}
+	
+	@GetMapping("/revenue_report")
+	public ResponseEntity<?> revenueReport(@RequestParam String airlineName, @RequestParam String interval) {
+		System.out.println("in revenue report:SuperAdminController ");
+		return new ResponseEntity<>(new ResponseDTO<>("success",saService.revenueReport(airlineName, interval)), HttpStatus.OK);
+	}
+	
+	@GetMapping("/feedback")
+	public ResponseEntity<?> customerFeedback(@RequestParam int airId){
+		System.out.println("in customer feedback: SuperAdminController ");
+		List<FeedbackDTO> fb = saService.getFeedback(airId);
+		if(fb.isEmpty())
+			return new ResponseEntity<>(new ResponseDTO<>("error", "No feedbacks available"), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(new ResponseDTO<>("success", fb), HttpStatus.OK);
+	}
+	
+	@GetMapping("/airline_names")
+	public ResponseEntity<?> AirlineNames() {
+		System.out.println("in Airline names : ");
+		return new ResponseEntity<>(new ResponseDTO<>("success", airService.getAirlineNames()), HttpStatus.OK);
+	}
+	
+	@GetMapping("/get_total_bookings")
+	public ResponseEntity<?> getTotalBooking(){
+		return new ResponseEntity<>(new ResponseDTO<>("success", saService.getTotalBooking()), HttpStatus.OK);
+	}
+	
+	@GetMapping("/get_cancelled_bookings")
+	public ResponseEntity<?> getCancelledBooking(){
+		return new ResponseEntity<>(new ResponseDTO<>("success", saService.getCancelledBooking()), HttpStatus.OK);
+	}
+	
+	@GetMapping("/get_total_revenue")
+	public ResponseEntity<?> getTotalRevenue(){
+		return new ResponseEntity<>(new ResponseDTO<>("success", saService.getTotalRevenue()), HttpStatus.OK);
+	}
+	
+	@GetMapping("/get_airline_revenue")
+	public ResponseEntity<?> getAirlineRevenue(){
+		return new ResponseEntity<>(new ResponseDTO<>("success", saService.getAirlineRevenue()), HttpStatus.OK);
+	}
+	
+	@PutMapping("/add_city")
+	public ResponseEntity<?> addCity(@RequestBody CityDTO cityDto){
+		System.out.println("in addCity : ");
+		saService.addCity(cityDto);
+		return new ResponseEntity<>("success",  HttpStatus.OK);
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/controller/CustomerController.java
+package com.app.controller;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.dto.CustomDTO;
+import com.app.dto.GetBookingListDTO;
+import com.app.dto.PostFeedbackDTO;
+import com.app.dto.ResponseDTO;
+import com.app.pojos.Airline;
+import com.app.service.IAirlineService;
+import com.app.service.IBookingService;
+
+@RestController
+@RequestMapping("/customer")
+@CrossOrigin
+public class CustomerController {
+	public CustomerController() {
+		System.out.println("in ctor of : " + getClass().getName());
+	}
+
+	@Autowired
+	private IAirlineService airService;
+	@Autowired
+	private IBookingService bookingService;
+
+	@GetMapping("/search_flight/{departureDate}")
+	public ResponseEntity<?> searchFlight(@RequestParam String fromCity, @RequestParam String toCity,
+			@PathVariable String departureDate) {
+		List<Airline> flightList = airService.searchFlights(fromCity, toCity, LocalDate.parse(departureDate));
+		if (!flightList.isEmpty()) {
+			return new ResponseEntity<>(flightList, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>("Currently No Flights Available For this Route", HttpStatus.OK);
+		}
+
+	}
+
+	@GetMapping("/select_flight")
+	public ResponseEntity<?> selectFlight(@RequestParam int aid) {
+		System.out.println("in select flight : " + aid);
+		return new ResponseEntity<>(new ResponseDTO<>("success", airService.selectAirlineFromListById(aid)), HttpStatus.OK);
+	}
+
+	@PutMapping("/post_feedback")
+	public ResponseEntity<?> postFeedback(@RequestParam int bid, @RequestBody PostFeedbackDTO feedbackDto) {
+		System.out.println("in post Feedback " + bid + " " + feedbackDto);
+
+		return new ResponseEntity<>(bookingService.postFeedback(bid, feedbackDto.getFeedback()), HttpStatus.OK);
+	}
+
+	@PostMapping("/book-ticket")
+	public ResponseEntity<?> getData(@RequestBody CustomDTO custDto) {
+		return new ResponseEntity<>(bookingService.bookTicket(custDto), HttpStatus.OK);
+	}
+
+	@DeleteMapping("/cancel_ticket")
+	public ResponseEntity<?> cancelTicket(@RequestParam int bId) {
+		bookingService.deleteBooking(bId);
+		return new ResponseEntity<>("Booking Deleted Successfully!!!!", HttpStatus.OK);
+	}
+	@GetMapping("/get_userbookings/{uid}")
+	public ResponseEntity<?> getBookingByUserId(@PathVariable int uid){
+		List<GetBookingListDTO> list = bookingService.findByUserId(uid);
+		if (!list.isEmpty())
+			return new ResponseEntity<>(new ResponseDTO<>("success", list), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(new ResponseDTO<>("error", "no bookings yet"), HttpStatus.OK);
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/controller/CitiesController.java
+package com.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.dao.CitiesRepository;
+import com.app.dto.ResponseDTO;
+
+@RestController
+@CrossOrigin
+public class CitiesController {
+	public CitiesController() {
+		System.out.println("in cities Controller");
+	}
+	
+	@Autowired
+	private CitiesRepository cRepo;
+	
+	@GetMapping("/cities")
+	public ResponseEntity<?> getCities(){
+		return new ResponseEntity<>(new ResponseDTO<>("success", cRepo.getCities()), HttpStatus.OK);
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/controller/UserController.java
+package com.app.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.dao.UserRepository;
+import com.app.dto.LoginDTO;
+import com.app.dto.ResponseDTO;
+import com.app.dto.UserDTO;
+import com.app.pojos.User;
+import com.app.service.IUserService;
+
+@CrossOrigin
+@RestController
+
+@RequestMapping("/user")
+public class UserController {
+	public UserController() {
+		System.out.println("in ctor of : " + getClass().getName());
+	}
+
+	@Autowired
+	private IUserService userService;
+
+	@Autowired
+	private UserRepository userRepo;
+
+	@PostMapping("/login")
+	public ResponseEntity<?> authenticateUser(@RequestBody LoginDTO loginDto) {
+		System.out.println("in authenticate user : " + loginDto.getEmail() + " " + loginDto.getPassword());
+		User user = userService.getUser(loginDto.getEmail(), loginDto.getPassword());
+		return new ResponseEntity<>(new ResponseDTO<>("success", user), HttpStatus.OK);
+	}
+
+	@PostMapping("/signup")
+	public ResponseEntity<?> signupUser(@RequestBody UserDTO userdto) {
+		System.out.println("in signup user : " + userdto);
+		userService.saveUser(userdto);
+		return new ResponseEntity<>(new ResponseDTO<>("success", "Signup Successful...Please login...!!!"),
+				HttpStatus.OK);
+	}
+
+	@PutMapping("/edit_profile")
+	public ResponseEntity<?> updateUserProfile(@RequestParam int uid, @RequestBody UserDTO userDTO) {
+		System.out.println("inside update User profile(controller method)" + userDTO);
+		userService.updateUserProfile(uid, userDTO);
+		return new ResponseEntity<>("User details updated!!!!!", HttpStatus.OK);
+
+	}
+
+	@GetMapping("/get_user/{userid}")
+	public ResponseEntity<?> getUserById(@PathVariable int userid) {
+		return new ResponseEntity<>(new ResponseDTO<>("success", userRepo.findById(userid)), HttpStatus.OK);
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/custom_exceptions/UserAlreadyExistException.java
+package com.app.custom_exceptions;
+
+public class UserAlreadyExistException extends RuntimeException{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public UserAlreadyExistException(String msg) {
+		super(msg);
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/custom_exceptions/UserNotFoundException.java
+package com.app.custom_exceptions;
+
+public class UserNotFoundException extends RuntimeException{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public UserNotFoundException(String msg) {
+		super(msg);
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/custom_exceptions/FlightNotFoundException.java
+package com.app.custom_exceptions;
+
+public class FlightNotFoundException extends RuntimeException{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public FlightNotFoundException(String msg) {
+		super(msg);
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/service/IBookingService.java
+package com.app.service;
+
+import java.util.List;
+
+import com.app.dto.CustomDTO;
+import com.app.dto.GetBookingListDTO;
+import com.app.dto.PassengerDTO;
+
+public interface IBookingService {
+	void deleteBooking(int id);
+	
+	//method for getting booking by airline id
+	List<PassengerDTO> getPassengerList(int airId);
+	
+	//method for updating booking
+		String updateBooking(int airlineId);
+		String postFeedback(int bid, String feedback);
+		String bookTicket(CustomDTO custDto);
+		List<GetBookingListDTO> findByAirlineId(int aid);
+		List<GetBookingListDTO> findByUserId(int uid);
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/service/IUserService.java
+package com.app.service;
+
+import com.app.dto.UserDTO;
+import com.app.pojos.User;
+
+public interface IUserService {
+	//Method for user login
+	User getUser(String email, String password);
+
+	// method for signup
+	User saveUser(UserDTO userdto);
+        User updateUserProfile(int userId,UserDTO user);
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/service/IAirlineService.java
+package com.app.service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import com.app.dto.AirlineDTO;
+import com.app.dto.UpdateFlightDTO;
+import com.app.pojos.Airline;
+
+public interface IAirlineService {
+	//method to add airline
+	Airline addAirline(AirlineDTO airlinedto);
+
+	// method to update flight schedule
+	String updateAirline(UpdateFlightDTO flightDto);
+
+	// method to cancel flight
+	String cancelFlight(int airId);
+	
+	//method to search Flight
+	List<Airline> searchFlights(String fromCity, String toCity, LocalDate departureDate);
+	
+	//method to select airline from airline list --> Booking process
+	Airline selectAirlineFromListById(int aid);
+	
+	//get all airlines
+	List<Airline> getAllFlights();
+	
+	//method to get distinct AirlineNames
+	List<String> getAirlineNames();
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/service/SuperAdminServiceImpl.java
+package com.app.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.custom_exceptions.UserAlreadyExistException;
+import com.app.dao.BookingRepository;
+import com.app.dao.CitiesRepository;
+import com.app.dao.UserRepository;
+import com.app.dto.AirlineWiseRevenueDTO;
+import com.app.dto.CityDTO;
+import com.app.dto.FeedbackDTO;
+import com.app.dto.UserDTO;
+import com.app.pojos.Cities;
+import com.app.pojos.Role;
+import com.app.pojos.User;
+
+@Service
+@Transactional
+public class SuperAdminServiceImpl implements ISuperAdminService{
+	@Autowired
+	private UserRepository userRepo;
+
+	@Autowired
+	private BookingRepository bookRepo;
+	
+	@Autowired
+	private CitiesRepository cityRepo;
+	
+	@Override
+	public User addAdmin(UserDTO admindto) {
+		User admin = new User();
+		if(userRepo.findByEmail(admindto.getEmail()) == null) {
+			BeanUtils.copyProperties(admindto, admin);
+			admin.setUserRole(Role.ADMIN);
+			System.out.println(admin);
+			return userRepo.save(admin);
+		}else
+			throw new UserAlreadyExistException("User Already Exist, Please login or try with another email");
+	}
+	
+	@Override
+	public List<?> revenueReport(String airlineName, String interval) {
+		System.out.println("in revenue report:SuperAdminService : "+airlineName);
+		List<?> revenue=null;
+		if(interval.equalsIgnoreCase("Monthly")) {
+			revenue=bookRepo.getMonthlyRevenue(airlineName);
+		}
+		else if(interval.equalsIgnoreCase("Quarterly")) {
+			revenue=bookRepo.getQuarterlyRevenue(airlineName);
+		}
+		else if(interval.equalsIgnoreCase("Yearly")) {
+			revenue=bookRepo.getYearlyRevenue(airlineName);
+		}
+		 System.out.println("in revenue report:SuperAdminService after : "+airlineName);
+		 return revenue;
+	}
+	
+	@Override
+	public List<FeedbackDTO> getFeedback(int airId) {
+		System.out.println("in get feedback :SuperAdminService ");
+		List<FeedbackDTO> fb=bookRepo.getFeedbackByAirlineId(airId);
+		return fb;
+	}
+	@Override
+	public int getTotalBooking() {
+		return bookRepo.getTotalBooking();
+	}
+	
+	@Override
+	public int getCancelledBooking() {
+		return bookRepo.getCancelledBooking();
+	}
+	
+	@Override
+	public double getTotalRevenue() {
+		return bookRepo.getTotalRevenue();
+	}
+
+	@Override
+	public List<AirlineWiseRevenueDTO> getAirlineRevenue() {
+		return bookRepo.getAirlineRevenue();
+	}
+
+	@Override
+	public void addCity(CityDTO cityDto) {
+		List<Cities> cities=cityRepo.getCities();
+		String[] cityArray=cityDto.getCityNames();
+		if(cities.isEmpty()) {
+			cityRepo.save(new Cities(cityArray[0]));
+			cityRepo.save(new Cities(cityArray[1]));
+		}
+		else {
+			for(int i=0; i<cityArray.length; i++) {
+				boolean flag=false;
+				while(!flag ) {
+					for(Cities city:cities) {
+						if((cityArray[i].equalsIgnoreCase(city.getCity()))) {
+							flag=true;
+							break;
+						}
+					}
+					if(!flag)
+						break;
+				}
+				if(!flag)
+					cityRepo.save(new Cities(cityArray[i]));
+			}
+		}
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/service/ISuperAdminService.java
+package com.app.service;
+
+import java.util.List;
+
+import com.app.dto.AirlineWiseRevenueDTO;
+import com.app.dto.CityDTO;
+import com.app.dto.FeedbackDTO;
+import com.app.dto.UserDTO;
+import com.app.pojos.User;
+
+public interface ISuperAdminService {
+	//method to add admin 
+	User addAdmin(UserDTO admin);
+	
+	//method to generate revenue report
+	List<?> revenueReport(String airlineName, String interval);
+	
+	//method to check feedback from customer
+	List<FeedbackDTO> getFeedback(int airId);
+		
+	//method to get total number of bookings
+	int getTotalBooking();
+	
+	//method to get total number of cancelled bookings
+	int getCancelledBooking();
+	
+	//method to get total Amount of revenue
+	double getTotalRevenue();
+	
+	//method to get Airline wise Revenue
+	List<AirlineWiseRevenueDTO> getAirlineRevenue();
+	
+	//method to add City in City Table
+	void addCity(CityDTO cityDto);
+
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/service/AirlineServiceImpl.java
+package com.app.service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.dao.AirlineRepository;
+import com.app.dao.BookingRepository;
+import com.app.dao.PassengerRepository;
+import com.app.dto.AirlineDTO;
+import com.app.dto.UpdateFlightDTO;
+import com.app.pojos.Airline;
+import com.app.pojos.Booking;
+
+@Service
+@Transactional
+public class AirlineServiceImpl implements IAirlineService {
+	@Autowired
+	private AirlineRepository airRepo;
+	@Autowired
+	private BookingRepository bookRepo;
+	@Autowired 
+	private PassengerRepository passRepo;
+	@Override
+	public Airline addAirline(AirlineDTO airlinedto) {
+		System.out.println("in add airline method");
+		Airline airline = new Airline();
+		BeanUtils.copyProperties(airlinedto, airline);
+		System.out.println("airline dtls : " + airline);
+		return airRepo.save(airline);
+	}
+
+	@Override
+	public String updateAirline(UpdateFlightDTO flightDto) {
+		System.out.println("in update airline method");
+		Airline a1 = airRepo.findById(flightDto.getId()).get();
+		a1.setDepartureTime(flightDto.getDepartureTime());
+		a1.setArrivalTime(flightDto.getArrivalTime());
+		a1.setDepartureDate(flightDto.getDepartureDate());
+		a1.setArrivalDate(flightDto.getArrivalDate());
+		airRepo.save(a1);
+		return "Airline updated Successfully!!!!";
+
+	}
+	
+	@Override
+	public String cancelFlight(int airId) {
+		System.out.println("in update airline method");
+		Airline a1 = airRepo.findById(airId).get();
+		List<Booking> list=bookRepo.getBookingByAirlineId(airId);
+		list.forEach((b)->{
+			passRepo.deletePassengerByBookingId(b.getId());
+			b.setStatus(0);
+		});
+		airRepo.delete(a1);
+		return "Flight canceled Successfully!!!!";
+
+	}
+
+	@Override
+	public List<Airline> searchFlights(String fromCity, String toCity, LocalDate departureDate) {
+		return airRepo.findByFromCityAndToCityAndDepartureDate(fromCity, toCity, departureDate);
+	}
+
+	@Override
+	public Airline selectAirlineFromListById(int aid) {
+		return airRepo.findById(aid).get();
+	}
+
+	@Override
+	public List<Airline> getAllFlights() {
+		
+		return airRepo.findAll();
+	}
+	
+	@Override
+	public List<String> getAirlineNames() {
+		return airRepo.findDistinctAirlineName();
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/service/UserServiceImpl.java
+package com.app.service;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.custom_exceptions.UserAlreadyExistException;
+import com.app.custom_exceptions.UserNotFoundException;
+import com.app.dao.UserRepository;
+import com.app.dto.UserDTO;
+import com.app.pojos.Role;
+import com.app.pojos.User;
+@Service
+@Transactional
+public class UserServiceImpl implements IUserService {
+	@Autowired
+	private UserRepository userRepo;
+	@Override
+	public User getUser(String email, String password) {
+		User user =  userRepo.findByEmailAndPassword(email, password);
+		if(user != null)
+			return user;
+		else
+			throw new UserNotFoundException("User not found, please try with correct credentials");
+	}
+	
+	@Override
+	public User saveUser(UserDTO userdto) {
+		User user = new User();
+		if(userRepo.findByEmail(userdto.getEmail()) == null) {
+			BeanUtils.copyProperties(userdto, user);
+			user.setUserRole(Role.CUSTOMER);
+			System.out.println(user);
+			return userRepo.save(user);
+		}else
+			throw new UserAlreadyExistException("User Already Exist, Please login or try with another email");
+	}
+        @Override
+	public User updateUserProfile(int userId, UserDTO userDTO) {
+		System.out.println("inside updateUserProfile (service method) "+userDTO);
+		User userDetails=userRepo.findById(userId).get();
+		System.out.println("user details from "+userDetails);
+		userDetails.setPassword(userDTO.getPassword());
+		userDetails.setMobileNo(userDTO.getMobileNo());
+		System.out.println("Updated user Details "+userDetails);
+		return userDetails;
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/service/BookingServiceImpl.java
+package com.app.service;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.app.dao.AirlineRepository;
+import com.app.dao.BookingRepository;
+import com.app.dao.PassengerRepository;
+import com.app.dao.UserRepository;
+import com.app.dto.CustomDTO;
+import com.app.dto.GetBookingListDTO;
+import com.app.dto.PassengerDTO;
+import com.app.dto.PassengerForBookingDTO;
+import com.app.pojos.Airline;
+import com.app.pojos.Booking;
+import com.app.pojos.CardDetails;
+import com.app.pojos.Passenger;
+import com.app.pojos.User;
+
+@Service
+@Transactional
+public class BookingServiceImpl implements IBookingService {
+	@Autowired
+	private BookingRepository bookingRepo;
+	@Autowired
+	private UserRepository userRepo;
+	@Autowired
+	private AirlineRepository airRepo;
+	@Autowired
+	private PassengerRepository passengerRepo;
+
+	@Override
+	public void deleteBooking(int id) {
+		System.out.println("in deleteBooking bookingService " + id);
+		List<Passenger> l = passengerRepo.getPassengerByBookingId(id);
+		int size = l.size();
+		System.out.println("size " + size);
+		Airline airline = airRepo.findById(bookingRepo.getAirlineIdByBookingId(id)).get();
+		System.out.println("before updating available seats: " + airline);
+		airline.setAvailableSeats(airline.getAvailableSeats() + size);
+		System.out.println("after updating available seats:" + airline);
+		Booking booking = bookingRepo.findById(id).get();
+		booking.setStatus(0);
+		System.out.println("after cancelling booking " + booking);
+		passengerRepo.deletePassengerByBookingId(id);
+		return;
+	}
+
+	@Override
+	public List<PassengerDTO> getPassengerList(int airId) {
+		System.out.println("in getPassengerList adminService " + airId);
+		List<Booking> bookList = bookingRepo.getBookingByAirlineId(airId);
+		List<PassengerDTO> passList = new ArrayList<>();
+		bookList.forEach((b) -> b.getPassengerList().forEach((p) -> passList.add(new PassengerDTO(p.getPassengerName(),
+				p.getPassengerAge(), p.getGender().toString(), p.getPassengerType().toString(), p.getSeatNumber()))));
+		return passList;
+	}
+
+	@Override
+	public String updateBooking(int airlineId) {
+		System.out.println("in updateBooking updateService");
+
+		Airline air = airRepo.findById(airlineId).get();
+		List<Booking> bList = bookingRepo.findByAirlineId(airlineId);
+		if (bList.isEmpty()) {
+			return "There are no booking to modify";
+		} else {
+			bList.forEach((booking) -> {
+				if (booking.getStatus() == 1) {
+					booking.setJourneyDate(air.getDepartureDate());
+					booking.setArrivalDate(air.getArrivalDate());
+					booking.setArrivalTime(air.getArrivalTime());
+					booking.setDepartureTime(air.getDepartureTime());
+				}
+			});
+			return "Bookings updated Successfully";
+		}
+	}
+
+	@Override
+	public String postFeedback(int bid, String feedback) {
+		bookingRepo.postFeedback(bid, feedback);
+
+		return "Feedback posted successfully!!!!";
+	}
+
+	@Override
+	public String bookTicket(CustomDTO custDto) {
+		User user = userRepo.findById(custDto.getUserId()).get();
+
+		Airline airline = airRepo.findById(custDto.getBookingDto().getAirlineId()).get();
+		if (airline.getAvailableSeats() >= custDto.getPassengerDto().length) {
+			user.setCardDetails(new CardDetails(custDto.getCardDto().getCardNumber(),
+					custDto.getCardDto().getNameOnCard(), custDto.getCardDto().getExpiryDate()));
+
+			Booking bookings = new Booking(LocalDate.now(), custDto.getBookingDto().getTotalFare(),
+					airline.getDepartureDate(), airline.getArrivalDate(), custDto.getBookingDto().getSeatType(),
+					custDto.getBookingDto().getStatus(), "-", airline.getDepartureTime(), airline.getArrivalTime(),
+					custDto.getBookingDto().getAirlineId());
+
+			PassengerForBookingDTO[] passDto = custDto.getPassengerDto();
+
+			List<Passenger> passList = bookings.getPassengerList();
+
+			for (int i = 0; i < passDto.length; i++) {
+				Passenger passenger = new Passenger(passDto[i].getPassengerType(), passDto[i].getPassengerName(),
+						passDto[i].getPassengerAge(), passDto[i].getGender(), passDto[i].getSeatNumber());
+				passenger.setBookingId(bookings);
+				passList.add(passenger);
+				airline.setAvailableSeats(airline.getAvailableSeats() - 1);
+			}
+
+			user.getBookingList().add(bookings);
+			bookings.setUserId(user);
+			return "Ticket Booking SuccessFul";
+		} else {
+			return "Ticket Booking UnSuccessFul!!! Seats not available";
+		}
+	}
+
+	@Override
+	public List<GetBookingListDTO> findByAirlineId(int aid) {
+		List<GetBookingListDTO> bookList = new ArrayList<>();
+		List<Booking> bList = bookingRepo.getBookingByAirlineId(aid);
+		bList.forEach((b) -> {
+			if (b.getStatus() == 1)
+				bookList.add(new GetBookingListDTO(b.getId(), b.getBookingDate(), b.getTotalFare(), b.getJourneyDate(),
+						b.getArrivalDate(), b.getStatus(), b.getAirlineId(), b.getUserId().getId()));
+		});
+		return bookList;
+
+	}
+	@Override
+	public List<GetBookingListDTO> findByUserId(int uid) {
+		List<GetBookingListDTO> bookList = new ArrayList<>();
+		List<Booking> bList = bookingRepo.getBookingByUserId(uid);
+		bList.forEach((b) -> {
+			
+				bookList.add(new GetBookingListDTO(b.getId(), b.getBookingDate(), b.getTotalFare(), b.getJourneyDate(), b.getArrivalDate(), b.getStatus(), b.getAirlineId(), b.getUserId().getId()));
+		});
+		return bookList;
+		
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/pojos/PassengerType.java
+package com.app.pojos;
+
+public enum PassengerType {
+	ADULT, MINOR, SENIOR
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/pojos/Cities.java
+package com.app.pojos;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "cities")
+public class Cities extends BaseEntity {
+	private String City;
+	
+	public Cities() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+
+	public Cities(String city) {
+		super();
+		City = city;
+	}
+
+	public String getCity() {
+		return City;
+	}
+
+	public void setCity(String city) {
+		City = city;
+	}
+
+	@Override
+	public String toString() {
+		return "CitiesId="+getId()+" City=" + City + "";
+	}
+	
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/pojos/Booking.java
+package com.app.pojos;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
+@Table(name = "bookings")
+public class Booking extends BaseEntity{
+	private LocalDate bookingDate;
+	private double totalFare;
+	private LocalDate journeyDate;
+	private LocalDate arrivalDate;
+	@Enumerated(EnumType.STRING)
+	private SeatType seatType;
+	//0-->cancelled, 1-->confirmed
+	private int status;
+	@Column(length = 1000)
+	private String feedback;
+	@Temporal(TemporalType.TIME)
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private java.util.Date departureTime;
+	@Temporal(TemporalType.TIME)
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private Date arrivalTime;
+	@OneToMany(mappedBy = "bookingId", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Passenger> passengerList = new ArrayList<Passenger>();
+	private int airlineId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private User userId;
+	
+	public Booking() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+
+	public Booking(LocalDate bookingDate, double totalFare, LocalDate journeyDate, SeatType seatType, int status,
+			String feedback, int airlineId) {
+		super();
+		this.bookingDate = bookingDate;
+		this.totalFare = totalFare;
+		this.journeyDate = journeyDate;
+		this.seatType = seatType;
+		this.status = status;
+		this.feedback = feedback;
+		this.airlineId = airlineId;
+	}
+	public Booking(LocalDate bookingDate, double totalFare, LocalDate journeyDate, LocalDate arrivalDate,
+			SeatType seatType, int status, String feedback, Date departureTime, Date arrivalTime, int airlineId) {
+		super();
+		this.bookingDate = bookingDate;
+		this.totalFare = totalFare;
+		this.journeyDate = journeyDate;
+		this.arrivalDate = arrivalDate;
+		this.seatType = seatType;
+		this.status = status;
+		this.feedback = feedback;
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
+		this.airlineId = airlineId;
+	}
+	public LocalDate getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(LocalDate bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
+	public double getTotalFare() {
+		return totalFare;
+	}
+
+	public void setTotalFare(double totalFare) {
+		this.totalFare = totalFare;
+	}
+
+	public LocalDate getJourneyDate() {
+		return journeyDate;
+	}
+
+	public void setJourneyDate(LocalDate journeyDate) {
+		this.journeyDate = journeyDate;
+	}
+
+	public SeatType getSeatType() {
+		return seatType;
+	}
+
+	public void setSeatType(SeatType seatType) {
+		this.seatType = seatType;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
+	}
+
+	public List<Passenger> getPassengerList() {
+		return passengerList;
+	}
+
+	public void setPassengerList(List<Passenger> passengerList) {
+		this.passengerList = passengerList;
+	}
+	
+	public int getAirlineId() {
+		return airlineId;
+	}
+
+	public void setAirlineId(int airlineId) {
+		this.airlineId = airlineId;
+	}
+
+	public User getUserId() {
+		return userId;
+	}
+
+	public void setUserId(User userId) {
+		this.userId = userId;
+	}
+
+	public LocalDate getArrivalDate() {
+		return arrivalDate;
+	}
+
+	public void setArrivalDate(LocalDate arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
+
+	public java.util.Date getDepartureTime() {
+		return departureTime;
+	}
+
+	public void setDepartureTime(java.util.Date departureTime) {
+		this.departureTime = departureTime;
+	}
+
+	public Date getArrivalTime() {
+		return arrivalTime;
+	}
+
+	public void setArrivalTime(Date arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+
+	@Override
+	public String toString() {
+		return "Booking [bookingDate=" + bookingDate + ", totalFare=" + totalFare + ", journeyDate=" + journeyDate
+				+ ", arrivalDate=" + arrivalDate + ", seatType=" + seatType + ", status=" + status + ", feedback="
+				+ feedback + ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + ", airlineId="
+				+ airlineId + "]";
+	}
+	
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/pojos/Airline.java
+package com.app.pojos;
+
+import java.time.LocalDate;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
+@Table(name = "airline")
+public class Airline extends BaseEntity {
+	@Column(length = 30)
+	private String airlineName;
+	@Column(length = 30, unique = true)
+	private String airlineNo;
+	private LocalDate departureDate;
+	private LocalDate arrivalDate;
+	@Column(length = 30)
+	private String fromCity;
+	@Column(length = 30)
+	private String toCity;
+	@Temporal(TemporalType.TIME)
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private java.util.Date departureTime;
+	@Temporal(TemporalType.TIME)
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private Date arrivalTime;
+	private int capacity;
+	private int availableSeats;
+	private double economyFare;
+	private double businessFare;
+	public Airline() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+	public Airline(String airlineName, String airlineNo, LocalDate departureDate, LocalDate arrivalDate,
+			String fromCity, String toCity, Date departureTime, Date arrivalTime, int capacity,
+			int availableSeats, double economyFare, double businessFare) {
+		super();
+		this.airlineName = airlineName;
+		this.airlineNo = airlineNo;
+		this.departureDate = departureDate;
+		this.arrivalDate = arrivalDate;
+		this.fromCity = fromCity;
+		this.toCity = toCity;
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
+		this.capacity = capacity;
+		this.availableSeats = availableSeats;
+		this.economyFare = economyFare;
+		this.businessFare = businessFare;
+	}
+	public String getAirlineName() {
+		return airlineName;
+	}
+	public void setAirlineName(String airlineName) {
+		this.airlineName = airlineName;
+	}
+	public String getAirlineNo() {
+		return airlineNo;
+	}
+	public void setAirlineNo(String airlineNo) {
+		this.airlineNo = airlineNo;
+	}
+	public LocalDate getDepartureDate() {
+		return departureDate;
+	}
+	public void setDepartureDate(LocalDate departureDate) {
+		this.departureDate = departureDate;
+	}
+	public LocalDate getArrivalDate() {
+		return arrivalDate;
+	}
+	public void setArrivalDate(LocalDate arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
+	public String getFromCity() {
+		return fromCity;
+	}
+	public void setFromCity(String fromCity) {
+		this.fromCity = fromCity;
+	}
+	public String getToCity() {
+		return toCity;
+	}
+	public void setToCity(String toCity) {
+		this.toCity = toCity;
+	}
+	
+	public Date getDepartureTime() {
+		return departureTime;
+	}
+	public void setDepartureTime(Date departureTime) {
+		this.departureTime = departureTime;
+	}
+	public Date getArrivalTime() {
+		return arrivalTime;
+	}
+	public void setArrivalTime(Date arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+	public int getCapacity() {
+		return capacity;
+	}
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+	public int getAvailableSeats() {
+		return availableSeats;
+	}
+	public void setAvailableSeats(int availableSeats) {
+		this.availableSeats = availableSeats;
+	}
+	public double getEconomyFare() {
+		return economyFare;
+	}
+	public void setEconomyFare(double economyFare) {
+		this.economyFare = economyFare;
+	}
+	public double getBusinessFare() {
+		return businessFare;
+	}
+	public void setBusinessFare(double businessFare) {
+		this.businessFare = businessFare;
+	}
+	@Override
+	public String toString() {
+		return "AirlineId="+getId()+"airlineName=" + airlineName + ", airlineNo=" + airlineNo + ", departureDate=" + departureDate
+				+ ", arrivalDate=" + arrivalDate + ", fromCity=" + fromCity + ", toCity=" + toCity + ", departureTime="
+				+ departureTime + ", arrivalTime=" + arrivalTime + ", capacity=" + capacity + ", availableSeats="
+				+ availableSeats + ", economyFare=" + economyFare + ", businessFare=" + businessFare + "]";
+	}
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/pojos/SeatType.java
+package com.app.pojos;
+
+public enum SeatType {
+	BUSINESS, ECONOMY
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/pojos/BaseEntity.java
+package com.app.pojos;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
+public class BaseEntity {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/pojos/User.java
+package com.app.pojos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name = "users")
+public class User extends BaseEntity {
+	@Column(length = 30)
+	private String firstName;
+	@Column(length = 30)
+	private String lastName;
+	@Column(length = 30, nullable = false, unique = true)
+	private String email;
+	@Column(length = 30, nullable = false)
+	private String password;
+	@Column(length = 15)
+	private String mobileNo;
+	@Enumerated(EnumType.STRING)
+	private Role userRole;
+	//0-->notVerified, 1-->verified, 2-->Suspended
+	private int status;
+	@JsonIgnore
+	@OneToMany(mappedBy = "userId", orphanRemoval = true, cascade = CascadeType.ALL)
+	private List<Booking> bookingList = new ArrayList<>();
+	@Embedded
+	private CardDetails cardDetails;
+	public User() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+
+	public User(String firstName, String lastName, String email, String password, String mobileNo, Role userRole,
+			int status) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.mobileNo = mobileNo;
+		this.userRole = userRole;
+		this.status = status;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getMobileNo() {
+		return mobileNo;
+	}
+
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+
+	public Role getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(Role userRole) {
+		this.userRole = userRole;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public List<Booking> getBookingList() {
+		return bookingList;
+	}
+
+	public void setBookingList(List<Booking> bookingList) {
+		this.bookingList = bookingList;
+	}
+
+	public CardDetails getCardDetails() {
+		return cardDetails;
+	}
+
+	public void setCardDetails(CardDetails cardDetails) {
+		this.cardDetails = cardDetails;
+	}
+
+	@Override
+	public String toString() {
+		return "UserId="+getId()+" firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password=" + password
+				+ ", mobileNo=" + mobileNo + ", userRole=" + userRole + ", status=" + status + "";
+	}
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/pojos/Gender.java
+package com.app.pojos;
+
+public enum Gender {
+	MALE, FEMALE, TRANSGENDER
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/pojos/Role.java
+package com.app.pojos;
+
+public enum Role {
+	ADMIN, CUSTOMER, AIRLINEEXECUTIVE, SUPERADMIN
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/pojos/CardDetails.java
+package com.app.pojos;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class CardDetails {
+	@Column(unique = true)
+	private String cardNumber;
+	private String nameOnCard;
+	private LocalDate expiryDate;
+	
+	public CardDetails() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+
+	public CardDetails(String cardNumber, String nameOnCard, LocalDate expiryDate) {
+		super();
+		this.cardNumber = cardNumber;
+		this.nameOnCard = nameOnCard;
+		this.expiryDate = expiryDate;
+	}
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+
+	public String getNameOnCard() {
+		return nameOnCard;
+	}
+
+	public void setNameOnCard(String nameOnCard) {
+		this.nameOnCard = nameOnCard;
+	}
+
+	public LocalDate getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(LocalDate expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+
+	@Override
+	public String toString() {
+		return "CardDetails [cardNumber=" + cardNumber + ", nameOnCard=" + nameOnCard + ", expiryDate=" + expiryDate
+				+ "]";
+	}
+	
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/pojos/Passenger.java
+package com.app.pojos;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "passengers")
+public class Passenger extends BaseEntity {
+	@Enumerated(EnumType.STRING)
+	private PassengerType passengerType;
+	@Column(length = 30)
+	private String passengerName;
+	private int passengerAge;
+	private int seatNumber;
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "booking_id")
+	private Booking bookingId;
+	
+	public Passenger() {
+		System.out.println("in ctor of : "+getClass().getName());
+	}
+
+	public Passenger(PassengerType passengerType, String passengerName, int passengerAge, Gender gender, int seatNumber) {
+		super();
+		this.passengerType = passengerType;
+		this.passengerName = passengerName;
+		this.passengerAge = passengerAge;
+		this.gender = gender;
+		this.seatNumber = seatNumber;
+	}
+
+	public PassengerType getPassengerType() {
+		return passengerType;
+	}
+
+	public void setPassengerType(PassengerType passengerType) {
+		this.passengerType = passengerType;
+	}
+
+	public String getPassengerName() {
+		return passengerName;
+	}
+
+	public void setPassengerName(String passengerName) {
+		this.passengerName = passengerName;
+	}
+
+	public int getPassengerAge() {
+		return passengerAge;
+	}
+
+	public void setPassengerAge(int passengerAge) {
+		this.passengerAge = passengerAge;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public Booking getBookingId() {
+		return bookingId;
+	}
+
+	public void setBookingId(Booking bookingId) {
+		this.bookingId = bookingId;
+	}
+	public int getSeatNumber() {
+		return seatNumber;
+	}
+
+	public void setSeatNumber(int seatNumber) {
+		this.seatNumber = seatNumber;
+	}
+	@Override
+	public String toString() {
+		return "PassengerId"+getId()+" passengerType=" + passengerType + ", passengerName=" + passengerName + ", passengerAge="
+				+ passengerAge + ", gender=" + gender + ", seatNumber=" + seatNumber +"";
+	}
+	
+	
+}
+
+
+// File: /Users/akshaypawar/dev/airline_reservation_system/Project/src/main/java/com/app/exc_handler/GlobalExceptionHandler.java
+package com.app.exc_handler;
+
+import java.util.NoSuchElementException;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import com.app.custom_exceptions.FlightNotFoundException;
+import com.app.custom_exceptions.UserAlreadyExistException;
+import com.app.custom_exceptions.UserNotFoundException;
+import com.app.dto.ErrorResponse;
+import com.app.dto.ResponseDTO;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+	// exception handling methods
+	// if user already exist
+	@ExceptionHandler(UserAlreadyExistException.class)
+	public ResponseEntity<?> handleUserAlreadyExistException(UserAlreadyExistException e) {
+		System.out.println("in handle user already exist exception");
+		return new ResponseEntity<>(new ResponseDTO<>("error", e.getMessage()), HttpStatus.UNAUTHORIZED);
+	}
+
+	// if user not found while login
+	@ExceptionHandler(UserNotFoundException.class)
+	public ResponseEntity<?> handleUserNotFoundException(UserNotFoundException e) {
+		System.out.println("in handle user not found exception");
+		return new ResponseEntity<>(new ResponseDTO<>("error", e.getMessage()),
+				HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	// catch flight not found exception
+	@ExceptionHandler(FlightNotFoundException.class)
+	public ResponseEntity<?> handleFlightNotFoundException(FlightNotFoundException e) {
+		System.out.println("in handle FlightNotFoundException");
+		return new ResponseEntity<>(new ErrorResponse("flight not found", e.getMessage()), HttpStatus.NOT_FOUND);
+	}
+	//illegal argument exception
+	@ExceptionHandler(NoSuchElementException.class)
+	public ResponseEntity<ErrorResponse> handleNoSuchElementException(NoSuchElementException e) {
+		System.out.println("in handle any NoSuchElementException");
+		return new ResponseEntity<>(new ErrorResponse("Resource with given ID not Found", e.getMessage()),
+				HttpStatus.BAD_REQUEST);
+	}
+	
+	// catch all equivalent exceptions
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorResponse> handleException(Exception e) {
+		System.out.println("in handle any exc");
+		return new ResponseEntity<>(new ErrorResponse("server side error", e.getMessage()),
+				HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+}
+
+

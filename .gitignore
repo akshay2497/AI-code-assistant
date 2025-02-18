@@ -22,3 +22,58 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Ignore Python bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+env/
+*.venv/
+
+# Ignore database files
+*.sqlite3
+./java_code_assistant/chroma_db
+
+# Ignore logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Ignore compiled Java files
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignore Maven target directory
+target/
+
+# Ignore IDE and editor config files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Ignore node_modules (if any)
+node_modules/
+
+# Ignore dependency and build artifacts
+.mvn/
+*.m2/
+
+# Ignore datasets and generated outputs
+outputs/*.json
+outputs/*.txt
+
+# Ignore Maven wrapper files (optional)
+mvnw
+mvnw.cmd
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
