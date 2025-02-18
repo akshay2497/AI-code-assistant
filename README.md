@@ -66,13 +66,13 @@ AI-code-assistant/
 
 ## Use of ChromaDB and DeepSeek AI
 
-### ChromaDB
+### [ChromaDB](https://www.datacamp.com/tutorial/chromadb-tutorial-step-by-step-guide)
 ChromaDB is used as a **vector database** to store and retrieve question-answer embeddings efficiently. When a question is asked, its embedding is compared against stored embeddings to find the closest match. This allows for **semantic search** rather than simple keyword matching, ensuring more relevant results.
 
 ### DeepSeek AI
 DeepSeek AI is integrated to **enhance and refine answers** retrieved from ChromaDB. If a retrieved answer is too generic or incomplete, DeepSeek AI generates a more detailed and contextually rich response, improving the quality of answers provided to users.
 
-## Use of Sentence Transformer - all-MiniLM-L6-v2
+## Use of Sentence Transformer - [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
 The **all-MiniLM-L6-v2** model from **Sentence Transformers** is a lightweight yet powerful model for generating text embeddings. It is used in this project to convert questions into high-dimensional vectors, enabling effective similarity searches in ChromaDB.
 
 ### Key Features of all-MiniLM-L6-v2:
